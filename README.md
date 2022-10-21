@@ -1,1 +1,2 @@
-# jdr2d
+info about this project
+Test2
