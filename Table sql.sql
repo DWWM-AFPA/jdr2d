@@ -50,3 +50,50 @@ CREATE TABLE lieu
  nom_quete VARCHAR(255), 
  description_quete VARCHAR(255), 
  PRIMARY KEY(id_quete) );
+
+   CREATE TABLE recompense 
+ ( id_recompense COUNTER, 
+ nom_recompense VARCHAR(255) NOT NULL, 
+ description_recompense TEXT, 
+  PRIMARY KEY(id_recompense) );
+
+  CREATE TABLE objectif
+ ( id_objectif COUNTER, 
+ nom_objectif VARCHAR(255) NOT NULL, 
+ description_objectif TEXT, 
+ validation_objectif VARCHAR(255) NOT NULL,
+   PRIMARY KEY(id_objectif) );
+
+ CREATE TABLE etat_personnage 
+  ( id_etat_personnage COUNTER, 
+ nom_etat VARCHAR(50) NOT NULL UNIQUE, 
+ effet_etat VARCHAR(255) NOT NULL, 
+ description_etat VARCHAR(255) , 
+ PRIMARY KEY(id_etat_personnage) );
+
+ CREATE TABLE type_aptitude 
+  ( id_type_aptitude COUNTER, 
+ nom_type_aptitude VARCHAR(255) NOT NULL, 
+ effet_etat VARCHAR(255) NOT NULL, 
+ PRIMARY KEY(id_type_aptitude) );
+
+  CREATE TABLE role_quete 
+  ( code_role_quete CHAR(2), 
+ nom_role_quete VARCHAR(255) NOT NULL UNIQUE, 
+  PRIMARY KEY(code_role_quete) );
+
+    CREATE TABLE caracteristique  
+  ( id_statistique COUNTER, 
+    nom_caracteristique VARCHAR(255), 
+    description_caracteristique TEXT,
+  PRIMARY KEY(id_statistique) );
+
+     CREATE TABLE position_s  
+  ( coordonnee TEXT, 
+   
+  PRIMARY KEY(coordonnee) );
+
+
+
+
+
