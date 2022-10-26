@@ -93,6 +93,161 @@ CREATE TABLE lieu
    
   PRIMARY KEY(coordonnee) );
 
+  CREATE TABLE personnage 
+  ( id_personnage COUNTER, 
+  nom_personnage VARCHAR(255),
+  niveau_personnage BYTE NOT NULL,
+  direction VARCHAR(50) NOT NULL,
+  alignement VARCHAR(255),
+  monnaie BIGINT,
+  vivant LOGICAL NOT NULL,
+  id_race INT NOT NULL,
+  id_compte_utilisateur INT,
+  id_lieu INT NOT NULL,
+  PRIMARY KEY(id_personnage),
+  FOREIGN KEY(id_race) REFERENCES race(id_race),
+  FOREIGN KEY(id_compte_utilisateur) REFERENCES compte_utilisateur(id_compte_utilisateur),
+  FOREIGN KEY(id_lieu) REFERENCES race(id_lieu),
+   );
+
+   CREATE TABLE aptitude 
+   ( id_aptitude COUNTER,
+   nom_aptitude VARCHAR(50),
+   effet_aptitude VARCHAR(255),
+   prerequis_aptitude VARCHAR(255),
+   id_type_aptitude INT NOT NULL,
+   PRIMARY KEY(id_aptitude),
+   FOREIGN KEY(id_type_aptitude) REFERENCES type_aptitude(id_type_aptitude)  
+   );
+
+   CREATE TABLE dialogue (
+    id_dialogue COUNTER,
+    Contenu_dialogue TEXT NOT NULL,
+    id_personnage INT,
+    PRIMARY KEY(id_dialogue),
+    FOREIGN KEY(id_personnage) REFERENCES personnage(id_personnage)
+);
+
+CREATE TABLE affecte(
+   id_personnage INT,
+   id_etat_personnage INT,
+   PRIMARY KEY(id_personnage, id_etat_personnage),
+   FOREIGN KEY(id_personnage) REFERENCES personnage(id_personnage),
+   FOREIGN KEY(id_etat_personnage) REFERENCES etat_personnage(id_etat_personnage)
+);
+
+CREATE TABLE maitrise(
+   id_personnage INT,
+   id_aptitude INT,
+   pourcentage_maitrise BYTE NOT NULL,
+   PRIMARY KEY(id_personnage, id_aptitude),
+   FOREIGN KEY(id_personnage) REFERENCES personnage(id_personnage),
+   FOREIGN KEY(id_aptitude) REFERENCES aptitude(id_aptitude)
+);
+
+CREATE TABLE appartient(
+   id_personnage INT,
+   id_classe INT,
+   PRIMARY KEY(id_personnage, id_classe),
+   FOREIGN KEY(id_personnage) REFERENCES personnage(id_personnage),
+   FOREIGN KEY(id_classe) REFERENCES classe(id_classe)
+);
+
+CREATE TABLE caracterise(
+   id_objet INT,
+   id_type_objet INT,
+   PRIMARY KEY(id_objet, id_type_objet),
+   FOREIGN KEY(id_objet) REFERENCES objet(id_objet),
+   FOREIGN KEY(id_type_objet) REFERENCES type_objet(id_type_objet)
+);
+
+CREATE TABLE instance(
+   id_objet INT,
+   id_lieu INT,
+   coordonee TEXT,
+   quantite INT,
+   PRIMARY KEY(id_objet, id_lieu, coordonee),
+   FOREIGN KEY(id_objet) REFERENCES objet(id_objet),
+   FOREIGN KEY(id_lieu) REFERENCES lieu(id_lieu),
+   FOREIGN KEY(coordonee) REFERENCES position_s(coordonee)
+);
+
+
+CREATE TABLE possede (
+  id_personnage INT,
+  id_objet INT,
+  quantite INT,
+  PRIMARY KEY(id_personnage,id_objet),
+  FOREIGN KEY(id_personnage) REFERENCES PERSONNAGE(id_personnage),
+  FOREIGN KEY(id_objet) REFERENCES OBJET(id_objet));
+
+CREATE TABLE contient (
+  contenant INT,
+  id_objet_contenu INT,
+  Quantité VARCHAR(50),
+   PRIMARY KEY(contenant, id_objet_contenu),
+   FOREIGN KEY(contenant) REFERENCES objet(id_objet),
+   FOREIGN KEY(id_objet_contenu) REFERENCES objet(id_objet)
+) ;
+
+CREATE TABLE donne(
+   id_quete INT,
+   id_dialogue INT,
+   code_role_quete CHAR(2),
+   PRIMARY KEY(id_quete, id_dialogue, code_role_quete),
+   FOREIGN KEY(id_quete) REFERENCES quete(id_quete),
+   FOREIGN KEY(id_dialogue) REFERENCES Dialogue(id_dialogue),
+   FOREIGN KEY(code_role_quete) REFERENCES role_quete(code_role_quete)
+);
+
+CREATE TABLE active(
+   id_objet INT,
+   id_quete INT,
+   code_role_quete CHAR(2),
+   PRIMARY KEY(id_objet, id_quete, code_role_quete),
+   FOREIGN KEY(id_objet) REFERENCES objet(id_objet),
+   FOREIGN KEY(id_quete) REFERENCES quete(id_quete),
+   FOREIGN KEY(code_role_quete) REFERENCES role_quete(code_role_quete)
+);
+
+CREATE TABLE constitue(
+   id_quete INT,
+   id_objectif INT,
+   parametre VARCHAR(255),
+   PRIMARY KEY(id_quete, id_objectif),
+   FOREIGN KEY(id_quete) REFERENCES quete(id_quete),
+   FOREIGN KEY(id_objectif) REFERENCES objectif(id_objectif)
+);
+
+CREATE TABLE declenche(
+   id_quete INT,
+   id_recompense INT,
+   id_objectif INT,
+   PRIMARY KEY(id_quete, id_recompense, id_objectif),
+   FOREIGN KEY(id_quete) REFERENCES quete(id_quete),
+   FOREIGN KEY(id_recompense) REFERENCES recompense(id_recompense),
+   FOREIGN KEY(id_objectif) REFERENCES objectif(id_objectif)
+);
+
+
+
+
+
+
+
+
+
+
+)
+
+
+
+
+
+
+
+   
+
 
 
 
