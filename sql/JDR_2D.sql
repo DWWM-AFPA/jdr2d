@@ -131,12 +131,49 @@ CREATE TABLE dialogue (
 
 --Tables intermédiaires avec clés primaires et étrangères
 CREATE TABLE maitrise (
-    id_personnage INT NOT NULL,
-    id_aptitude INT NOT NULL,
-    pourcentage_maitrise SMALLINT NOT NULL
+    id_personnage INT NOT NULL PRIMARY KEY,
+    id_aptitude INT NOT NULL PRIMARY KEY,
+    pourcentage_maitrise SMALLINT NOT NULL,
     FOREIGN KEY(id_personnage)
     REFERENCES personnage(id_personnage),
     FOREIGN KEY(id_aptitude)
     REFERENCES aptitude(id_aptitude)
 );
 
+CREATE TABLE definit (
+    id_personnage INT NOT NULL PRIMARY KEY,
+    id_caracteristique INT NOT NULL PRIMARY KEY,
+    valeur__definit INT NOT NULL,
+    valeur_max_definit INT NOT NULL,
+    FOREIGN KEY(id_personnage)
+    REFERENCES personnage(id_personnage),
+    FOREIGN KEY(id_caracteristique)
+    REFERENCES caracteristique(id_caracteristique)
+);
+
+CREATE TABLE considere (
+    id_personnage_juger INT NOT NULL PRIMARY KEY,
+    id_personnage_juge INT NOT NULL PRIMARY KEY,
+    valeur_attitude VARCHAR(50) NOT NULL,
+    FOREIGN KEY(id_personnage_juger)
+    REFERENCES personnage(id_personnage),
+    FOREIGN KEY(id_personnage_juge)
+    REFERENCES personnage(id_personnage)
+);
+
+CREATE TABLE possede (
+    id_personnage INT NOT NULL PRIMARY KEY,
+    id_objet INT NOT NULL PRIMARY KEY,
+    quantite INT NOT NULL,
+    FOREIGN KEY(id_personnage)
+    REFERENCES personnage(id_personnage),
+    FOREIGN KEY(id_objet)
+    REFERENCES objet(id_objet)
+);
+
+CREATE TABLE contient (
+    contenant INT NOT NULL PRIMARY KEY,
+    id_objet_contenu INT NOT NULL PRIMARY KEY,
+    quantite VARCHAR(50) NULL,
+    FOREIGN KEY()
+)
