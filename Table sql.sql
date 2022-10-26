@@ -229,6 +229,60 @@ CREATE TABLE declenche(
    FOREIGN KEY(id_objectif) REFERENCES objectif(id_objectif)
 );
 
+CREATE TABLE accorde(
+   id_objet INT,
+   id_recompense INT,
+   quantite INT,
+   PRIMARY KEY(id_objet, id_recompense),
+   FOREIGN KEY(id_objet) REFERENCES objet(id_objet),
+   FOREIGN KEY(id_recompense) REFERENCES recompense(id_recompense)
+);
+
+CREATE TABLE Mene(
+   id_dialogue_Suivant INT,
+   id_dialogue_Precedent INT,
+   Choix TEXT,
+   PRIMARY KEY(id_dialogue_Suivant, id_dialogue_Precedent),
+   FOREIGN KEY(id_dialogue_Suivant) REFERENCES Dialogue(id_dialogue),
+   FOREIGN KEY(id_dialogue_Precedent) REFERENCES Dialogue(id_dialogue)
+);
+
+CREATE TABLE Considere(
+   id_personnage_Juger INT,
+   id_personnage_Juge INT,
+   Valeur_attitudes VARCHAR(50),
+   PRIMARY KEY(id_personnage_Juger, id_personnage_Juge),
+   FOREIGN KEY(id_personnage_Juger) REFERENCES personnage(id_personnage),
+   FOREIGN KEY(id_personnage_Juge) REFERENCES personnage(id_personnage)
+);
+
+CREATE TABLE definit ( 
+
+  id_personnage INT,
+  id_Statistique INT,
+  Valeur INT,
+  Valeur_max INT,
+  PRIMARY KEY(id_personnage, id_Statistique),
+  FOREIGN KEY(id_personnage) REFERENCES personnage(id_personnage),
+  FOREIGN KEY(id_statistique) REFERENCES Caracteristique(id_Statistique)
+
+);
+
+CREATE TABLE relie(
+   id_objet_porte_entre INT,
+   id_objet_porte_sortie INT,
+   PRIMARY KEY(id_objet_porte_entre, id_objet_porte_sortie),
+   FOREIGN KEY(id_objet_porte_entre) REFERENCES objet(id_objet),
+   FOREIGN KEY(id_objet_porte_sortie) REFERENCES objet(id_objet)
+);
+
+CREATE TABLE positionne(
+   id_personnage INT,
+   coordonee TEXT,
+   PRIMARY KEY(id_personnage, coordonee),
+   FOREIGN KEY(id_personnage) REFERENCES personnage(id_personnage),
+   FOREIGN KEY(coordonee) REFERENCES position_s(coordonee)
+);
 
 
 
@@ -238,7 +292,15 @@ CREATE TABLE declenche(
 
 
 
-)
+
+
+
+
+
+
+
+
+
 
 
 
