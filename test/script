@@ -1,0 +1,9 @@
+read -p "Que voulez-vous ?" demande
+ 
+echo $demande
+if [ "$demande" == "test" ]; then
+	echo "ok"
+else 
+	echo "non ! "
+
+	fi

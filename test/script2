@@ -1,0 +1,6 @@
+echo $a
+if [ "$a" == "bonjour" ] ; then
+	echo "Salut"
+else
+	echo "Au revoir"
+fi
