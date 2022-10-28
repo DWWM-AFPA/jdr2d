@@ -41,7 +41,7 @@ CREATE TABLE interactions(
    prerequis_interaction VARCHAR(255) ,
    nom_interaction VARCHAR(255) ,
    description_interaction VARCHAR(255) ,
-   completion_interaction SMALLINT NOT NULL >0 AND <100,
+   completion_interaction SMALLINT NOT NULL CHECK(completion_interaction >0 AND completion_interaction <100),
    PRIMARY KEY(id_interaction)
 );
 
@@ -83,7 +83,7 @@ CREATE TABLE caracteristique(
 );
 
 CREATE TABLE position_s(
-   coordonee GEOMETRY,
+   coordonee VARCHAR(255) ,
    PRIMARY KEY(coordonee)
 );
 
@@ -147,7 +147,7 @@ CREATE TABLE maitrise(
 CREATE TABLE instance(
    id_objet INTEGER,
    id_lieu INTEGER,
-   coordonee GEOMETRY,
+   coordonee VARCHAR(255) ,
    quantite INTEGER,
    PRIMARY KEY(id_objet, id_lieu, coordonee),
    FOREIGN KEY(id_objet) REFERENCES objet(id_objet),
@@ -259,7 +259,7 @@ CREATE TABLE relie(
 
 CREATE TABLE positionne(
    id_personnage INTEGER,
-   coordonee GEOMETRY,
+   coordonee VARCHAR(255) ,
    PRIMARY KEY(id_personnage, coordonee),
    FOREIGN KEY(id_personnage) REFERENCES personnage(id_personnage),
    FOREIGN KEY(coordonee) REFERENCES position_s(coordonee)
