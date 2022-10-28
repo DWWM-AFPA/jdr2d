@@ -4,7 +4,7 @@ Insertion pour la table  race.
 */
 
 
-INSERT INTO 'race' ('nom_race', 'description_race', 'jouable') 
+INSERT INTO race (`nom_race`, `description_race`, `jouable`) 
     VALUES 
     (`Humains`, `Ambitieux, parfois héroïques, mais toujours confiants, les humains sont capables de travailler ensemble pour atteindre des objectifs communs, ce qui fait d’eux une puissance à ne pas négliger. Ils ont une espérance de vie réduite par rapport aux autres races, mais leur énergie sans limites et leurs passions leur permettent d’accomplir beaucoup de choses malgré leur brève existence.`, 1),
     (`Nains`, `On pense souvent que ces défenseurs des villes montagneuses petits et râblés sont sévères et dépourvus de tout sens de l’humour. Ils sont connus pour être des grand industriels dont les produit sont toujours d'une grande qualité et pour avoir une affinité particulière avec les richesses cachées dans les entrailles de la terre. Les nains ont aussi tendance à s’isoler et à se replier sur leurs traditions, au point de sombrer parfois dans la xénophobie.`, 1),
@@ -21,9 +21,8 @@ Insertion pour la table type_aptitude.
 
 INSERT INTO `type_aptitude` (`nom_type_aptitude`)
     VALUES
-    (``),
-    (``),
-    (``)
+    (`Déplacement`),
+    (`Habilité`)
 ;
 
 /*
@@ -176,15 +175,8 @@ INSERT INTO `lieu` (`nom_lieu`, `description_lieu`, `carte_lieu`)
     (`Bad-town`, `Ville centrale du peuple Orc`, `Bad-town.jpg`),
     (`Profit-city`, `Ville principale des Nains`, `Profit-city.jpg`),
     (`Nain-port-nawak`, `Contrairement a ce que l'on pourrait penser, il s'agit de la ville principale des Humains`, `Nain-port-nawak.jpg`),
-    (`Elf village`, `Ville principale des Elfes`, `Elf_village.jpg`),
-    (`cinq`, ``, ``),
-    (`six`, ``, ``),
-    (`sept`, ``, ``),
-    (`huit`, ``, ``),
-    (`neuf`, ``, ``),
-    (`dix`, ``, ``),
-    (`onze`, ``, ``)
-
+    (`Elf village`, `Ville principale des Elfes`, `Elf_village.jpg`)
+;
 
 /*
 Insertion pour la table lieu
@@ -193,8 +185,34 @@ Insertion pour la table lieu
 
 INSERT INTO `lieu` (`nom_lieu`, `description_lieu`, `carte_lieu`)
     VALUES
-    (`Bad-town`, `Ville centrale du peuple Orc`, `Bad-town.jpg`),
-    (`Profit-city`, `Ville principale des Nains`, `Profit-city.jpg`),
-    (`Nain-port-nawak`, `Contrairement a ce que l'on pourrait penser, il s'agit de la ville principale des Humains`, `Nain-port-nawak.jpg`),
-    (`Elf village`, `Ville principale des Elfes`, `Elf_village.jpg`),
-    (`cinq`, ``, ``),
+    (`Bad-town`, `Ville centrale du peuple Orc`, `Bad-town.svg`),
+    (`Profit-city`, `Ville principale des Nains`, `Profit-city.svg`),
+    (`Nain-port-nawak`, `Contrairement a ce que l'on pourrait penser, il s'agit de la ville principale des Humains`, `Nain-port-nawak.svg`),
+    (`Elf village`, `Ville principale des Elfes`, `Elf_village.svg`),
+    (`Crossroads`, `Plaine à la croisé des villes de toutes contrées`, `Crossroads.svg`)
+;
+
+/*
+Insertion pour la table aptitude.
+*/
+
+
+INSERT INTO `aptitude` (`nom_aptitude`, `effet_aptitude`, `prerequis_aptitude`, `id_type_aptitude`)
+    VALUES
+    (`Avancer`,  ``, ``, 1),
+    (`Tourner à droite`,  ``, ``, 1),
+    (`Tourner à gauche`,  ``, ``, 1),
+    (`Reculer`,  ``, ``, 1),
+    (`Esquive droite`,  ``, ``, 1),
+    (`Esquive gauche`,  ``, ``, 1),
+    (`Boule de feu`,  ``, ``, 2),
+    (`Graine versatile`,  ``, ``, 2),
+    (`Ballayage tranchant`,  ``, ``, 2),
+    (`Martellement lourd`,  ``, ``, 2),
+    (`Tir incapacitant`,  ``, ``, 2),
+    (`Parade`,  ``, ``, 2),
+    (`Contre-attaque`,  ``, ``, 2)
+;
+
+
+
