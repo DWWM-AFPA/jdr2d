@@ -11,10 +11,11 @@ INSERT INTO 'race' ('nom_race', 'description_race', 'jouable')
     (`Elfes`, `Grands, nobles et souvent hautains, les elfes à la longue espérance de vie sont les maîtres subtils de la nature. Ils excellent dans les arts magiques et utilisent souvent leur lien inné avec la nature pour inventer de nouveaux sorts et fabriquer de merveilleux objets qui, comme leurs créateurs, semblent presque hors d’atteinte des ravages du temps. Les elfes forment une race secrète et souvent introvertie, qui donne parfois l’impression d’être imperméable aux suppliques d’autrui.`, 0),
     (`Orques`, `Sauvages, brutaux et résistants, les orques sont souvent le fléau des lointaines étendues naturelles et des grottes profondes. Beaucoup deviennent de redoutables mercenaires, du fait de leur stature musculeuse et de leur tendance à entrer dans des rages sanglantes. Les quelques rares qui parviennent à contrôler leur soif de sang font d’excellents aventuriers.`, 1),
     (`Rat`, ``, 0),
-    (`Chauves Souris`, ``, 0);
+    (`Chauves Souris`, ``, 0)
+;
 
 /*
-Insertion pour la table type aptitudes.
+Insertion pour la table type_aptitude.
 */
 
 
@@ -22,7 +23,127 @@ INSERT INTO `type_aptitude` (`nom_type_aptitude`)
     VALUES
     (``),
     (``),
-    (``),
+    (``)
+;
+
+/*
+Insertion pour la table type_objet.
+*/
+
+
+INSERT INTO `type_objet` (`nom_type_objet`, `emplacement`)
+    VALUES
+    (`arme à distance`, `slotArme1`),
+    (`arme à 2 mains`, `slotArme1 & slotArme2`),
+    (`arme cac`, `slotArme1`),
+    (`casque`, `tete`),
+    (`armure`, `torse`),
+    (`gants`, `mains`),
+    (`pantalons`, `jambes`),
+    (`chaussures`, `pieds`),
+    (`potion`, `consommable1`),
+    (`objet de quetes`, ``),
+    (`Décor`, ``),
+    (`Monnaies`, ``)
+;
+
+/*
+Insertion pour la table objet.
+*/
+
+
+INSERT INTO `objet` (`nom_objet`, `statistique_objet`, `equipe`, `ouvert`, `description_objet`, `prix`, `id_type_objet`)
+    VALUES
+    (`fusil Lorrain`, `+1 force`, 1, ``, `Fusil légendaire de Lorraine, capable d'envoyer des fuseaux a 50 km/h`, ``, 1),
+    (`paprik'arme`, `+2 force`, 1, ``, `Le piment le plus fort de tous les héros`, ``, 1),
+    (`lance saucisse`, `+3 force`, 1, ``, `De son vrai nom große würst`, ``, 1),
+    (`Patator`, `+4 force`, 1, ``, `Le traditionnel lance patate Russe utiliser par Poutine en Ukraine`, ``, 1),
+    (`arbalais`, `+5 force`, 1, ``, `Monsieur Potter, merci de ramener le balais`, ``, 1),
+    (`la boule de pétoncle`, `+6 force`, 1, ``, `Célébre boule du comédon Cousteau`, ``, 1),
+    (`pestolet`, `+7 force`, 1, ``, `Ajouter du basilic, de l'ail et des François pignon et du parmesan on obtient cette arme légendaire`, ``, 1),
+    (`couperet bretzel`, `+2 force`, 1, ``, `Apparut en Alsace pendant la période des spaetzle du cervelas et de la choucroute en l'an 69`, ``, 2),
+    (`rôtisseur`, `+4 force`, 1, ``, `Célèbre arme du colonel Sander`, ``, 2),
+    (`la pelle forte`, `+6 force`, 1, ``, `Merci Berny pour votre invention autoroutiere`, ``, 2),
+    (`batte ail`, `+8 force`, 1, ``, `Arme favorite de Blade`, ``, 2),
+    (`la fausse croix`, `+10 force`, 1, ``, `Arme légendaire de nazareth`, ``, 2),
+    (`poing chope`, `+1 force`, 1, ``, `Mélange entre chopine et poing ricain`, ``, 3),
+    (`dague Ober`, `+2 force`, 1, ``, `Mais qui l'a mise à l'envers ?`, ``, 3),
+    (`couilletau`, `+3 force`, 1, ``, `Crustacé qui sent la marais`, ``, 3),
+    (`dardvador`, `+4 force`, 1, ``, `Aussi rouge que le sabre`, ``, 3),
+    (`porc table`, `+5 force`, 1, ``, `Mi porc, mi ours, mi homme,,, Je m'égare il est seulement mi table`, ``, 3),
+    (`jason tatane`, `+8 force`, 1, ``, `Pour les puristes de la bagarre`, ``, 3),
+    (`bonnet m`, `+2 agilité`, 1, ``, `Le sugar daddy cool des chapias`, ``, 4),
+    (`casquette a pointe`, `+2 agilité`, 1, ``, `Célèbre casquette germanique, utilisée dans les concours de lancer de pomme`, ``, 4),
+    (`k-lotte`, `+2 agilité`, 1, ``, `Arme célèbre de la confrérie Lopez, 100% cuivre`, ``, 4),
+    (`kippab`, `+2 agilité`, 1, ``, `Salade tomate oignon du chapeau `, ``, 4),
+    (`baie raie`, `+2 agilité`, 1, ``, `Le fruit qui résume bien la situation " l'abricôt"`, ``, 4),
+    (`plas'thon`,  `+1 agilité`, 1, ``, `Construite en boite de petit navire`, ``, 5)
+    (`plas'tèque`,  `+2 agilité`, 1, ``, `Manger 5 fruits et légumes par jours`, ``, 5)
+    (`côte de beauf`,  `+3 agilité`, 1, ``, `Parfait pour les soirées tuning`, ``, 5),
+    (`l'ainée`,  `+4 agilité`, 1, ``, `Allez voir sur wikipédia`, ``, 5),
+    (`pull ovaire`,  `+5 agilité`, 1, ``, `Bien mieux que le col roulé`, ``, 5),
+    (`gants stères`,  `+1 agilité`, 1, ``, `Parfait pour ramasser le bois`, ``, 6),
+    (`mie Teigne`,  `+2 agilité`, 1, ``, `Boulanger tétu de renommé`, ``, 6),
+    (`bollet rouge`,  `+3 agilité`, 1, ``, `Célébre coiffe du comédon Cousteau`, ``, 6),
+    (`croque mie teigne`,  `+4 agilité`, 1, ``, `Croque monsieur du boulanger`, ``, 6),
+    (`gant de toilette`,  `+5 agilité`, 1, ``, `Progéniture de Servietski`, ``, 6),
+    (`bretelle`,  `+1 agilité`, 1, ``, `Et porte jartelle`, ``, 7),
+    (`bas thon`,  `+2 agilité`, 1, ``, `Le leggings du comédon Cousteau`, ``, 7),
+    (`benne laden`,  `+3 agilité`, 1, ``, `Enfilez vos deux jambes dedans`, ``, 7),
+    (`beer muda`,  `+4 agilité`, 1, ``, `Mi jaune mi blanc`, ``, 7),
+    (`fûtal`,  `+5 agilité`, 1, ``, `Parfait pour protéger votre trou du fût`, ``, 7),
+    (`crocs`,  `+1 agilité`, 1, ``, `Style hollandais, chaussette claquette`, ``, 8),
+    (`bas bouche`,  `+2 agilité`, 1, ``, `Babooshka, babooshka, babooshka ja, ja`, ``, 8),
+    (`adaddas`,  `+3 agilité`, 1, ``, `Des contre façons efficaces`, ``, 8),
+    (`les talons`,  `+4 agilité`, 1, ``, `Dixit the Italian Stallion`, ``, 8),
+    (`musse tongue`,  `+5 agilité`, 1, ``, `Aussi rapide que l'original`, ``, 8),
+    (`pinte`,  `+2 esquive`, 1, ``, `Je vous remettrais bien la petite sœur?`, ``, 9),
+    (`tord boyaux`,  `+50 mana / -50 pv`, 1, ``, `Très utile pour les nœuds de huit`, ``, 9),
+    (`Sheba`,  `+50 pv / -50 mana`, 1, ``, `Alain sheba, un gros nul`, ``, 9),
+    (`shot`,  `+25 pv`, 1, ``, `Boisson chaude de charlie Sheen`, ``, 9),
+    (`grogs`,  `+50 pv`, 1, ``, `Recette mythique des mère grand`, ``, 9),
+    (`ukranium`,  `+25 mana`, 1, ``, `Très prisé en Russie actuellement`, ``, 9),
+    (`muscat death`,  `-50 mana`, 1, ``, `Tu bois tu meurts`, ``, 9),
+    (`houmous tache`,  `-2 dodge`, 1, ``, `Repas favoris de Staline`, ``, 9),
+    (`tsar tziki`,  `-5 dodge`, 1, ``, `Sauce favorite de Lenine`, ``, 9),
+    (`potion magique`,  `/2 magic`, 1, ``, `Remet les idées fixes`, ``, 9),
+    (`asperule`,  `/2 pv`, 1, ``, `C'est comme le jagermeister mais en plus mauvais`, ``, 9),
+    (`sauce dallas`,  `*2 magic`, 1, ``, `Sur les boulettes ?`, ``, 9),
+    (`sauce biggy`,  `*2 force`, 1, ``, `Avec ou sans frites ?`, ``, 9),
+    (`sauce hannibal`,  `*2 pv`, 1, ``, `Pour les Lecter vegan`, ``, 9),
+    (`sauce blanche`,  `*2 dodge`, 1, ``, `Très populaire chez les albinos du RN`, ``, 9),
+    (`barbie turique`,  `poisoned`, 1, ``, `Le Ken lubrique`, ``, 9),
+    (`amnesia`,  `stunt`, 1, ``, `A ne surtout pas fumer`, ``, 9),
+    (`algoflash`,  `blind`, 1, ``, `L'algorithme de toto`, ``, 9),
+    (`le sang du christ`,  `blessed`, 1, ``, `Tu ne trouves pas ça assez catholique ?`, ``, 9),
+    (`valium`,  `sleep`, 1, ``, `Bienvenue le marchand de sable`, ``, 9),
+    (`bezoard`,  `heal poisoned`, 1, ``, `Accumulations très denses de matière partiellement digérée ou non digérée pouvant se coincer dans l'estomac ou les intestins`, ``, 9),
+    (`collyre`,  `heal blind`, 1, ``, `Lorsque vous êtes aveugles, bien viser les yeux`, ``, 9),
+    (`schneck`,  `heal stunt`, 1, ``, `Très bon pain aux raisins de Moselle`, ``, 9),
+    (`epinephrine`,  `heal sleep`, 1, ``, `Impécable pour l'hyper tension`, ``, 9),
+    (`vega missile`,  `*2 vitesse d'attaque`, 1, ``, `Pour être satélisé`, ``, 9),
+    (`red boule`,  `/2 vitesse d'attaque`, 1, ``, `La contre façons`, ``, 9),
+    (`bipbip`,  `*2 vitesse de déplacement`, 1, ``, `A consommer dans un Saddam Usain bol`, ``, 9),
+    (`le coyotte`,  `/2 vitesse de déplacement`, 1, ``, `Le seul loup avec un frain à main`, ``, 9),
+    (`Boubourse`,  `stock money`, 0, ``, ``, ``, 12),
+    (`houblon`,  ``, 0, ``, ``, ``, 10),
+    (`fut`,  ``, 0, ``, ``, ``, 10),
+    (`sachet`,  ``, 0, ``, ``, ``, 10),
+    (`mur`,  ``, 0, ``, ``, ``, 11),
+    (`banc`,  ``, 0, ``, ``, ``, 11),
+    (`table`,  ``, 0, ``, ``, ``, 11),
+    (`fleurs`,  ``, 0, ``, ``, ``, 11),
+    (`rochers`,  ``, 0, ``, ``, ``, 11),
+    (`lampadaire`,  ``, 0, ``, ``, ``, 11),
+    (`statue`,  ``, 0, ``, ``, ``, 11),
+    (`tente`,  ``, 0, ``, ``, ``, 11),
+    (`fontaine`,  ``, 0, ``, ``, ``, 11),
+    (`petite maison`,  ``, 0, ``, ``, ``, 11),
+    (`mur de berlin`,  ``, 0, ``, ``, ``, 11),
+    (`seau`,  ``, 0, ``, ``, ``, 11),
+    (`clôture`,  ``, 0, ``, ``, ``, 11)
+;
+
 
 
 /*
@@ -43,6 +164,7 @@ INSERT INTO `compte_utilisateur` (`pseudo_compte`, `mdp_compte`, `courriel_compt
     (`neuf`, `1009`, `neuf@myJdr2D.com`, 1),
     (`dix`, `1010`, `dix@myJdr2D.com`, 1),
     (`onze`, `1011`, `onze@myJdr2D.com`, 1)
+;
 
 /*
 Insertion pour la table lieu

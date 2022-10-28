@@ -18,15 +18,6 @@ CREATE TABLE race(
    UNIQUE(nom_race)
 );
 
-CREATE TABLE classe(
-   id_classe COUNTER,
-   nom_classe VARCHAR(255) NOT NULL,
-   description_classe TEXT,
-   jouable LOGICAL NOT NULL,
-   PRIMARY KEY(id_classe),
-   UNIQUE(nom_classe)
-);
-
 CREATE TABLE lieu(
    id_lieu COUNTER,
    nom_lieu VARCHAR(255),
@@ -68,15 +59,6 @@ CREATE TABLE objectif(
    UNIQUE(nom_objectif)
 );
 
-CREATE TABLE etat_personnage(
-   id_etat_personnage COUNTER,
-   nom_etat VARCHAR(50) NOT NULL,
-   effet_etat VARCHAR(255) NOT NULL,
-   description_etat VARCHAR(255),
-   PRIMARY KEY(id_etat_personnage),
-   UNIQUE(nom_etat)
-);
-
 CREATE TABLE type_aptitude(
    id_type_aptitude COUNTER,
    nom_type_aptitude VARCHAR(255) NOT NULL,
@@ -111,13 +93,13 @@ CREATE TABLE personnage(
    alignement VARCHAR(255),
    monnaie BIGINT,
    vivant LOGICAL NOT NULL,
+   id_lieu INT NOT NULL,
    id_race INT NOT NULL,
    id_compte_utilisateur INT,
-   id_lieu INT NOT NULL,
    PRIMARY KEY(id_personnage),
+   FOREIGN KEY(id_lieu) REFERENCES lieu(id_lieu),
    FOREIGN KEY(id_race) REFERENCES race(id_race),
-   FOREIGN KEY(id_compte_utilisateur) REFERENCES compte_utilisateur(id_compte_utilisateur),
-   FOREIGN KEY(id_lieu) REFERENCES lieu(id_lieu)
+   FOREIGN KEY(id_compte_utilisateur) REFERENCES compte_utilisateur(id_compte_utilisateur)
 );
 
 CREATE TABLE aptitude(
@@ -151,14 +133,6 @@ CREATE TABLE Dialogue(
    FOREIGN KEY(id_personnage) REFERENCES personnage(id_personnage)
 );
 
-CREATE TABLE affecte(
-   id_personnage INT,
-   id_etat_personnage INT,
-   PRIMARY KEY(id_personnage, id_etat_personnage),
-   FOREIGN KEY(id_personnage) REFERENCES personnage(id_personnage),
-   FOREIGN KEY(id_etat_personnage) REFERENCES etat_personnage(id_etat_personnage)
-);
-
 CREATE TABLE maitrise(
    id_personnage INT,
    id_aptitude INT,
@@ -166,14 +140,6 @@ CREATE TABLE maitrise(
    PRIMARY KEY(id_personnage, id_aptitude),
    FOREIGN KEY(id_personnage) REFERENCES personnage(id_personnage),
    FOREIGN KEY(id_aptitude) REFERENCES aptitude(id_aptitude)
-);
-
-CREATE TABLE appartient(
-   id_personnage INT,
-   id_classe INT,
-   PRIMARY KEY(id_personnage, id_classe),
-   FOREIGN KEY(id_personnage) REFERENCES personnage(id_personnage),
-   FOREIGN KEY(id_classe) REFERENCES classe(id_classe)
 );
 
 CREATE TABLE instance(
