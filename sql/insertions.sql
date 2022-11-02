@@ -365,19 +365,7 @@ Insertion pour la table instance.
 
 INSERT INTO instance ("id_objet", "id_lieu", "coordonee", "quantite")
     VALUES
-    ('Avancer',  '', '', 1),
-    ('Tourner à droite',  '', '', 1),
-    ('Tourner à gauche',  '', '', 1),
-    ('Reculer',  '', '', 1),
-    ('Esquive droite',  '', '', 1),
-    ('Esquive gauche',  '', '', 1),
-    ('Boule de feu',  '', '', 2),
-    ('Graine versatile',  '', '', 2),
-    ('Ballayage tranchant',  '', '', 2),
-    ('Martellement lourd',  '', '', 2),
-    ('Tir incapacitant',  '', '', 2),
-    ('Parade',  '', '', 2),
-    ('Contre-attaque',  '', '', 2)
+    ('12', '3', '(10,235;0,159)', '10')
 ;
 
 /*
