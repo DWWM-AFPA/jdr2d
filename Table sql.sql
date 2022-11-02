@@ -4,7 +4,7 @@ CREATE TABLE compte_utilisateur (
     pseudo_compte VARCHAR(255) NOT NULL UNIQUE,
     courriel_compte VARCHAR(255) NOT NULL UNIQUE,
     mdp_compte VARCHAR(255) NOT NULL,
-    valide VARCHAR(50), 
+    valide BOOLEAN, 
     PRIMARY KEY(id_compte_utilisateur) );
 
 CREATE TABLE race (   
