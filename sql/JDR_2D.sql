@@ -58,7 +58,7 @@ CREATE TABLE quete (
     prerequis_quete VARCHAR(255) NULL,
     nom_quete VARCHAR(255) NOT NULL,
     description_quete TEXT NULL,
-    completion_quete INT NOT NULL CHECK(completion_quete > 0 AND completion_quete < 100),
+    completion_quete INT NOT NULL CHECK(completion_quete > 0 AND completion_quete < 100)
 );
 
 CREATE TABLE role_quete (
@@ -84,7 +84,9 @@ CREATE TABLE objet (
 );
 
 CREATE TABLE position_s (
-    coordonnee POINT PRIMARY KEY
+    x INT,
+    y INT,
+    PRIMARY KEY(x, y)
 );
 
 CREATE TABLE etat_personnage (
