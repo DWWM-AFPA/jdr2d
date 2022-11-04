@@ -33,6 +33,7 @@ CREATE TABLE objet(
     ouvert BOOLEAN,
     description_objet TEXT,
     prix INTEGER,
+    poids INTEGER,
     PRIMARY KEY(id_objet)
 );
 
