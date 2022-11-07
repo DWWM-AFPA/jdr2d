@@ -1,0 +1,3 @@
+INSERT INTO aptitude(nom_aptitude, effet_aptitude, prerequis_aptitude, id_type_aptitude)
+VALUES('gg', 'hh', 'jj',1
+);
