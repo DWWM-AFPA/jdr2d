@@ -43,7 +43,7 @@ CREATE TABLE lieu (
     id_lieu SERIAL PRIMARY KEY,
     nom_lieu VARCHAR(255) NOT NULL,
     description_lieu TEXT NULL,
-    carte_lieu VARCHAR(255) NOT NULL
+    carte_lieu VARCHAR(255) NULL
 );
 
 CREATE TABLE objectif (
@@ -103,6 +103,7 @@ CREATE TABLE aptitude (
     nom_aptitude VARCHAR(255) NOT NULL,
     effet_aptitude VARCHAR(255) NOT NULL,
     prerequis_aptitude VARCHAR(255) NULL,
+    description_aptitude TEXT NULL,
     id_type_aptitude INT NOT NULL,
     FOREIGN KEY(id_type_aptitude) REFERENCES type_aptitude(id_type_aptitude)
 );
