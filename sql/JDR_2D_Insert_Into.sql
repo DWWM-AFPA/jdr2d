@@ -1,13 +1,3 @@
---INSERT INTO Table caractérisque
-INSERT INTO caracteristique (id_caracteristique, nom_caracteristique, description_caracteristique) 
-VALUES (1, 'force', 'défini les dégâts, et la capacité de port de charges'),
-       (2, 'agilité', 'défini le taux  de critique des attaques physique, le taux d''esquive et l''armure'),
-       (3, 'concentration', 'défini les points de vie, la résistance aux effets d''état, la résistance à l''effort'),
-(4, 'perception', 'permet de percevoir des secrets révélant des endroits et des coffres cachés'),
-(5, 'intelligence', 'augmente la quantité de mana, le taux de critique des sorts, augmente la vitesse d''entrainement à l''utilisation des armes et la capacité dialectique'),
-(6, 'magie', 'défini les points de magie permettant de jeter des sort'),
-(7, 'concentration', 'augmente les chances de toucher avec les sorts'),
-(8, 'précision', 'augmente les chances de toucher avec une arme');
 
 --INSERT INTO Table type_aptitude
 INSERT INTO type_aptitude (id_type_aptitude, nom_type_aptitude)
@@ -15,6 +5,17 @@ VALUES (1, 'aptitude de base'),
        (2, 'habilité'),
        (3, 'maitrise des montures'),
        (4, 'sort');
+
+--INSERT INTO Table caractérisque
+INSERT INTO caracteristique (id_caracteristique, nom_caracteristique, description_caracteristique) 
+VALUES (1, 'force', 'défini les dégâts, et la capacité de port de charges'),
+       (2, 'agilité', 'défini le taux  de critique des attaques physique, le taux d''esquive et l''armure'),
+       (3, 'concentration', 'défini les points de vie, la résistance aux effets d''état, la résistance à l''effort'),
+       (4, 'perception', 'permet de percevoir des secrets révélant des endroits et des coffres cachés'),
+       (5, 'intelligence', 'augmente la quantité de mana, le taux de critique des sorts, augmente la vitesse d''entrainement à l''utilisation des armes et la capacité dialectique'),
+       (6, 'magie', 'défini les points de magie permettant de jeter des sort'),
+       (7, 'concentration', 'augmente les chances de toucher avec les sorts'),
+       (8, 'précision', 'augmente les chances de toucher avec une arme');
 
 --INSERT INTO Table lieu
 INSERT INTO lieu (id_lieu, nom_lieu, description_lieu)
