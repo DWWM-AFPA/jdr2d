@@ -147,3 +147,24 @@ VALUES
 (12,'décor','sol');
 
 
+-- TABLE CARACTERISE ()
+
+INSERT INTO caracterise(id_objet,id_type_objet) 
+SELECT objet.id_objet, type_objet.id_type_objet;
+JOIN 
+
+SELECT id_objet FROM objet JOIN id_objet ON caracterise = id_objet;
+
+INSERT INTO caracterise(id_type_objet)
+SELECT id_type_objet FROM type_objet;
+
+SELECT weather.city, weather.temp_lo, weather.temp_hi,
+       weather.prcp, weather.date, cities.location
+
+
+
+
+       SELECT objet.nom_objet, nom_type_objet 
+        FROM objet 
+            JOIN type_objet 
+            ON  id_type_objet = id_objet;
