@@ -1,4 +1,4 @@
-public class Objet extends Carte{
+public class Objet {
     private String nom;
     private int x;
     private int y;
@@ -6,6 +6,7 @@ public class Objet extends Carte{
     private int poids;
     private int effet;
     private String typeEffet;
+    private String portee;
     private boolean estEquipe;
 
     //getters//
@@ -36,6 +37,10 @@ public class Objet extends Carte{
 
     public String getTypeEffet() {
         return typeEffet;
+    }
+
+    public String getPortee() {
+        return portee;
     }
 
     public boolean isEquipe() {
@@ -71,12 +76,17 @@ public class Objet extends Carte{
     public void setTypeEffet(String typeEffet) {
         this.typeEffet = typeEffet;
     }
+    public void setPortee(String portee) {
+        this.portee = portee;
+    }
 
     public void setEquipe(boolean equipe) {
         estEquipe = equipe;
     }
 
-    public Objet(String nom,int x,int y,String type,int poids, int effet, String typeEffet){
+    public Objet(Carte carte,String nom,int x,int y,String type,int poids, int effet, String typeEffet){
+        this.setX(carte.getX());
+        this.setY(carte.getY());
         this.setNom(nom);
         this.setX(x);
         this.setY(y);
@@ -87,6 +97,7 @@ public class Objet extends Carte{
         this.setEquipe(false);
     };
     public Objet(String nom,String type,int poids, int effet, String typeEffet,Personnage personnage){
+
         this.setNom(nom);
         this.setTypeObjet(type);
         this.setPoids(poids);
