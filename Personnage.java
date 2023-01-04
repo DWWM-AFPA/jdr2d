@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class Personnage extends Carte{
+public class Personnage {
     protected String nom;
     protected int x;
     protected int y;
@@ -12,6 +12,7 @@ public class Personnage extends Carte{
     protected Objet pantalon;
     protected Objet bottes;
     protected Objet arme;
+    protected Carte carte;
 
 
     //getters//
@@ -59,6 +60,10 @@ public class Personnage extends Carte{
     public Objet getArme() {
         return arme;
     }
+
+    public Carte getCarte() {
+        return carte;
+    }
     //setters//
 
     public void setNom(String nom) {
@@ -66,13 +71,13 @@ public class Personnage extends Carte{
     }
 
     public void setX(int x) {
-        boolean b = x > 0 && x <= super.getTaille()[1] ;
+        boolean b = x > 0 && x <= carte.getTaille()[1] ;
         if (b)
         this.x = x;
     }
 
     public void setY(int y) {
-        boolean b = y > 0 && y <= super.getTaille()[0] ;
+        boolean b = y > 0 && y <= carte.getTaille()[0] ;
         if (b)
         this.y = y;
     }
@@ -108,10 +113,13 @@ public class Personnage extends Carte{
     public void setArme(Objet arme) {
         this.arme = arme;
     }
+    public void setCarte(Carte carte) {
+        this.carte = carte;
+    }
 
-    public Personnage(Carte carte, int x, int y,String nom, int pv, int dps){
-        super(carte.getNom(), carte.getDescription(),carte.getTaille()[0],carte.getTaille()[1]);
-        super.listePersonnage.add(this);
+    public Personnage(Carte carte, int x, int y, String nom, int pv, int dps){
+        this.setCarte(carte);
+        this.carte.addPersonnage(this);
         this.setX(x);
         this.setY(y);
         this.setNom(nom);

@@ -6,8 +6,8 @@ public class Carte {
     private final int[] taille;
     private String[][] dessinCarte;
 
-    ArrayList<Personnage> listePersonnage = new ArrayList<Personnage>();
-    ArrayList<Objet> listeObjet = new ArrayList<Objet>();
+    private ArrayList<Personnage> listePersonnage = new ArrayList<Personnage>();
+    private ArrayList<Objet> listeObjet = new ArrayList<Objet>();
     //getters//
     public String getNom() {
         return nom;
