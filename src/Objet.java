@@ -62,7 +62,8 @@ public class Objet {
     }
 
     public void setTypeObjet(String typeObjet) {
-        this.typeObjet = typeObjet;
+        if (typeObjet!="" || typeObjet!="" || typeObjet!="" || typeObjet!="" || typeObjet!="" || typeObjet!="" || typeObjet!="" )
+            this.typeObjet = typeObjet;
     }
 
     public void setPoids(int poids) {
@@ -80,7 +81,7 @@ public class Objet {
         this.portee = portee;
     }
 
-    public void setEquipe(boolean equipe) {
+    public void estEquipe(boolean equipe) {
         estEquipe = equipe;
     }
 
@@ -94,7 +95,7 @@ public class Objet {
         this.setPoids(poids);
         this.setEffet(effet);
         this.setTypeEffet(typeEffet);
-        this.setEquipe(false);
+        this.estEquipe(false);
     };
     public Objet(String nom,String type,int poids, int effet, String typeEffet,Personnage personnage){
 
@@ -103,6 +104,28 @@ public class Objet {
         this.setPoids(poids);
         this.setEffet(effet);
         this.setTypeEffet(typeEffet);
-        this.setEquipe(true);
+        this.estEquipe(true);
+    };    public Objet(String nom,String type,Personnage personnage){
+        this.setNom(nom);
+        this.setTypeObjet(type);
+        this.setPoids(0);
+        this.setEffet(0);
+       // this.setTypeEffet(typeEffet);
+        this.estEquipe(true);
     };
+/*    public enum typeObjet{
+        C("Casque"),
+        T("Torse"),
+        G("Gants"),
+        P("Pantalon"),
+        B("Bottes");
+
+        public final String typeEquipement;
+        typeObjet(String typeEquipement) {
+            this.typeEquipement=typeEquipement;
+        }
+        public String getTypeEquipement(){
+            return this.typeEquipement;
+        }
+    }*/
 }

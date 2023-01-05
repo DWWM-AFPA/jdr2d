@@ -102,7 +102,9 @@ public class Carte {
     }
     public void listerPersonnage() {
         for (Personnage perso : this.listePersonnage) {
-            System.err.println(perso.getNom());
+            String result = String.format("%s à %s de PV et %s de DPS",perso.getNom(),perso.getPv(),perso.getDps());
+            System.err.println(result);
+            perso.afficherEquipement();
         }
     }
 }

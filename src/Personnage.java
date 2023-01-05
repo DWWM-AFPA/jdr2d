@@ -126,6 +126,12 @@ public class Personnage {
         this.setNom(nom);
         this.setPv(pv);
         this.setDps(dps);
+        this.setCasque(new Objet("casquette","casque",this));
+        this.setTorse(new Objet("tee-shirt","casque",this));
+        this.setPantalon(new Objet("jean","casque",this));
+        this.setBottes(new Objet("sandalles","casque",this));
+        this.setGants(new Objet("mains-nues","gants",this));
+        this.setArme(new Objet("mains-nues","arme",this));
     }
         public Personnage(Carte carte, int x, int y, String nom, int pv, int dps,Objet casque,Objet torse, Objet gants, Objet pantalon, Objet bottes){
         this.setCarte(carte);
@@ -150,16 +156,40 @@ public class Personnage {
         this.setPv(pv);
         this.setDps(dps);
     }
-
+    public void equiperObjet(Objet objet) {
+        objet.setX(0);
+        objet.setY(0);
+    }
     public Personnage equiperPersonnage(Objet objet){
         String TypeObjet=objet.getTypeObjet().toLowerCase();
-       if (TypeObjet.equals("casque")) this.setCasque(objet);
-       else if (TypeObjet=="torse") this.setTorse(objet);
-       else if (TypeObjet=="gant") this.setGants(objet);
-       else if (TypeObjet=="pantalon") this.setPantalon(objet);
-       else if (TypeObjet=="bottes") this.setBottes(objet);
-       else if (TypeObjet=="arme") this.setArme(objet);
-       return this;
+        switch (TypeObjet){
+            case "casque" :
+                equiperObjet(objet);
+                this.setCasque(objet);
+                this.setPv(this.getPv()+objet.getEffet());
+            case "gants" :
+                equiperObjet(objet);
+                this.setGants(objet);
+                this.setPv(this.getPv()+objet.getEffet());
+            case "pantalon" :
+                equiperObjet(objet);
+                this.setPantalon(objet);
+                this.setPv(this.getPv()+objet.getEffet());
+            case "bottes" :
+                equiperObjet(objet);
+                this.setBottes(objet);
+                this.setPv(this.getPv()+objet.getEffet());
+            case "arme" :
+                equiperObjet(objet);
+                this.setArme(objet);
+                this.setDps(this.getDps()+objet.getEffet());
+            /*case "sac" :
+                equiperObjet(objet);
+                this.setSac(objet);*/
+            default:
+                System.out.print("erreur à l'équipement");
+        }
+        return this;
     }
 
 
@@ -187,5 +217,10 @@ public class Personnage {
 
 
         return this;
+    }
+
+    public void afficherEquipement(){
+        System.out.println(String.format("le personnage '%s' est équipé d'un casque '%s' de gants '%s', de torse '%s',de pantalon '%s', de bottes '%s' et d'une arme '%s'",
+                this.getNom(),this.getCasque().getNom(),this.getGants().getNom(),this.getTorse().getNom(),this.getPantalon().getNom(),this.getBottes().getNom(),this.getArme().getNom()));
     }
 }
