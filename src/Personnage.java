@@ -167,25 +167,31 @@ public class Personnage {
                 equiperObjet(objet);
                 this.setCasque(objet);
                 this.setPv(this.getPv()+objet.getEffet());
+                break;
             case "gants" :
                 equiperObjet(objet);
                 this.setGants(objet);
                 this.setPv(this.getPv()+objet.getEffet());
+                break;
             case "pantalon" :
                 equiperObjet(objet);
                 this.setPantalon(objet);
                 this.setPv(this.getPv()+objet.getEffet());
+                break;
             case "bottes" :
                 equiperObjet(objet);
                 this.setBottes(objet);
                 this.setPv(this.getPv()+objet.getEffet());
+                break;
             case "arme" :
                 equiperObjet(objet);
                 this.setArme(objet);
                 this.setDps(this.getDps()+objet.getEffet());
+                break;
             /*case "sac" :
                 equiperObjet(objet);
-                this.setSac(objet);*/
+                this.setSac(objet);
+                break; /**/
             default:
                 System.out.print("erreur à l'équipement");
         }

@@ -1,10 +1,11 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.beans.Introspector;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args){
+    public static <jFrame> void main(String[] args){
         Carte carteUne = new Carte("Carte une","Description à la con",6,20);
         Personnage player = new Personnage(carteUne,3,3,"joueur",100,10);
         Personnage mechant = new Personnage(carteUne,3,4,"connard",500,1);
@@ -13,6 +14,17 @@ public class Main {
         Objet casque = new Objet(carteUne,"casque par terre",2,3,"casque",4,4,"protege");
         player.equiperPersonnage(couteau);
         System.out.println(player.getNom()+" se déplace en " +player.getX()+" "+ player.getY());
+
+//---------------------------------------//
+        JFrame fenetre = new JFrame("Jeux de role 2D");
+        fenetre.setVisible(true);
+        JPanel panneau = new JPanel();
+        fenetre.setSize(500,500);
+        fenetre.setResizable(true);
+        Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
+        fenetre.setLocation((int)size.getWidth()/2-300,(int)size.getHeight()/2-300);
+//---------------------------------------//
+
 
         //ZQSD L
         Scanner sc = new Scanner(System.in);
