@@ -63,17 +63,17 @@ public class Interaction  {
         this.setForce(Math.max(donneur.getDps(), receveur.getDps()));
         this.setPortee(Math.max(donneur.getPortee(), receveur.getPortee()));
         calculPortee(portee,donneur,receveur);
-      //   if (calculPortee(portee,donneur,receveur)){
-            while(donneur.getPv()>0 && receveur.getPv()>0 && estAPortee){
-                receveur.setPv(receveur.getPv()- donneur.getDps());
-                System.out.println(String.format("%s à pris un coup dans la gueule, il a pris %d dégats et il lui reste %d points de vie", receveur.getNom(),donneur.getDps(),receveur.getPv() ));
-                donneur.setPv(donneur.getPv()- receveur.getDps());
-                String message= String.format("%s à pris un coup dans la gueule, il a pris %d dégats et il lui reste %d points de vie",donneur.getNom(),receveur.getDps(),donneur.getPv() );
-                System.out.println(message);
-                if (donneur.getPv()<=0 || receveur.getPv()<=0)
-                    break;
+        //   if (calculPortee(portee,donneur,receveur)){
+        while(donneur.getPv()>0 && receveur.getPv()>0 && estAPortee){
+            receveur.setPv(receveur.getPv()- donneur.getDps());
+            System.out.println(String.format("%s à pris un coup dans la gueule, il a pris %d dégats et il lui reste %d points de vie", receveur.getNom(),donneur.getDps(),receveur.getPv() ));
+            donneur.setPv(donneur.getPv()- receveur.getDps());
+            String message= String.format("%s à pris un coup dans la gueule, il a pris %d dégats et il lui reste %d points de vie",donneur.getNom(),receveur.getDps(),donneur.getPv() );
+            System.out.println(message);
+            if (donneur.getPv()<=0 || receveur.getPv()<=0)
+                break;
 
-            }
+        }
 
     }
 

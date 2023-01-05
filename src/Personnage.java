@@ -34,9 +34,9 @@ public class Personnage {
             System.out.println(String.format("%s est mort",this.getNom()));
             if (this.getNom().toLowerCase().equals("player"))
                 System.out.println("Perdu, jeu terminé");
-       // this=null ;
-       // break;
-    }
+            // this=null ;
+            // break;
+        }
         return pv;
     }
     public int getDps() {
@@ -77,12 +77,12 @@ public class Personnage {
     public void setX(int x) {
         boolean b = x > 0 && x <= carte.getTaille()[1] ;
         if (b)
-        this.x = x;
+            this.x = x;
     }
     public void setY(int y) {
         boolean b = y > 0 && y <= carte.getTaille()[0] ;
         if (b)
-        this.y = y;
+            this.y = y;
     }
     public void setPv(int pv) {
         this.pv = pv;
@@ -133,7 +133,7 @@ public class Personnage {
         this.setGants(new Objet("mains-nues","gants",this));
         this.setArme(new Objet("mains-nues","arme",this));
     }
-        public Personnage(Carte carte, int x, int y, String nom, int pv, int dps,Objet casque,Objet torse, Objet gants, Objet pantalon, Objet bottes){
+    public Personnage(Carte carte, int x, int y, String nom, int pv, int dps,Objet casque,Objet torse, Objet gants, Objet pantalon, Objet bottes){
         this.setCarte(carte);
         this.carte.addPersonnage(this);
         this.setX(x);
@@ -200,7 +200,7 @@ public class Personnage {
                 this.setY(this.getY() - 1);
                 break;
             case "s" :
-            this.setY(this.getY() + 1);
+                this.setY(this.getY() + 1);
                 break;
             case "q" :
                 this.setX(this.getX() - 1);

@@ -79,7 +79,7 @@ public class Carte {
 /*                if (player.getX()==i && player.getY()==j)//position player
                 {result[j][i] = "P";}*/
 
-                    result[i][j] = "#";
+                result[i][j] = "#";
 
             }
         }
@@ -87,11 +87,11 @@ public class Carte {
     }
 
     public void afficherCarte(Personnage player){
-    //    listerPersonnage();
+        //    listerPersonnage();
         for (Personnage perso : this.listePersonnage) {
             dessinCarte[perso.getY()-1][perso.getX()-1] = perso.getNom().substring(0,1);
         }
-     //   dessinCarte[player.getY()-1][player.getX()-1] = "P";
+        //   dessinCarte[player.getY()-1][player.getX()-1] = "P";
         for (String[] t: this.getDessinCarte()) {
             for (String u:t) {
                 System.out.print(u);

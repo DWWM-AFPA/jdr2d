@@ -110,7 +110,7 @@ public class Objet {
         this.setTypeObjet(type);
         this.setPoids(0);
         this.setEffet(0);
-       // this.setTypeEffet(typeEffet);
+        // this.setTypeEffet(typeEffet);
         this.estEquipe(true);
     };
 /*    public enum typeObjet{
