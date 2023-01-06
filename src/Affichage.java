@@ -6,6 +6,12 @@ import java.awt.event.ActionListener;
 public class Affichage {
 
     public static String deplacement;
+    public static JButton avancer;
+    public static JButton reculer;
+    public static JButton gauche;
+    public static JButton droite;
+    public static JButton quitter;
+
     public static void afficher(Personnage perso) {
         JFrame fenetre = new JFrame("Jeux de role 2D");
         ImageIcon soldat = new ImageIcon("img\\soldat.png");
@@ -13,21 +19,32 @@ public class Affichage {
         //   soldat
         fenetre.pack();
         fenetre.setVisible(true);
+
         JButton avancer = new JButton("avancer");
         avancer.setBounds(200, 100, 100, 40);
         fenetre.add(avancer);
+        Affichage.avancer=avancer;
+
         JButton reculer = new JButton("reculer");
         reculer.setBounds(200, 300, 100, 40);
         fenetre.add(reculer);
+        Affichage.reculer=reculer;
+
         JButton gauche = new JButton("gauche");
         gauche.setBounds(100, 200, 100, 40);
         fenetre.add(gauche);
+        Affichage.gauche=gauche;
+
         JButton droite = new JButton("droite");
         droite.setBounds(300, 200, 100, 40);
         fenetre.add(droite);
+        Affichage.droite=droite;
+
         JButton quitter = new JButton("quitter");
         quitter.setBounds(150, 400, 200, 40);
         fenetre.add(quitter);
+        Affichage.quitter=quitter;
+
         final JTextArea textArea = new JTextArea();
         textArea.setBounds(150, 50, 200, 20);
         textArea.setText(String.format("Le %s à %s de PV et %s de DPS", perso.getNom(), perso.getPv(), perso.getDps()));
@@ -68,13 +85,9 @@ public class Affichage {
             }
         });
 
-
-
-
         Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
         fenetre.setLocation((int) size.getWidth() / 2 - 300, (int) size.getHeight() / 2 - 300);
-
-
     }
+
 }
 

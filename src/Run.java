@@ -9,7 +9,7 @@ public class Run extends Thread {
         Carte carte = Main.carte;
         Personnage player = carte.getListePersonnage().get(0);
 
-        String input = Affichage.deplacement; //
+        String input = Affichage.deplacement; //en cours de modification avec observer
         System.err.println(Main.carte.getListePersonnage().get(0).getDeplacement());
 
 
