@@ -7,6 +7,6 @@ public class Editor {
 
     public void MoveListener(String deplacement) {
 
-        events.notify("deplacement","editor");
+        events.notify("deplacement",deplacement);
     }
 }

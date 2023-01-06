@@ -12,11 +12,11 @@ public class Affichage implements EventListener{
     public static JButton gauche;
     public static JButton droite;
     public static JButton quitter;
-    public static EventManager events = new EventManager("deplacement");
 
-    public static String setDeplacement(String deplacement) {
+    public static String setDeplacement(String deplacement,Personnage perso) {
         Affichage.deplacement = deplacement;
-        events.notify("deplacement","Aff");
+        perso.setDeplacement("z");
+        Run.editeur.MoveListener(deplacement);
         return deplacement;
     }
 
@@ -63,34 +63,36 @@ public class Affichage implements EventListener{
 
         avancer.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Run.editeur.MoveListener("z");
-                events.notify("deplacement","z");
-                perso.setDeplacement("z");
-                setDeplacement(deplacement);
+              //  perso.setDeplacement("z");
+                setDeplacement("z",perso);
                 System.out.println("avance");
             }
         });
         reculer.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                perso.setDeplacement("s");
+                setDeplacement("s",perso);
+//              perso.setDeplacement("s");
                 System.out.println("reculer");
             }
         });
         gauche.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                perso.setDeplacement("q");
+                setDeplacement("q",perso);
+//              .setDeplacement("q");
                 System.out.println("gauche");
             }
         });
         droite.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                perso.setDeplacement("d");
+                setDeplacement("d",perso);
+//              perso.setDeplacement("d");
                 System.out.println("droite");
             }
         });
         quitter.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                perso.setDeplacement("l");
+                setDeplacement("l",perso);
+//              perso.setDeplacement("l");
                 System.out.println("quitter");
             }
         });

@@ -3,6 +3,7 @@ import java.util.concurrent.TimeUnit;
 
 public class Main{
     static Carte carte;
+    static Thread jeu;
     public static void main(String[] args) throws InterruptedException {
 
 
@@ -28,6 +29,7 @@ public class Main{
 
 
         Run jeu = new Run();
+        Main.jeu=jeu;
         jeu.start();
 
 
