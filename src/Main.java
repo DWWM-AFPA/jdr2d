@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.beans.Introspector;
 import java.util.Scanner;
@@ -16,17 +18,7 @@ public class Main {
         System.out.println(player.getNom()+" se déplace en " +player.getX()+" "+ player.getY());
 
 //---------------------------------------//
-        JFrame fenetre = new JFrame("Jeux de role 2D");
-        ImageIcon soldat = new ImageIcon("img\\soldat.png");
-   //     fenetre.add(new JLabel(soldat).setM);
-     //   soldat
-        fenetre.pack();
-        fenetre.setVisible(true);
-        JPanel panneau = new JPanel();
-        fenetre.setSize(500,500);
-        fenetre.setResizable(true);
-        Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
-        fenetre.setLocation((int)size.getWidth()/2-300,(int)size.getHeight()/2-300);
+
         carteUne.listerPersonnage();
         //---------------------------------------//
         player.desequiperPersonnage(couteau);
