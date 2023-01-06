@@ -2,8 +2,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
-public class Affichage {
+public class Affichage implements EventListener{
 
     public static String deplacement;
     public static JButton avancer;
@@ -11,6 +12,13 @@ public class Affichage {
     public static JButton gauche;
     public static JButton droite;
     public static JButton quitter;
+    public static EventManager events = new EventManager("deplacement");
+
+    public static String setDeplacement(String deplacement) {
+        Affichage.deplacement = deplacement;
+        events.notify("deplacement","Aff");
+        return deplacement;
+    }
 
     public static void afficher(Personnage perso) {
         JFrame fenetre = new JFrame("Jeux de role 2D");
@@ -55,8 +63,10 @@ public class Affichage {
 
         avancer.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                Run.editeur.MoveListener("z");
+                events.notify("deplacement","z");
                 perso.setDeplacement("z");
-                deplacement="z"
+                setDeplacement(deplacement);
                 System.out.println("avance");
             }
         });
@@ -89,5 +99,9 @@ public class Affichage {
         fenetre.setLocation((int) size.getWidth() / 2 - 300, (int) size.getHeight() / 2 - 300);
     }
 
+    @Override
+    public void update(String eventType, String deplacement) {
+        System.err.println("listener déplacement fonctionne");
+    }
 }
 
