@@ -2,9 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 
-public class Affichage implements EventListener{
+public class Affichage extends Thread implements EventListener {
 
     public static String deplacement;
     public static JButton avancer;
@@ -12,6 +11,9 @@ public class Affichage implements EventListener{
     public static JButton gauche;
     public static JButton droite;
     public static JButton quitter;
+    public static JButton ramasser;
+    public static JButton taper;
+
 
     public static String setDeplacement(String deplacement,Personnage perso) {
         Affichage.deplacement = deplacement;
@@ -20,38 +22,54 @@ public class Affichage implements EventListener{
         return deplacement;
     }
 
-    public static void afficher(Personnage perso) {
+    @Override
+    public void run() {
+Personnage perso = Main.player;
+afficher(perso);
+    }
+
+    public static void afficher(Personnage perso){
         JFrame fenetre = new JFrame("Jeux de role 2D");
-        ImageIcon soldat = new ImageIcon("img\\soldat.png");
+   //     ImageIcon soldat = new ImageIcon("img\\soldat.png");
         //     fenetre.add(new JLabel(soldat).setM);
         //   soldat
-        fenetre.pack();
+     //   fenetre.pack();
         fenetre.setVisible(true);
 
         JButton avancer = new JButton("avancer");
         avancer.setBounds(200, 100, 100, 40);
         fenetre.add(avancer);
-        Affichage.avancer=avancer;
+        Affichage.avancer = avancer;
 
         JButton reculer = new JButton("reculer");
         reculer.setBounds(200, 300, 100, 40);
         fenetre.add(reculer);
-        Affichage.reculer=reculer;
+        Affichage.reculer = reculer;
 
         JButton gauche = new JButton("gauche");
         gauche.setBounds(100, 200, 100, 40);
         fenetre.add(gauche);
-        Affichage.gauche=gauche;
+        Affichage.gauche = gauche;
 
         JButton droite = new JButton("droite");
         droite.setBounds(300, 200, 100, 40);
         fenetre.add(droite);
-        Affichage.droite=droite;
+        Affichage.droite = droite;
 
         JButton quitter = new JButton("quitter");
         quitter.setBounds(150, 400, 200, 40);
         fenetre.add(quitter);
-        Affichage.quitter=quitter;
+        Affichage.quitter = quitter;
+
+        JButton ramasser = new JButton("ramasser");
+        ramasser.setBounds(50, 100, 100, 60);
+        fenetre.add(ramasser);
+        Affichage.ramasser = ramasser;
+
+        JButton taper = new JButton("taper");
+        taper.setBounds(350, 100, 100, 60);
+        fenetre.add(taper);
+        Affichage.taper = taper;
 
         final JTextArea textArea = new JTextArea();
         textArea.setBounds(150, 50, 200, 20);
@@ -63,37 +81,37 @@ public class Affichage implements EventListener{
 
         avancer.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-              //  perso.setDeplacement("z");
-                setDeplacement("z",perso);
-                System.out.println("avance");
+                setDeplacement("z", perso);
             }
         });
         reculer.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                setDeplacement("s",perso);
-//              perso.setDeplacement("s");
-                System.out.println("reculer");
+                setDeplacement("s", perso);
             }
         });
         gauche.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                setDeplacement("q",perso);
-//              .setDeplacement("q");
-                System.out.println("gauche");
+                setDeplacement("q", perso);
             }
         });
         droite.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                setDeplacement("d",perso);
-//              perso.setDeplacement("d");
-                System.out.println("droite");
+                setDeplacement("d", perso);
             }
         });
         quitter.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                setDeplacement("l",perso);
-//              perso.setDeplacement("l");
-                System.out.println("quitter");
+                setDeplacement("l", perso);
+            }
+        });
+        ramasser.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("pas encore implémenté");
+            }
+        });
+        taper.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("pas encore implémenté");
             }
         });
 
@@ -103,7 +121,6 @@ public class Affichage implements EventListener{
 
     @Override
     public void update(String eventType, String deplacement) {
-        System.err.println("listener déplacement fonctionne");
     }
 }
 

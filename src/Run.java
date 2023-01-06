@@ -3,20 +3,16 @@ public class Run extends Thread implements EventListener{
     public static String input;
     @Override
     public void run() {
+
+
+
         Editor editeur = new Editor();
-        this.editeur=editeur;
+        Run.editeur =editeur;
         editeur.events.subscribe("deplacement",new MoveListener("deplacement"));
- //   test.subscribe("deplacement",new MoveListener("test"/*Affichage.deplacement*/));
         Carte carte = Main.carte;
         Personnage player = carte.getListePersonnage().get(0);
 
-        Main.jeu.interrupt();
-        Run.input = "l"; //en cours de modification avec observer
-        System.err.println(Main.carte.getListePersonnage().get(0).getDeplacement());
-
-
-
-
+        Run.input=Run.input==null? "l":Run.input;
         while (!Run.input.equals("l")) {
             player.deplacer(input);         //le joueur se déplace d'une case
             carte.dessinerCarte();       //calcul de la carte
@@ -29,6 +25,13 @@ public class Run extends Thread implements EventListener{
                 System.out.println(player.getNom() + "se déplace en " + player.getX() + " " + player.getY());
 
             Run.input = player.getDeplacement(); //sc.next();
+            try {
+                Main.affichage.interrupt();
+                Thread.currentThread().interrupt();
+                Main.jeu.wait();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
 
         }
 
@@ -37,6 +40,5 @@ public class Run extends Thread implements EventListener{
 
     @Override
     public void update(String eventType, String deplacement) {
-        System.out.print("listner dans run");
     }
 }

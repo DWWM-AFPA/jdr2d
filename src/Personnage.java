@@ -72,7 +72,6 @@ public class Personnage {
     public String getDeplacement() {
         if(this.deplacement==null){
             this.deplacement="";
-            System.out.println("deplacement null");
         }
         return deplacement;
     }
@@ -296,4 +295,5 @@ public class Personnage {
         System.out.println(String.format("le personnage '%s' est équipé d'un casque '%s' de gants '%s', de torse '%s',de pantalon '%s', de bottes '%s' et d'une arme '%s'",
                 this.getNom(),this.getCasque().getNom(),this.getGants().getNom(),this.getTorse().getNom(),this.getPantalon().getNom(),this.getBottes().getNom(),this.getArme().getNom()));
     }
+
 }

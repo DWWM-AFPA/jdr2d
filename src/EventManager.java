@@ -26,9 +26,7 @@ public class EventManager {
 
     public void notify(String eventType,String deplacement) {
         List<EventListener> users = listeners.get(eventType);
-        System.err.println(listeners.get(eventType));
         for (EventListener listener : users) {
-            System.out.println("test boucle");
             listener.update("deplacement",deplacement);
         }
     }

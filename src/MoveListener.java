@@ -7,8 +7,11 @@
 
             @Override
             public void update(String eventType, String deplacement) {
-            System.err.println("listnener marche dans movelist ");
             Run.input=deplacement;
-            Main.jeu.start();
+                System.out.println("Thread nb"+Thread.currentThread());
+                  try {Main.jeu.run();}
+                  catch (IllegalMonitorStateException e){
+
+                  }
         }
     }
