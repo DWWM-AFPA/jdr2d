@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 public class Personnage {
     protected String nom;
     protected int x;
@@ -156,14 +154,14 @@ public class Personnage {
         this.setPv(pv);
         this.setDps(dps);
     }
-    public void equiperObjet(Objet objet) {
+    public void modfierObjetEquipe(Objet objet) {
         objet.setX(0);
         objet.setY(0);
         objet.estEquipe(true);
         objet.setPersonnage(this);
     }
 
-    public void desequiperObjet(Objet objet) {
+    public void modfierObjetdesequipe(Objet objet) {
         objet.setX(this.getX());
         objet.setY(this.getY());
         objet.estEquipe(false);
@@ -173,37 +171,37 @@ public class Personnage {
         String TypeObjet=objet.getTypeObjet().toLowerCase();
         switch (TypeObjet){
             case "casque" :
-                equiperObjet(objet);
+                modfierObjetEquipe(objet);
                 this.setCasque(objet);
                 this.setPv(this.getPv()+objet.getEffet());
                 break;
             case "gants" :
-                equiperObjet(objet);
+                modfierObjetEquipe(objet);
                 this.setGants(objet);
                 this.setPv(this.getPv()+objet.getEffet());
                 break;
             case "torse" :
-                desequiperObjet(objet);
+                modfierObjetdesequipe(objet);
                 this.setTorse(new Objet("tee-shirt","casque",this));
                 break;
             case "pantalon" :
-                equiperObjet(objet);
+                modfierObjetEquipe(objet);
                 this.setPantalon(objet);
                 this.setPv(this.getPv()+objet.getEffet());
                 break;
 
             case "bottes" :
-                equiperObjet(objet);
+                modfierObjetEquipe(objet);
                 this.setBottes(objet);
                 this.setPv(this.getPv()+objet.getEffet());
                 break;
             case "arme" :
-                equiperObjet(objet);
+                modfierObjetEquipe(objet);
                 this.setArme(objet);
                 this.setDps(this.getDps()+objet.getEffet());
                 break;
             /*case "sac" :
-                equiperObjet(objet);
+                modfierObjetEquipe(objet);
                 this.setSac(objet);
                 break; /**/
             default:
@@ -216,37 +214,37 @@ public class Personnage {
         String TypeObjet=objet.getTypeObjet().toLowerCase();
         switch (TypeObjet){
             case "casque" :
-                desequiperObjet(objet);
+                modfierObjetdesequipe(objet);
                 this.setCasque(new Objet("casquette","casque",this));
                 this.setPv(this.getPv()-objet.getEffet());
                 break;
             case "gants" :
-                desequiperObjet(objet);
+                modfierObjetdesequipe(objet);
                 this.setGants(new Objet("mains-nues","gants",this));
                 this.setPv(this.getPv()-objet.getEffet());
                 break;
             case "torse" :
-                desequiperObjet(objet);
+                modfierObjetdesequipe(objet);
                 this.setTorse(new Objet("tee-shirt","casque",this));
                 this.setPv(this.getPv()-objet.getEffet());
                 break;
             case "pantalon" :
-                desequiperObjet(objet);
+                modfierObjetdesequipe(objet);
                 this.setPantalon(new Objet("jean","casque",this));
                 this.setPv(this.getPv()-objet.getEffet());
                 break;
             case "bottes" :
-                desequiperObjet(objet);
+                modfierObjetdesequipe(objet);
                 this.setBottes(new Objet("sandalles","casque",this));
                 this.setPv(this.getPv()-objet.getEffet());
                 break;
             case "arme" :
-                desequiperObjet(objet);
+                modfierObjetdesequipe(objet);
                 this.setArme(new Objet("mains-nues","arme",this));
                 this.setDps(this.getDps()-objet.getEffet());
                 break;
             /*case "sac" :
-                desequiperObjet(objet);
+                modfierObjetdesequipe(objet);
                 this.setSac(objet);
                 break; /**/
             default:
