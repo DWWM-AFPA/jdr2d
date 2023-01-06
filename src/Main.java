@@ -17,14 +17,21 @@ public class Main {
 
 //---------------------------------------//
         JFrame fenetre = new JFrame("Jeux de role 2D");
+        ImageIcon soldat = new ImageIcon("img\\soldat.png");
+   //     fenetre.add(new JLabel(soldat).setM);
+     //   soldat
+        fenetre.pack();
         fenetre.setVisible(true);
         JPanel panneau = new JPanel();
         fenetre.setSize(500,500);
         fenetre.setResizable(true);
         Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
         fenetre.setLocation((int)size.getWidth()/2-300,(int)size.getHeight()/2-300);
-//---------------------------------------//
-
+        carteUne.listerPersonnage();
+        //---------------------------------------//
+        player.desequiperPersonnage(couteau);
+        player.afficherEquipement();
+        carteUne.listerPersonnage();
 
         //ZQSD L
         Scanner sc = new Scanner(System.in);

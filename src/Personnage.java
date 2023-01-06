@@ -159,6 +159,15 @@ public class Personnage {
     public void equiperObjet(Objet objet) {
         objet.setX(0);
         objet.setY(0);
+        objet.estEquipe(true);
+        objet.setPersonnage(this);
+    }
+
+    public void desequiperObjet(Objet objet) {
+        objet.setX(this.getX());
+        objet.setY(this.getY());
+        objet.estEquipe(false);
+        objet.setPersonnage(null);
     }
     public Personnage equiperPersonnage(Objet objet){
         String TypeObjet=objet.getTypeObjet().toLowerCase();
@@ -173,11 +182,16 @@ public class Personnage {
                 this.setGants(objet);
                 this.setPv(this.getPv()+objet.getEffet());
                 break;
+            case "torse" :
+                desequiperObjet(objet);
+                this.setTorse(new Objet("tee-shirt","casque",this));
+                break;
             case "pantalon" :
                 equiperObjet(objet);
                 this.setPantalon(objet);
                 this.setPv(this.getPv()+objet.getEffet());
                 break;
+
             case "bottes" :
                 equiperObjet(objet);
                 this.setBottes(objet);
@@ -190,6 +204,49 @@ public class Personnage {
                 break;
             /*case "sac" :
                 equiperObjet(objet);
+                this.setSac(objet);
+                break; /**/
+            default:
+                System.out.print("erreur à l'équipement");
+        }
+        return this;
+    }
+
+    public Personnage desequiperPersonnage(Objet objet){
+        String TypeObjet=objet.getTypeObjet().toLowerCase();
+        switch (TypeObjet){
+            case "casque" :
+                desequiperObjet(objet);
+                this.setCasque(new Objet("casquette","casque",this));
+                this.setPv(this.getPv()-objet.getEffet());
+                break;
+            case "gants" :
+                desequiperObjet(objet);
+                this.setGants(new Objet("mains-nues","gants",this));
+                this.setPv(this.getPv()-objet.getEffet());
+                break;
+            case "torse" :
+                desequiperObjet(objet);
+                this.setTorse(new Objet("tee-shirt","casque",this));
+                this.setPv(this.getPv()-objet.getEffet());
+                break;
+            case "pantalon" :
+                desequiperObjet(objet);
+                this.setPantalon(new Objet("jean","casque",this));
+                this.setPv(this.getPv()-objet.getEffet());
+                break;
+            case "bottes" :
+                desequiperObjet(objet);
+                this.setBottes(new Objet("sandalles","casque",this));
+                this.setPv(this.getPv()-objet.getEffet());
+                break;
+            case "arme" :
+                desequiperObjet(objet);
+                this.setArme(new Objet("mains-nues","arme",this));
+                this.setDps(this.getDps()-objet.getEffet());
+                break;
+            /*case "sac" :
+                desequiperObjet(objet);
                 this.setSac(objet);
                 break; /**/
             default:

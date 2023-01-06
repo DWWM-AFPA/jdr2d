@@ -8,6 +8,7 @@ public class Objet {
     private String typeEffet;
     private String portee;
     private boolean estEquipe;
+    private Personnage personnage;
 
     //getters//
 
@@ -45,6 +46,10 @@ public class Objet {
 
     public boolean isEquipe() {
         return estEquipe;
+    }
+
+    public Personnage getPersonnage() {
+        return personnage;
     }
     //setters//
 
@@ -85,7 +90,11 @@ public class Objet {
         estEquipe = equipe;
     }
 
-    public Objet(Carte carte,String nom,int x,int y,String type,int poids, int effet, String typeEffet){
+    public void setPersonnage(Personnage personnage) {
+        this.personnage = personnage;
+    }
+
+    public Objet(Carte carte, String nom, int x, int y, String type, int poids, int effet, String typeEffet){
         this.setX(carte.getX());
         this.setY(carte.getY());
         this.setNom(nom);
@@ -105,13 +114,16 @@ public class Objet {
         this.setEffet(effet);
         this.setTypeEffet(typeEffet);
         this.estEquipe(true);
-    };    public Objet(String nom,String type,Personnage personnage){
+        this.setPersonnage(personnage);
+    };
+    public Objet(String nom,String type,Personnage personnage){
         this.setNom(nom);
         this.setTypeObjet(type);
         this.setPoids(0);
         this.setEffet(0);
         // this.setTypeEffet(typeEffet);
         this.estEquipe(true);
+        this.setPersonnage(personnage);
     };
 /*    public enum typeObjet{
         C("Casque"),
