@@ -92,6 +92,7 @@ public class Carte {
             dessinCarte[perso.getY()-1][perso.getX()-1] = perso.getNom().substring(0,1);
         }
         for (Objet objet : this.listeObjet) {
+            if (!objet.isEquipe())
             dessinCarte[objet.getY()-1][objet.getX()-1] = objet.getNom().substring(0,1);
         }
         //   dessinCarte[player.getY()-1][player.getX()-1] = "P";

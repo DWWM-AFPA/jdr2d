@@ -21,7 +21,9 @@ public class Run extends Thread implements EventListener{
                 System.out.println(player.getNom() + "se reste en " + player.getX() + " " + player.getY());
                 break;
             case ("ramasser"):
-                System.out.println("le joueur ramasse un objet, non implémenté");
+                Objet objet=carte.getListeObjet().get(0);
+                player.equiperPersonnage(objet);
+                System.out.println(String.format("le joueur ramasse le %s \"%s\", non implémenté complétement dans run", objet.getTypeObjet(),objet.getNom()));
                 break;
             default:
                 //le joueur se déplace d'une case dans la direction de input
