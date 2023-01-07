@@ -97,6 +97,7 @@ public class Objet {
     public Objet(Carte carte, String nom, int x, int y, String type, int poids, int effet, String typeEffet){
         this.setX(carte.getX());
         this.setY(carte.getY());
+        carte.addObjet(this);
         this.setNom(nom);
         this.setX(x);
         this.setY(y);

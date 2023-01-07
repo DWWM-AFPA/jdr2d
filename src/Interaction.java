@@ -38,11 +38,13 @@ public class Interaction  {
         this.force = force;
     }
 
-    public int getPortee() {
+    public int getMaxPortee() {
         return portee;
     }
 
-    public void setPortee(int portee) {
+    public void setMaxPortee(int portee) {
+        if (portee==0){this.portee=1;}
+        else
         this.portee = portee;
     }
     protected boolean calculPortee(int portee,Personnage donneur, Personnage receveur){
@@ -51,29 +53,40 @@ public class Interaction  {
         int dy=donneur.getY();
         int rx=receveur.getX();
         int ry=receveur.getY();
-        if (((dx+1)==rx||dx==rx||dx-1==rx)
-                &&((dy+1)==ry||dy==ry||dy-1==ry))
+        if (((dx+portee)==rx||dx==rx||dx-portee==rx)
+                &&((dy+portee)==ry||dy==ry||dy-portee==ry))
             estAPortee=true;
+        System.err.println("méthode de portée a modifier");
         return estAPortee;
     }
+    public static Personnage getEnnemi(Carte carte){
+        //Personnage ennemi = null;
+        Personnage ennemi = carte.getListePersonnage().get(1);
+
+
+      return ennemi;
+    }
+
     public Interaction(Personnage donneur, Personnage receveur,String type){
         this.setDonneur(donneur);
         this.setReceveur(receveur);
         this.setType(type);
         this.setForce(Math.max(donneur.getDps(), receveur.getDps()));
-        this.setPortee(Math.max(donneur.getPortee(), receveur.getPortee()));
+        this.setMaxPortee(Math.max(donneur.getPortee(), receveur.getPortee()));
         calculPortee(portee,donneur,receveur);
         //   if (calculPortee(portee,donneur,receveur)){
-        while(donneur.getPv()>0 && receveur.getPv()>0 && estAPortee){
+        if(donneur.getPv()>0 && receveur.getPv()>0 && estAPortee){
             receveur.setPv(receveur.getPv()- donneur.getDps());
             System.out.println(String.format("%s à pris un coup dans la gueule, il a pris %d dégats et il lui reste %d points de vie", receveur.getNom(),donneur.getDps(),receveur.getPv() ));
             donneur.setPv(donneur.getPv()- receveur.getDps());
             String message= String.format("%s à pris un coup dans la gueule, il a pris %d dégats et il lui reste %d points de vie",donneur.getNom(),receveur.getDps(),donneur.getPv() );
             System.out.println(message);
-            if (donneur.getPv()<=0 || receveur.getPv()<=0)
-                break;
+           // if (donneur.getPv()<=0 || receveur.getPv()<=0)
+
 
         }
+        else if (donneur.getPv()>0 && receveur.getPv()>0 && !estAPortee)
+            System.out.println(String.format("%s est trop loin, il a %d points de vie et ta portée est de %d IDIOT !", receveur.getNom(),receveur.getPv(),donneur.getPortee()));
 
     }
 

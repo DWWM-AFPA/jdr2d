@@ -7,7 +7,7 @@
 
             @Override
             public void update(String eventType, String deplacement) {
-            Run.input=deplacement;
+                Run.input=Affichage.input;
                 System.out.println("Thread nb"+Thread.currentThread());
                   try {Main.jeu.run();}
                   catch (IllegalMonitorStateException e){

@@ -122,6 +122,7 @@ public class Personnage {
     }
     public void setCarte(Carte carte) {
         this.carte = carte;
+        this.carte.addPersonnage(this);
     }
     public void setDeplacement(String deplacement) {
         this.deplacement = deplacement;
@@ -129,7 +130,6 @@ public class Personnage {
 
     public Personnage(Carte carte, int x, int y, String nom, int pv, int dps){
         this.setCarte(carte);
-        this.carte.addPersonnage(this);
         this.setX(x);
         this.setY(y);
         this.setNom(nom);
@@ -144,7 +144,6 @@ public class Personnage {
     }
     public Personnage(Carte carte, int x, int y, String nom, int pv, int dps,Objet casque,Objet torse, Objet gants, Objet pantalon, Objet bottes){
         this.setCarte(carte);
-        this.carte.addPersonnage(this);
         this.setX(x);
         this.setY(y);
         this.setNom(nom);
@@ -268,22 +267,22 @@ public class Personnage {
     public Personnage deplacer(String input){
         System.out.println("Ecrire Z Q S D pour se déplacer "+System.lineSeparator()+ "A pour attendre"+System.lineSeparator()+ "L pour quitter");
         switch (input) {
-            case "z" :
+            case "avancer" :
                 this.setY(this.getY() - 1);
                 break;
-            case "s" :
+            case "reculer" :
                 this.setY(this.getY() + 1);
                 break;
-            case "q" :
+            case "gauche" :
                 this.setX(this.getX() - 1);
                 break;
-            case "d":
+            case "droite":
                 this.setX(this.getX() + 1);
                 break;
-            case "a":
+            case "quitter":
                 break;
             default :
-                System.out.println("Entrée incorrecte");
+                System.err.println("Entrée incorrecte");
                 break;
         }
 

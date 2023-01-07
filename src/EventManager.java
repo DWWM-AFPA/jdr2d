@@ -24,10 +24,11 @@ public class EventManager {
         users.remove(listener);
     }
 
-    public void notify(String eventType,String deplacement) {
+    public void notify(String eventType,String string) {
         List<EventListener> users = listeners.get(eventType);
         for (EventListener listener : users) {
-            listener.update("deplacement",deplacement);
+            listener.update(eventType,string);
+//            listener.update("input",deplacement);
         }
     }
 }

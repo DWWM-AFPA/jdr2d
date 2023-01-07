@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 public class Affichage extends Thread implements EventListener {
 
     public static String deplacement;
+    public static String input;
     public static JButton avancer;
     public static JButton reculer;
     public static JButton gauche;
@@ -13,27 +14,38 @@ public class Affichage extends Thread implements EventListener {
     public static JButton quitter;
     public static JButton ramasser;
     public static JButton taper;
+    public static Editor editeur;
+
 
 
     public static String setDeplacement(String deplacement,Personnage perso) {
         Affichage.deplacement = deplacement;
-        perso.setDeplacement("z");
+      //  perso.setDeplacement("z");
         Run.editeur.MoveListener(deplacement);
+
         return deplacement;
+    }
+
+    public static void setInput(String input) {
+        Affichage.input = input;
+        Run.input=input;
+        editeur.newInput(input);
+     //   editeur.events.subscribe("deplacement",new MoveListener("deplacement"));
     }
 
     @Override
     public void run() {
 Personnage perso = Main.player;
 afficher(perso);
+        getInput();
     }
 
-    public static void afficher(Personnage perso){
+    public static void afficher(Personnage perso) {
         JFrame fenetre = new JFrame("Jeux de role 2D");
-   //     ImageIcon soldat = new ImageIcon("img\\soldat.png");
+        //     ImageIcon soldat = new ImageIcon("img\\soldat.png");
         //     fenetre.add(new JLabel(soldat).setM);
         //   soldat
-     //   fenetre.pack();
+        //   fenetre.pack();
         fenetre.setVisible(true);
 
         JButton avancer = new JButton("avancer");
@@ -78,45 +90,55 @@ afficher(perso);
         fenetre.setSize(500, 500);
         fenetre.setLayout(null);
         fenetre.setResizable(true);
+        Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
+        fenetre.setLocation((int) size.getWidth() / 2 - 300, (int) size.getHeight() / 2 - 300);
+    }
 
+    public static String getSubstring(String string,String stringToFind,char nextChar){
+        return string.substring(string.indexOf(stringToFind)+stringToFind.length(),string.indexOf(nextChar,17));
+    }
+    public static String getInput(){
         avancer.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                setDeplacement("z", perso);
+                Run.setInput(getSubstring(e.paramString(),"cmd=",','));
+                //setDeplacement("z", perso);
             }
         });
         reculer.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                setDeplacement("s", perso);
+                setInput(getSubstring(e.paramString(),"cmd=",','));
+                //setDeplacement("s", perso);
             }
         });
         gauche.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                setDeplacement("q", perso);
+                setInput(getSubstring(e.paramString(),"cmd=",','));
+                //setDeplacement("q", perso);
             }
         });
         droite.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                setDeplacement("d", perso);
+                setInput(getSubstring(e.paramString(),"cmd=",','));
+                //setDeplacement("d", perso);
             }
         });
         quitter.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                setDeplacement("l", perso);
+                setInput(getSubstring(e.paramString(),"cmd=",','));
+                //setDeplacement("l", perso);
             }
         });
         ramasser.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                System.out.println("pas encore implémenté");
+                setInput(getSubstring(e.paramString(),"cmd=",','));
             }
         });
         taper.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                System.out.println("pas encore implémenté");
+                setInput(getSubstring(e.paramString(),"cmd=",','));
             }
         });
-
-        Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
-        fenetre.setLocation((int) size.getWidth() / 2 - 300, (int) size.getHeight() / 2 - 300);
+return null;
     }
 
     @Override

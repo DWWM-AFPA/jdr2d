@@ -9,6 +9,9 @@ public class Main{
 
     public static void main(String[] args) throws InterruptedException {
 
+        Editor editeur = new Editor();
+        Run.editeur =editeur;
+        Affichage.editeur =editeur;
 
         Carte carteUne = new Carte("Carte une", "Description à la con", 6, 20);
         carte = carteUne;
@@ -27,14 +30,14 @@ public class Main{
         carteUne.listerPersonnage();
 
         //String input = player.getDeplacement(); //
-        Run run = new Run();
-        run.start();
-        Main.jeu=run;
+       // Main.jeu= new Run();
+        //   run.start();
 
         Affichage affichage = new Affichage();
         affichage.start();
         Main.affichage=affichage;
+        editeur.events.subscribe("input", new newInput());
 
-     //   Affichage.afficher(carteUne.getListePersonnage().get(0));
+        //   Affichage.afficher(carteUne.getListePersonnage().get(0));
     }
 }

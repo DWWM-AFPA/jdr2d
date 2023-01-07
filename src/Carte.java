@@ -91,6 +91,9 @@ public class Carte {
         for (Personnage perso : this.listePersonnage) {
             dessinCarte[perso.getY()-1][perso.getX()-1] = perso.getNom().substring(0,1);
         }
+        for (Objet objet : this.listeObjet) {
+            dessinCarte[objet.getY()-1][objet.getX()-1] = objet.getNom().substring(0,1);
+        }
         //   dessinCarte[player.getY()-1][player.getX()-1] = "P";
         for (String[] t: this.getDessinCarte()) {
             for (String u:t) {
