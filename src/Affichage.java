@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Objects;
 
 public class Affichage extends Thread implements EventListener {
 
@@ -15,6 +16,7 @@ public class Affichage extends Thread implements EventListener {
     public static JButton ramasser;
     public static JButton taper;
     public static Editor editeur;
+    public static JFrame  afficheur;
 
 
 
@@ -40,13 +42,24 @@ afficher(perso);
         getInput();
     }
 
-    public static void afficher(Personnage perso) {
+    public static JFrame afficher(Personnage perso) {
         JFrame fenetre = new JFrame("Jeux de role 2D");
+        afficheur=fenetre;
         //     ImageIcon soldat = new ImageIcon("img\\soldat.png");
         //     fenetre.add(new JLabel(soldat).setM);
         //   soldat
-        //   fenetre.pack();
+        fenetre.setSize(500, 500);
+
+
+
+
         fenetre.setVisible(true);
+     //   fenetre.pack();
+        fenetre.setLayout(null);
+        fenetre.setResizable(true);
+        Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
+        fenetre.setLocation((int) size.getWidth() / 2 - 300, (int) size.getHeight() / 2 - 300);
+
 
         JButton avancer = new JButton("avancer");
         avancer.setBounds(200, 100, 100, 40);
@@ -83,15 +96,12 @@ afficher(perso);
         fenetre.add(taper);
         Affichage.taper = taper;
 
+
         final JTextArea textArea = new JTextArea();
+        fenetre.add(textArea);
         textArea.setBounds(150, 50, 200, 20);
         textArea.setText(String.format("Le %s à %s de PV et %s de DPS", perso.getNom(), perso.getPv(), perso.getDps()));
-        fenetre.add(textArea);
-        fenetre.setSize(500, 500);
-        fenetre.setLayout(null);
-        fenetre.setResizable(true);
-        Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
-        fenetre.setLocation((int) size.getWidth() / 2 - 300, (int) size.getHeight() / 2 - 300);
+    return fenetre;
     }
 
     public static String getSubstring(String string,String stringToFind,char nextChar){

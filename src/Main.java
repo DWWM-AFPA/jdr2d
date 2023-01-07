@@ -13,12 +13,12 @@ public class Main{
         Run.editeur =editeur;
         Affichage.editeur =editeur;
 
-        Carte carteUne = new Carte("Carte une", "Description à la con", 6, 20);
+        Carte carteUne = new Carte("Carte une", "Description à la con", 5, 5);
         carte = carteUne;
         Personnage player = new Personnage(carteUne, 3, 3, "joueur", 100, 10);
         Main.player=player;
-        Personnage mechant = new Personnage(carteUne, 3, 4, "connard", 500, 1);
-        Personnage mechant2 = new Personnage(carteUne, 4, 4, "tonnard", 1000, 1);
+        Personnage mechant = new Personnage(carteUne, 3, 4, "connard", 20, 1);
+        Personnage mechant2 = new Personnage(carteUne, 4, 4, "tonnard", 50, 1);
         Objet couteau = new Objet("couteau player", "casque", 1, 2, "attaque", player);
         Objet casque = new Objet(carteUne, "casque par terre", 2, 3, "casque", 4, 4, "protege");
         player.equiperPersonnage(couteau);

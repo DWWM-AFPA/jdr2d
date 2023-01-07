@@ -1,3 +1,6 @@
+import javax.swing.*;
+import java.awt.*;
+
 public class Run extends Thread implements EventListener{
     public static Editor editeur;
     public static String input;
@@ -16,6 +19,9 @@ public class Run extends Thread implements EventListener{
 
         //Run.input=Run.input==null? "l":Run.input;
         switch (input) {
+            case("quitter"):
+                System.exit(0);
+
             case ("taper"):
                 Interaction combat = new Interaction(player, Interaction.getEnnemi(carte), "combat");
                 System.out.println(player.getNom() + "se reste en " + player.getX() + " " + player.getY());
@@ -31,7 +37,20 @@ public class Run extends Thread implements EventListener{
                 break;
         }
         carte.dessinerCarte();       //calcul de la carte
-        carte.afficherCarte(player); //affiche la carte dans le terminal
+
+        JFrame jeu=new JFrame("carte");
+        JPanel panel = new JPanel();
+        JTextArea textArea = new JTextArea(carte.afficherCarte(player));
+        jeu.getContentPane().add(panel, BorderLayout.CENTER);
+        panel.setLayout(new FlowLayout());
+        jeu.add(panel.add(textArea));
+        //   jeu.add(panel);
+        jeu.setSize(carte.getX()*5,carte.getY()*35);
+        jeu.setVisible(true); // Now this will open NewJFrame for you again and will also get refreshed
+    //    System.err.println(carte.afficherCarte(player));
+    //    Affichage.afficheur.setVisible(true);
+     //   carte.afficherCarte(player); //affiche la carte dans le terminal
+
         System.out.println(player.getNom() + "se déplace en " + player.getX() + " " + player.getY());
     }
 

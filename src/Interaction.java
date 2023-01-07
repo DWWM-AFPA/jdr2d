@@ -1,4 +1,5 @@
 public class Interaction  {
+    protected Personnage joueur;
     protected Personnage donneur;
     protected Personnage receveur;
     protected String type;
@@ -6,6 +7,9 @@ public class Interaction  {
     protected int portee;
     protected boolean estAPortee;
 
+    public Personnage getJoueur() {
+        return joueur;
+    }
     public Personnage getDonneur() {
         return donneur;
     }
@@ -24,6 +28,10 @@ public class Interaction  {
 
     public String getType() {
         return type;
+    }
+
+    public void setJoueur(Personnage joueur) {
+        this.joueur = joueur;
     }
 
     public void setType(String type) {
@@ -61,10 +69,13 @@ public class Interaction  {
     }
     public static Personnage getEnnemi(Carte carte){
         //Personnage ennemi = null;
-        Personnage ennemi = carte.getListePersonnage().get(1);
-
-
-      return ennemi;
+        //Personnage ennemi = carte.getListePersonnage().get(1);
+        for (Personnage perso:carte.getListePersonnage()
+             ) {
+            if (perso.getPv()>0&&perso.getPortee()<= carte.getListePersonnage().get(0).getPortee()&&perso!=carte.getListePersonnage().get(0))
+                return perso;
+        }
+        return null;
     }
 
     public Interaction(Personnage donneur, Personnage receveur,String type){

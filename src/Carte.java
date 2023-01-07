@@ -79,16 +79,18 @@ public class Carte {
 /*                if (player.getX()==i && player.getY()==j)//position player
                 {result[j][i] = "P";}*/
 
-                result[i][j] = "#";
+                result[i][j] = " ";
 
             }
         }
         this.dessinCarte=result;
     }
 
-    public void afficherCarte(Personnage player){
+    public String afficherCarte(Personnage player){
         //    listerPersonnage();
+        String retour = "";
         for (Personnage perso : this.listePersonnage) {
+            if (perso.getPv()>0)
             dessinCarte[perso.getY()-1][perso.getX()-1] = perso.getNom().substring(0,1);
         }
         for (Objet objet : this.listeObjet) {
@@ -98,11 +100,14 @@ public class Carte {
         //   dessinCarte[player.getY()-1][player.getX()-1] = "P";
         for (String[] t: this.getDessinCarte()) {
             for (String u:t) {
-                System.out.print(u);
+                retour+=u;
+              //  System.out.print(u);
 
             }
-            System.out.println();
+            retour+="\n";//System.lineSeparator();
+           // System.out.println();
         }
+        return retour;
     }
     public void listerPersonnage() {
         for (Personnage perso : this.listePersonnage) {
