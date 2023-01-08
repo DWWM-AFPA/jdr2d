@@ -78,27 +78,28 @@ public class Interaction  {
         return null;
     }
 
-    public Interaction(Personnage donneur, Personnage receveur,String type){
+
+    public Interaction(Personnage donneur, Personnage receveur,String type) {
+if (receveur!=null){
         this.setDonneur(donneur);
         this.setReceveur(receveur);
         this.setType(type);
         this.setForce(Math.max(donneur.getDps(), receveur.getDps()));
         this.setMaxPortee(Math.max(donneur.getPortee(), receveur.getPortee()));
-        calculPortee(portee,donneur,receveur);
+        calculPortee(portee, donneur, receveur);
         //   if (calculPortee(portee,donneur,receveur)){
-        if(donneur.getPv()>0 && receveur.getPv()>0 && estAPortee){
-            receveur.setPv(receveur.getPv()- donneur.getDps());
-            System.out.println(String.format("%s à pris un coup dans la gueule, il a pris %d dégats et il lui reste %d points de vie", receveur.getNom(),donneur.getDps(),receveur.getPv() ));
-            donneur.setPv(donneur.getPv()- receveur.getDps());
-            String message= String.format("%s à pris un coup dans la gueule, il a pris %d dégats et il lui reste %d points de vie",donneur.getNom(),receveur.getDps(),donneur.getPv() );
+        if (donneur.getPv() > 0 && receveur.getPv() > 0 && estAPortee) {
+            receveur.setPv(receveur.getPv() - donneur.getDps());
+            System.out.println(String.format("%s à pris un coup dans la gueule, il a pris %d dégats et il lui reste %d points de vie", receveur.getNom(), donneur.getDps(), receveur.getPv()));
+            donneur.setPv(donneur.getPv() - receveur.getDps());
+            String message = String.format("%s à pris un coup dans la gueule, il a pris %d dégats et il lui reste %d points de vie", donneur.getNom(), receveur.getDps(), donneur.getPv());
             System.out.println(message);
-           // if (donneur.getPv()<=0 || receveur.getPv()<=0)
+            // if (donneur.getPv()<=0 || receveur.getPv()<=0)
 
 
-        }
-        else if (donneur.getPv()>0 && receveur.getPv()>0 && !estAPortee)
-            System.out.println(String.format("%s est trop loin, il a %d points de vie et ta portée est de %d IDIOT !", receveur.getNom(),receveur.getPv(),donneur.getPortee()));
-
+        } else if (donneur.getPv() > 0 && receveur.getPv() > 0 && !estAPortee)
+            System.out.println(String.format("%s est trop loin, il a %d points de vie et ta portée est de %d IDIOT !", receveur.getNom(), receveur.getPv(), donneur.getPortee()));
+    }
     }
 
 

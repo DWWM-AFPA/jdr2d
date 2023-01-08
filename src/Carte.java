@@ -91,7 +91,7 @@ public class Carte {
         String retour = "";
         for (Personnage perso : this.listePersonnage) {
             if (perso.getPv()>0)
-            dessinCarte[perso.getY()-1][perso.getX()-1] = perso.getNom().substring(0,1);
+            dessinCarte[perso.getY()-1][perso.getX()-1] = perso.getNom().substring(0,1).toUpperCase();
         }
         for (Objet objet : this.listeObjet) {
             if (!objet.isEquipe())

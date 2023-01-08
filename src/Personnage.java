@@ -13,8 +13,9 @@ public class Personnage {
     protected Objet pantalon;
     protected Objet bottes;
     protected Objet arme;
+
     protected Carte carte;
-    protected String deplacement;
+  //  protected String deplacement;
 
 
     //getters//
@@ -65,16 +66,20 @@ public class Personnage {
     public Objet getArme() {
         return arme;
     }
+    public Objet getSac() {
+        return sac;
+    }
+
     public Carte getCarte() {
         return carte;
     }
 
-    public String getDeplacement() {
+/*    public String getDeplacement() {
         if(this.deplacement==null){
             this.deplacement="";
         }
         return deplacement;
-    }
+    }*/
     //setters//
 
     public void setNom(String nom) {
@@ -102,6 +107,7 @@ public class Personnage {
     public void setInventaire(int inventaire) {
         this.inventaire = inventaire;
     }
+
     public void setCasque(Objet casque) {
         this.casque = casque;
     }
@@ -120,13 +126,38 @@ public class Personnage {
     public void setArme(Objet arme) {
         this.arme = arme;
     }
+    public void setSac(Objet sac) {
+        this.sac = sac;
+    }
+
+    public void setCasque() {
+        this.casque = new Objet("casquette", Objet.TypeObjet.CASQUE,this);
+    }
+    public void setTorse() {
+        this.torse = new Objet("tee-shirt", Objet.TypeObjet.TORSE,this);
+    }
+    public void setGants() {
+        this.gants = new Objet("jean", Objet.TypeObjet.PANTALON,this);
+    }
+    public void setPantalon() {
+        this.pantalon = new Objet("sandalles", Objet.TypeObjet.BOTTES,this);
+    }
+    public void setBottes() {
+        this.bottes = new Objet("mains-nues", Objet.TypeObjet.GANTS,this);
+    }
+    public void setArme() {
+        this.arme = new Objet("mains-nues", Objet.TypeObjet.ARME,this);
+    }
+    public void setSac() {
+        this.sac = sac;
+    }
     public void setCarte(Carte carte) {
         this.carte = carte;
         this.carte.addPersonnage(this);
     }
-    public void setDeplacement(String deplacement) {
+ /*   public void setDeplacement(String deplacement) {
         this.deplacement = deplacement;
-    }
+    }*/
 
     public Personnage(Carte carte, int x, int y, String nom, int pv, int dps){
         this.setCarte(carte);
@@ -135,12 +166,12 @@ public class Personnage {
         this.setNom(nom);
         this.setPv(pv);
         this.setDps(dps);
-        this.setCasque(new Objet("casquette","casque",this));
-        this.setTorse(new Objet("tee-shirt","casque",this));
-        this.setPantalon(new Objet("jean","casque",this));
-        this.setBottes(new Objet("sandalles","casque",this));
-        this.setGants(new Objet("mains-nues","gants",this));
-        this.setArme(new Objet("mains-nues","arme",this));
+        this.setCasque();
+        this.setTorse();
+        this.setPantalon();
+        this.setBottes();
+        this.setGants();
+        this.setArme();
     }
     public Personnage(Carte carte, int x, int y, String nom, int pv, int dps,Objet casque,Objet torse, Objet gants, Objet pantalon, Objet bottes){
         this.setCarte(carte);
@@ -178,81 +209,87 @@ public class Personnage {
         objet.setPersonnage(null);
     }
     public Personnage equiperPersonnage(Objet objet){
-        String TypeObjet=objet.getTypeObjet().toLowerCase();
-        switch (TypeObjet){
-            case "casque" :
+        Objet.TypeObjet typeObjet=objet.getTypeObjet();
+        switch (typeObjet){
+            case CASQUE :
                 modfierObjetEquipe(objet);
                 this.setCasque(objet);
                 this.setPv(this.getPv()+objet.getEffet());
                 break;
-            case "gants" :
+            case GANTS :
                 modfierObjetEquipe(objet);
                 this.setGants(objet);
                 this.setPv(this.getPv()+objet.getEffet());
                 break;
-            case "torse" :
+            case TORSE:
                 modfierObjetdesequipe(objet);
-                this.setTorse(new Objet("tee-shirt","casque",this));
+                this.setTorse(objet);
+                this.setPv(this.getPv()+objet.getEffet());
                 break;
-            case "pantalon" :
+            case PANTALON :
                 modfierObjetEquipe(objet);
                 this.setPantalon(objet);
                 this.setPv(this.getPv()+objet.getEffet());
                 break;
-
-            case "bottes" :
+            case BOTTES:
                 modfierObjetEquipe(objet);
                 this.setBottes(objet);
                 this.setPv(this.getPv()+objet.getEffet());
                 break;
-            case "arme" :
+            case ARME :
                 modfierObjetEquipe(objet);
                 this.setArme(objet);
                 this.setDps(this.getDps()+objet.getEffet());
                 break;
-            /*case "sac" :
+            case SAC :
                 modfierObjetEquipe(objet);
                 this.setSac(objet);
+                System.err.println("l'équipement du sac n'a pas d'effet implémenté");
                 break; /**/
             default:
-                System.out.print("erreur à l'équipement");
+                System.err.print("erreur à l'équipement : "+objet);
         }
         return this;
     }
 
     public Personnage desequiperPersonnage(Objet objet){
-        String TypeObjet=objet.getTypeObjet().toLowerCase();
-        switch (TypeObjet){
-            case "casque" :
+        Objet.TypeObjet typeObjet=objet.getTypeObjet();
+        switch (typeObjet){
+            case CASQUE:
                 modfierObjetdesequipe(objet);
-                this.setCasque(new Objet("casquette","casque",this));
+                this.setCasque();
                 this.setPv(this.getPv()-objet.getEffet());
                 break;
-            case "gants" :
+            case GANTS :
                 modfierObjetdesequipe(objet);
-                this.setGants(new Objet("mains-nues","gants",this));
+                this.setGants();
                 this.setPv(this.getPv()-objet.getEffet());
                 break;
-            case "torse" :
+            case TORSE:
                 modfierObjetdesequipe(objet);
-                this.setTorse(new Objet("tee-shirt","casque",this));
+                this.setTorse();
                 this.setPv(this.getPv()-objet.getEffet());
                 break;
-            case "pantalon" :
+            case PANTALON:
                 modfierObjetdesequipe(objet);
-                this.setPantalon(new Objet("jean","casque",this));
+                this.setPantalon();
                 this.setPv(this.getPv()-objet.getEffet());
                 break;
-            case "bottes" :
+            case BOTTES:
                 modfierObjetdesequipe(objet);
-                this.setBottes(new Objet("sandalles","casque",this));
+                this.setBottes();
                 this.setPv(this.getPv()-objet.getEffet());
                 break;
-            case "arme" :
+            case ARME :
                 modfierObjetdesequipe(objet);
-                this.setArme(new Objet("mains-nues","arme",this));
+                this.setArme();
                 this.setDps(this.getDps()-objet.getEffet());
                 break;
+            case SAC :
+                modfierObjetEquipe(objet);
+                this.setSac();
+                System.err.println("le déséquipement du sac n'a pas d'effet implémenté");
+                break; /**/
             /*case "sac" :
                 modfierObjetdesequipe(objet);
                 this.setSac(objet);
@@ -265,21 +302,21 @@ public class Personnage {
 
 
     public Personnage deplacer(String input){
-        System.out.println("Ecrire Z Q S D pour se déplacer "+System.lineSeparator()+ "A pour attendre"+System.lineSeparator()+ "L pour quitter");
+      //  System.out.println("Ecrire Z Q S D pour se déplacer "+System.lineSeparator()+ "A pour attendre"+System.lineSeparator()+ "L pour quitter");
         switch (input) {
-            case "avancer" :
+            case "z" :
                 this.setY(this.getY() - 1);
                 break;
-            case "reculer" :
+            case "s" :
                 this.setY(this.getY() + 1);
                 break;
-            case "gauche" :
+            case "q" :
                 this.setX(this.getX() - 1);
                 break;
-            case "droite":
+            case "d":
                 this.setX(this.getX() + 1);
                 break;
-            case "quitter":
+            case "l":
                 break;
             default :
                 System.err.println("Entrée incorrecte");

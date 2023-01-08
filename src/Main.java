@@ -13,14 +13,17 @@ public class Main{
         Run.editeur =editeur;
         Affichage.editeur =editeur;
 
-        Carte carteUne = new Carte("Carte une", "Description à la con", 5, 5);
+        Carte carteUne = new Carte("Carte une", "Description à la con", 250, 250);
         carte = carteUne;
         Personnage player = new Personnage(carteUne, 3, 3, "joueur", 100, 10);
         Main.player=player;
         Personnage mechant = new Personnage(carteUne, 3, 4, "connard", 20, 1);
         Personnage mechant2 = new Personnage(carteUne, 4, 4, "tonnard", 50, 1);
-        Objet couteau = new Objet("couteau player", "casque", 1, 2, "attaque", player);
-        Objet casque = new Objet(carteUne, "casque par terre", 2, 3, "casque", 4, 4, "protege");
+        Objet couteau = new Objet("couteau player", Objet.TypeObjet.ARME, 1, 2, Objet.TypeEffet.ATTAQUE, player);
+        Objet casque = new Objet(carteUne, "casque par terre", 2, 3, Objet.TypeObjet.CASQUE, 4, 4, Objet.TypeEffet.PROTECTION);
+        Objet pant = new Objet(carteUne, "futal par terre", 4, 3, Objet.TypeObjet.PANTALON, 4, 4, Objet.TypeEffet.PROTECTION);
+        Objet ga = new Objet(carteUne, "gants par terre", 4,5, Objet.TypeObjet.GANTS, 4, 4, Objet.TypeEffet.PROTECTION);
+        Objet bo = new Objet(carteUne, "truc par terre", 3, 3, Objet.TypeObjet.ARME, 4, 4, Objet.TypeEffet.PROTECTION);
         player.equiperPersonnage(couteau);
         System.out.println(player.getNom() + " se déplace en " + player.getX() + " " + player.getY());
 

@@ -2,12 +2,15 @@ public class Objet {
     private String nom;
     private int x;
     private int y;
-    private String typeObjet;
+    public enum TypeObjet {CASQUE,TORSE,GANTS,PANTALON,BOTTES,ARME,SAC}
+    private TypeObjet typeObjet;
     private int poids;
     private int effet;
-    private String typeEffet;
+    public enum TypeEffet {ATTAQUE,PROTECTION,SOIN}
+    private TypeEffet typeEffet;
     private String portee;
     private boolean estEquipe;
+    private boolean estAPortee;
     private Personnage personnage;
 
     //getters//
@@ -24,7 +27,7 @@ public class Objet {
         return y;
     }
 
-    public String getTypeObjet() {
+    public TypeObjet getTypeObjet() {
         return typeObjet;
     }
 
@@ -36,7 +39,7 @@ public class Objet {
         return effet;
     }
 
-    public String getTypeEffet() {
+    public TypeEffet getTypeEffet() {
         return typeEffet;
     }
 
@@ -66,9 +69,8 @@ public class Objet {
         this.y = y;
     }
 
-    public void setTypeObjet(String typeObjet) {
-        if (typeObjet!="" || typeObjet!="" || typeObjet!="" || typeObjet!="" || typeObjet!="" || typeObjet!="" || typeObjet!="" )
-            this.typeObjet = typeObjet;
+    public void setTypeObjet(TypeObjet typeObjet) {
+        this.typeObjet = typeObjet;
     }
 
     public void setPoids(int poids) {
@@ -79,7 +81,7 @@ public class Objet {
         this.effet = effet;
     }
 
-    public void setTypeEffet(String typeEffet) {
+    public void setTypeEffet(TypeEffet typeEffet) {
         this.typeEffet = typeEffet;
     }
     public void setPortee(String portee) {
@@ -93,8 +95,15 @@ public class Objet {
     public void setPersonnage(Personnage personnage) {
         this.personnage = personnage;
     }
+    //----------------------------------------------------------------------------------------------//
 
-    public Objet(Carte carte, String nom, int x, int y, String type, int poids, int effet, String typeEffet){
+
+
+
+    //----------------------------------------------------------------------------------------------//
+
+    public Objet(Carte carte, String nom, int x, int y, TypeObjet type, int poids, int effet, TypeEffet typeEffet){
+
         this.setX(carte.getX());
         this.setY(carte.getY());
         carte.addObjet(this);
@@ -107,7 +116,7 @@ public class Objet {
         this.setTypeEffet(typeEffet);
         this.estEquipe(false);
     };
-    public Objet(String nom,String type,int poids, int effet, String typeEffet,Personnage personnage){
+    public Objet(String nom,TypeObjet type,int poids, int effet, TypeEffet typeEffet,Personnage personnage){
 
         this.setNom(nom);
         this.setTypeObjet(type);
@@ -117,7 +126,7 @@ public class Objet {
         this.estEquipe(true);
         this.setPersonnage(personnage);
     };
-    public Objet(String nom,String type,Personnage personnage){
+    public Objet(String nom,TypeObjet type,Personnage personnage){
         this.setNom(nom);
         this.setTypeObjet(type);
         this.setPoids(0);
@@ -126,12 +135,27 @@ public class Objet {
         this.estEquipe(true);
         this.setPersonnage(personnage);
     };
-/*    public enum typeObjet{
+
+    protected boolean calculPortee(int portee,Personnage donneur){
+        estAPortee=false;
+        int dx=donneur.getX();
+        int dy=donneur.getY();
+        int rx=this.getX();
+        int ry=this.getY();
+        if (((dx+portee)==rx||dx==rx||dx-portee==rx)
+                &&((dy+portee)==ry||dy==ry||dy-portee==ry))
+            estAPortee=true;
+        System.err.println("méthode de portée objet a modifier");
+        return estAPortee;
+    }
+
+/*    public enum typeObjet {
         C("Casque"),
         T("Torse"),
         G("Gants"),
         P("Pantalon"),
         B("Bottes");
+    }
 
         public final String typeEquipement;
         typeObjet(String typeEquipement) {
@@ -139,6 +163,6 @@ public class Objet {
         }
         public String getTypeEquipement(){
             return this.typeEquipement;
-        }
-    }*/
+        }*/
+
 }

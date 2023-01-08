@@ -2,6 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.Objects;
 
 public class Affichage extends Thread implements EventListener {
@@ -16,7 +18,7 @@ public class Affichage extends Thread implements EventListener {
     public static JButton ramasser;
     public static JButton taper;
     public static Editor editeur;
-    public static JFrame  afficheur;
+    public static JFrame  afficheur=new JFrame();
 
 
 
@@ -44,12 +46,32 @@ afficher(perso);
 
     public static JFrame afficher(Personnage perso) {
         JFrame fenetre = new JFrame("Jeux de role 2D");
-        afficheur=fenetre;
+
+        //afficheur=fenetre;
         //     ImageIcon soldat = new ImageIcon("img\\soldat.png");
         //     fenetre.add(new JLabel(soldat).setM);
         //   soldat
         fenetre.setSize(500, 500);
+fenetre.addKeyListener(new KeyListener() {
 
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        System.err.println(Affichage.getSubstring(e.paramString(),"keyChar='", '\''));
+        Run.setInput(getSubstring(e.paramString(),"keyChar='", '\''));
+
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+    }
+
+
+});
 
 
 
@@ -105,7 +127,8 @@ afficher(perso);
     }
 
     public static String getSubstring(String string,String stringToFind,char nextChar){
-        return string.substring(string.indexOf(stringToFind)+stringToFind.length(),string.indexOf(nextChar,17));
+        int fromIndex = string.indexOf(stringToFind) + stringToFind.length();
+        return string.substring(fromIndex,string.indexOf(nextChar, fromIndex));
     }
     public static String getInput(){
         avancer.addActionListener(new ActionListener() {
@@ -154,5 +177,7 @@ return null;
     @Override
     public void update(String eventType, String deplacement) {
     }
+
+
 }
 
