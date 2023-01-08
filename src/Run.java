@@ -14,8 +14,6 @@ public class Run extends Thread implements EventListener{
     @Override
     public void run() {
         System.out.println();
-
-        //Affichage.editeur.events.subscribe("input",new newInput());
         Carte carte = Main.carte;
         Personnage player = carte.getListePersonnage().get(0);
 
@@ -31,7 +29,7 @@ public class Run extends Thread implements EventListener{
             for (Objet objet : carte.getListeObjet()) {
                 if (!objet.isEquipe() && objet.calculPortee(0, player)) {
                     player.equiperPersonnage(objet);
-                    System.out.println(String.format("le joueur ramasse le %s \"%s\", non implémenté complétement dans run", objet.getTypeObjet(), objet.getNom()));
+                    System.out.println(String.format("le joueur ramasse le %s \"%s\", non implémenté complétement dans run", objet.getTypeObjet().toString().toLowerCase(), objet.getNom()));
                 }
             }
             // player.equiperPersonnage(objet);

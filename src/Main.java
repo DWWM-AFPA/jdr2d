@@ -25,12 +25,13 @@ public class Main{
         Objet ga = new Objet(carteUne, "gants par terre", 4,5, Objet.TypeObjet.GANTS, 4, 4, Objet.TypeEffet.PROTECTION);
         Objet bo = new Objet(carteUne, "truc par terre", 3, 3, Objet.TypeObjet.ARME, 4, 4, Objet.TypeEffet.PROTECTION);
         player.equiperPersonnage(couteau);
-        System.out.println(player.getNom() + " se déplace en " + player.getX() + " " + player.getY());
 
-        carteUne.listerPersonnage();
+       // System.out.println(player.getNom() + " se déplace en " + player.getX() + " " + player.getY());
+
+      //  carteUne.listerPersonnage();
         player.desequiperPersonnage(couteau);
-        player.afficherEquipement();
-        carteUne.listerPersonnage();
+      //  player.afficherEquipement();
+       // carteUne.listerPersonnage();
 
         //String input = player.getDeplacement(); //
        // Main.jeu= new Run();
@@ -41,6 +42,7 @@ public class Main{
         Main.affichage=affichage;
         editeur.events.subscribe("input", new newInput());
 
+        System.out.println("\n Commandes de déplacement : Z Q S D \n Commande ramassage : A \n Commande combat :E \n Commande pour quitter : L ");
         //   Affichage.afficher(carteUne.getListePersonnage().get(0));
     }
 }

@@ -61,7 +61,7 @@ fenetre.addKeyListener(new KeyListener() {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        System.err.println(Affichage.getSubstring(e.paramString(),"keyChar='", '\''));
+      //  System.err.println(Affichage.getSubstring(e.paramString(),"keyChar='", '\''));
         Run.setInput(getSubstring(e.paramString(),"keyChar='", '\''));
 
     }

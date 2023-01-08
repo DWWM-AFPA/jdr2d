@@ -159,6 +159,15 @@ public class Personnage {
         this.deplacement = deplacement;
     }*/
 
+    public Personnage(Carte carte,int x, int y, int pv, int dps){
+        this.setCarte(carte);
+        this.carte.addPersonnage(this);
+        this.setX(x);
+        this.setY(y);
+        this.setNom("animal");
+        this.setPv(pv);
+        this.setDps(dps);
+    }
     public Personnage(Carte carte, int x, int y, String nom, int pv, int dps){
         this.setCarte(carte);
         this.setX(x);
@@ -172,6 +181,7 @@ public class Personnage {
         this.setBottes();
         this.setGants();
         this.setArme();
+        this.setPortee(1);
     }
     public Personnage(Carte carte, int x, int y, String nom, int pv, int dps,Objet casque,Objet torse, Objet gants, Objet pantalon, Objet bottes){
         this.setCarte(carte);
@@ -185,15 +195,6 @@ public class Personnage {
         this.equiperPersonnage(gants);
         this.equiperPersonnage(pantalon);
         this.equiperPersonnage(bottes);
-    }
-    public Personnage(Carte carte,int x, int y, int pv, int dps){
-        this.setCarte(carte);
-        this.carte.addPersonnage(this);
-        this.setX(x);
-        this.setY(y);
-        this.setNom("animal");
-        this.setPv(pv);
-        this.setDps(dps);
     }
     public void modfierObjetEquipe(Objet objet) {
         objet.setX(0);
