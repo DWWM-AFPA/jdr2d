@@ -5,10 +5,10 @@ public class Main {
 
         Position position = new Position();
 
-        Lieu lieu = new Lieu("Adamantia", position.getxPosition() , position.getyPosition() , new int[25][36]);
-        System.out.println(lieu.getxPosition());
-        System.out.println(lieu.getyPosition());
-        System.out.println(lieu.getTaille().length);
+        Lieu lieu = new Lieu("Adamantia",  position.getxPosition(), position.getyPosition(), 20, 20);
+
+        System.out.println(lieu.getNomLieu());
+        System.out.println(lieu);
 
 
         Arme arme = new Arme(new Objet("Epee Excalibure", 5, 1, 2, false, false, 0, 0), new EffetAttaque("Base", 0, 1, 0, false, false, 1, -1, 0, 0));
