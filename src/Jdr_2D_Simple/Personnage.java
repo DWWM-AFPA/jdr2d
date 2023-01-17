@@ -2,7 +2,7 @@ package Jdr_2D_Simple;
 
 import java.util.ArrayList;
 
-public class Personnage extends Position {
+public class Personnage extends Monde {
     //Menmbres
     protected String nomPesonnage;
     protected int xpPersonnage;
@@ -92,6 +92,10 @@ public class Personnage extends Position {
 
     public void AjoutsObjetsEmplacements(){
 
+    }
+
+    public Object accept(Visitor v){
+        return v.visit(this);
     }
 
 }
