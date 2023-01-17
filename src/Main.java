@@ -1,29 +1,33 @@
 import Jdr_2D_Simple.*;
 
+import java.beans.DesignMode;
+
 public class Main {
     public static void main(String[] args) {
 
-        Position position = new Position();
+        Dessiner dessiner = new Dessiner();
+        Monde monde = new Monde(6, 3);
 
-        Lieu lieu = new Lieu("Adamantia",  position.getxPosition(), position.getyPosition(), 20, 20);
+        Lieu lieu = new Lieu("Adamantia", 6, 6, monde);
+
+
+        System.out.println(monde.accept(dessiner));
 
         System.out.println(lieu.getNomLieu());
         System.out.println(lieu);
-
-
-        Arme arme = new Arme(new Objet("Epee Excalibure", 5, 1, 2, false, false, 0, 0), new EffetAttaque("Base", 0, 1, 0, false, false, 1, -1, 0, 0));
+        Arme arme = new Arme(new Arme("Epee Excalibure", 5, 1, 2, false, false, 0, 0), new EffetAttaque("Base", 0, 1, 0, false, false, 1, -1, 0, 0));
         EffetAttaque attaqueFeu = new EffetAttaque("Attaque Feu", 0, 1, 0, false, false, 2, -1, 0, 0);
         EffetAttaque attaqueGlace = new EffetAttaque("Attaque Glace", 0, 1, 0, false, false, 4, -1, 0, 0);
         arme.add(attaqueFeu);
         arme.add(attaqueGlace);
 
-        Armure armure = new Armure(new Objet("Armure de mithril", 10, 1, 4, false, false, 0, 0), new EffetProtection("Base", 0, 1, 0, false, false, 5, -1, 0, 0));
+        Armure armure = new Armure(new Armure("Armure de mithril", 10, 1, 4, false, false, 0, 0), new EffetProtection("Base", 0, 1, 0, false, false, 5, -1, 0, 0));
         EffetProtection defenseFeu = new EffetProtection("Defense Feu", 0, 1, 0, false, false, 2, -1, 0, 0);
         EffetProtection defenseGlace = new EffetProtection("Defense Glace", 0, 1, 0, false, false, 4, -1, 0, 0);
         armure.add(defenseFeu);
         armure.add(defenseGlace);
 
-        Materiel potion = new Materiel("Potion de poison", new EffetAttaque("Poison", 2, 1, 1, false, false, 1, 60, 0, 0));
+        Materiel potion = new Materiel("Potion de poison", 2, 1, 1, false, false, 0, 0,  new EffetAttaque("Poison", 2, 1, 1, false, false, 1, 60, 0, 0));
         EffetAttaque immobilisation = new EffetAttaque("Immmobilisation", 0, 1, 0, false, false, 0, 30, 0, 0);
         potion.addAttaque(immobilisation);
 
@@ -37,7 +41,7 @@ public class Main {
                 + " avec un effet de "
                 + potionEffet);
 
-        Objet corde =  new Objet("Corde", 2, 1, 1, false, false, 0, 0);
+        Materiel corde =  new Materiel("Corde", 2, 1, 1, false, false, 0, 0);
 
         System.out.println(arme.getEffet());
         System.out.println(corde.getQuantiteObjet() + " " + corde.getNomObjet() + " avec une poids de " + corde.getPoidsObjet() + " kg et coûte " + corde.getPrixObjet() + " or ");
