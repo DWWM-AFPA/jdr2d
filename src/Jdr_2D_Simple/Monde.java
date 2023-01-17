@@ -2,12 +2,13 @@ package Jdr_2D_Simple;
 
 import java.util.ArrayList;
 
-public class Position {
+public class Monde implements Visitable{
     //Menmbres
     protected int xPosition;
     protected int yPosition;
-    protected char[][] position;
-
+    protected  int xTaille;
+    protected int yTaille;
+    protected char[][] monde;
     protected ArrayList<Lieu> lieu;
 
 
@@ -16,7 +17,7 @@ public class Position {
         return xPosition;
     }
 
-    public Position setxPosition(int xPosition){
+    public Monde setxPosition(int xPosition){
         this.xPosition = xPosition;
         return this;
     }
@@ -25,47 +26,54 @@ public class Position {
         return yPosition;
     }
 
-    public Position setyPosition(int yPosition){
+    public Monde setyPosition(int yPosition){
         this.yPosition = yPosition;
         return this;
     }
 
-    public Position(){
+    public int getxTaille(){
+        return xTaille;
+    }
+
+    public Monde setxTaille(int xTaille){
+        this.xTaille = xTaille;
+        return this;
+    }
+
+    public int getyTaille(){
+        return yTaille;
+    }
+
+    public Monde setyTaille(int yTaille){
+        this.yTaille = yTaille;
+        return this;
+    }
+
+    public Monde(){
         this.setxPosition(1);
         this.setyPosition(1);
     }
-    public Position(int xPosition, int yPosition){
+    public Monde(int xTaille, int yTaille){
         this.setxPosition(xPosition);
         this.setyPosition(yPosition);
-        this.position = generationCarte(xPosition, yPosition);
+        this.xTaille = xTaille;
+        this.yTaille = yTaille;
+        this.monde = generationCarte(xTaille, yTaille);
     }
 
-    public char[][] generationCarte(int xPosition, int yPosition){
+    public char[][] generationCarte(int xTaille, int yTaille){
         int i, j;
-        char[][] retour = new char[xPosition][yPosition];
+        char[][] retour = new char[xTaille][yTaille];
 
-        for(i = 0; i < getxPosition(); i++){
-            for(j = 0; j < getyPosition(); j++){
-                retour[i][j] += ' ';
+        for(i = 0; i < getyTaille(); i++){
+            for(j = 0; j < getxTaille(); j++){
+                retour[j][i] += ' ';
             }
         }
         return retour;
     }
 
-    @Override
-    public String toString(){
-        int i;
-        int j;
-        String retour = new String();
-
-        for(i = 0; i < getxPosition(); i++){
-            for(j = 0; j < getyPosition(); j++){
-                retour += position[i][j];
-            }
-            retour += "\n";
-        }
-        return retour;
+    public Object accept(Visitor v){
+        return v.visit(this);
     }
-
-
 }
