@@ -6,6 +6,7 @@ public class Position {
     //Menmbres
     protected int xPosition;
     protected int yPosition;
+    protected char[][] position;
 
     protected ArrayList<Lieu> lieu;
 
@@ -36,5 +37,35 @@ public class Position {
     public Position(int xPosition, int yPosition){
         this.setxPosition(xPosition);
         this.setyPosition(yPosition);
+        this.position = generationCarte(xPosition, yPosition);
     }
+
+    public char[][] generationCarte(int xPosition, int yPosition){
+        int i, j;
+        char[][] retour = new char[xPosition][yPosition];
+
+        for(i = 0; i < getxPosition(); i++){
+            for(j = 0; j < getyPosition(); j++){
+                retour[i][j] += ' ';
+            }
+        }
+        return retour;
+    }
+
+    @Override
+    public String toString(){
+        int i;
+        int j;
+        String retour = new String();
+
+        for(i = 0; i < getxPosition(); i++){
+            for(j = 0; j < getyPosition(); j++){
+                retour += position[i][j];
+            }
+            retour += "\n";
+        }
+        return retour;
+    }
+
+
 }
