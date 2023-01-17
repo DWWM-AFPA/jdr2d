@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS  positionne, relir, definit, considere, mene, accorde, declenche, constitue, active, donne, contient, possede, instancemaitrise, dialogue, objet, aptitude, personnage, position_s, caracteristique, role_interaction, type_aptitude, objectif, recompense, interactions, type_objet, lieu, race, compte_utilisateur;
+DROP TABLE IF EXISTS  positionne, relir, definit, considere, mene, accorde, declenche, active, donne, contient, possede, instancemaitrise, dialogue, objet, aptitude, personnage, position_s, caracteristique, role_interaction, type_aptitude, objectif, recompense, interactions, type_objet, lieu, race, compte_utilisateur;
 
 CREATE TABLE compte_utilisateur(
    id_compte_utilisateur SERIAL,
@@ -191,15 +191,6 @@ CREATE TABLE active(
    FOREIGN KEY(id_objet) REFERENCES objet(id_objet),
    FOREIGN KEY(id_interaction) REFERENCES interactions(id_interaction),
    FOREIGN KEY(code_role_quete) REFERENCES role_interaction(code_role_quete)
-);
-
-CREATE TABLE constitue(
-   id_interaction INTEGER,
-   id_objectif INTEGER,
-   parametre VARCHAR(255) ,
-   PRIMARY KEY(id_interaction, id_objectif),
-   FOREIGN KEY(id_interaction) REFERENCES interactions(id_interaction),
-   FOREIGN KEY(id_objectif) REFERENCES objectif(id_objectif)
 );
 
 CREATE TABLE declenche(

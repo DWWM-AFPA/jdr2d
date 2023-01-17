@@ -70,19 +70,20 @@ Insertion pour la table interactions.
 
 INSERT INTO interactions ("prerequis_interaction", "nom_interaction", "description_interaction", "completion_interaction")
     VALUES
-    ('Avancer',  '', '', 1),
-    ('Tourner à droite',  '', '', 1),
-    ('Tourner à gauche',  '', '', 1),
-    ('Reculer',  '', '', 1),
-    ('Esquive droite',  '', '', 1),
-    ('Esquive gauche',  '', '', 1),
-    ('Boule de feu',  '', '', 2),
-    ('Graine versatile',  '', '', 2),
-    ('Ballayage tranchant',  '', '', 2),
-    ('Martellement lourd',  '', '', 2),
-    ('Tir incapacitant',  '', '', 2),
-    ('Parade',  '', '', 2),
-    ('Contre-attaque',  '', '', 2)
+    ('', 'Bonne brune', 'Mr Ohbar vous a demandé de faire de la bière brune', 0),
+    ('', 'Bonne brune', 'Mr Ohbar vous a demandé de faire de la bière brune', 0),
+    ('', 'Bonne brune', 'Mr Ohbar vous a demandé de faire de la bière brune', 0),
+    ('', 'Coco bel œil', 'Un vampire terrorise les habitants de la ville (Iggy Pope)', 0),
+    ('', 'Coco bel œil', 'Un vampire terrorise les habitants de la ville (Iggy Pope)', 0),
+    ('avoir la batte ail', 'Coco bel œil', 'Un vampire terrorise les habitants de la ville (Iggy Pope)', 0),
+    ('', 'Le voleur volé', 'Bernard Tappir vous demande de ramener une boubourse volée par les nains', 0),
+    ('', 'Le voleur volé', 'Bernard Tappir vous demande de ramener une boubourse volée par les nains', 0),
+    ('', 'Le voleur volé', 'Bernard Tappir vous demande de ramener une boubourse volée par les nains', 0),
+    ('', 'Victoria secret', 'Victoria-Big-B vous demande d''aller chercher ses objets fétiches chez la reine Bours-La', 0),
+    ('', 'Victoria secret', 'Victoria-Big-B vous demande d''aller chercher ses objets fétiches chez la reine Bours-La', 0),
+    ('', 'Un carrosse dans le tunnel', 'Die Anna se sent lente, elle vous demande d''aller chercher le bipbip ', 0),
+    ('', 'Un carrosse dans le tunnel', 'Die Anna se sent lente, elle vous demande d''aller chercher le bipbip ', 0),
+    ('', 'Un carrosse dans le tunnel', 'Die Anna se sent lente, elle vous demande d''aller chercher le bipbip ', 0)
 ;
 
 /*
@@ -91,19 +92,11 @@ Insertion pour la table recompense.
 
 INSERT INTO recompense ("nom_recompense", "decription_recompense")
     VALUES
-    ('Avancer',  '', '', 1),
-    ('Tourner à droite',  '', '', 1),
-    ('Tourner à gauche',  '', '', 1),
-    ('Reculer',  '', '', 1),
-    ('Esquive droite',  '', '', 1),
-    ('Esquive gauche',  '', '', 1),
-    ('Boule de feu',  '', '', 2),
-    ('Graine versatile',  '', '', 2),
-    ('Ballayage tranchant',  '', '', 2),
-    ('Martellement lourd',  '', '', 2),
-    ('Tir incapacitant',  '', '', 2),
-    ('Parade',  '', '', 2),
-    ('Contre-attaque',  '', '', 2)
+    ('recompesse quete un', 'Merci pour cette bière, je vous donne en récompense la pelle forte accompagné d''une pinte'),
+    ('recompesse quete deux', 'Merci pour cette bière, je vous donne en récompense la pelle forte accompagné d''une pinte'),
+    ('recompesse quete trois', 'Merci pour cette bière, je vous donne en récompense la pelle forte accompagné d''une pinte'),
+    ('recompesse quete quatre', 'Merci pour cette bière, je vous donne en récompense la pelle forte accompagné d''une pinte'),
+    ('recompesse quete cinq', 'Merci pour cette bière, je vous donne en récompense la pelle forte accompagné d''une pinte')
 ;
 
 /*
@@ -166,17 +159,7 @@ INSERT INTO caracteristique ("nom_caracteristique", "description_caracteristique
     VALUES
     ('Avancer',  '', '', 1),
     ('Tourner à droite',  '', '', 1),
-    ('Tourner à gauche',  '', '', 1),
-    ('Reculer',  '', '', 1),
-    ('Esquive droite',  '', '', 1),
-    ('Esquive gauche',  '', '', 1),
-    ('Boule de feu',  '', '', 2),
-    ('Graine versatile',  '', '', 2),
-    ('Ballayage tranchant',  '', '', 2),
-    ('Martellement lourd',  '', '', 2),
-    ('Tir incapacitant',  '', '', 2),
-    ('Parade',  '', '', 2),
-    ('Contre-attaque',  '', '', 2)
+    
 ;
 
 /*
@@ -206,19 +189,19 @@ Insertion pour la table aptitude.
 
 INSERT INTO aptitude ("nom_aptitude", "effet_aptitude", "prerequis_aptitude", "id_type_aptitude")
     VALUES
-    ('Avancer',  '', '', 1),
-    ('Tourner à droite',  '', '', 1),
-    ('Tourner à gauche',  '', '', 1),
-    ('Reculer',  '', '', 1),
-    ('Esquive droite',  '', '', 1),
-    ('Esquive gauche',  '', '', 1),
-    ('Boule de feu',  '', '', 2),
-    ('Graine versatile',  '', '', 2),
-    ('Ballayage tranchant',  '', '', 2),
-    ('Martellement lourd',  '', '', 2),
-    ('Tir incapacitant',  '', '', 2),
-    ('Parade',  '', '', 2),
-    ('Contre-attaque',  '', '', 2)
+    ('Avancer',  NULL, NULL, 1),
+    ('Tourner à droite',  NULL, NULL, 1),
+    ('Tourner à gauche',  NULL, NULL, 1),
+    ('Reculer',  NULL, NULL, 1),
+    ('Esquive droite',  NULL, NULL, 1),
+    ('Esquive gauche',  NULL, NULL, 1),
+    ('Boule de feu',  NULL, NULL, 2),
+    ('Graine versatile',  NULL, NULL, 2),
+    ('Ballayage tranchant',  NULL, NULL, 2),
+    ('Martellement lourd',  NULL, NULL, 2),
+    ('Tir incapacitant',  NULL, NULL, 2),
+    ('Parade',  NULL, NULL, 2),
+    ('Contre-attaque',  NULL, NULL, 2)
 ;
 
 /*
