@@ -1,6 +1,6 @@
 package Jdr_2D_Simple;
 
-public class Objet extends Position implements Composant{
+public abstract class Objet extends Monde implements Visitable{
     //Menmbres
     protected String nomObjet;
     protected String descriptionObjet;
@@ -105,4 +105,7 @@ public class Objet extends Position implements Composant{
         this.quantiteObjet = quantiteObjet;
     }
 
+    public Object accept(Visitor v){
+        return v.visit(this);
+    }
 }
