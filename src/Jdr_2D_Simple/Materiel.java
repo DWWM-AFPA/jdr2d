@@ -2,7 +2,7 @@ package Jdr_2D_Simple;
 
 import java.util.ArrayList;
 
-public class Materiel {
+public class Materiel extends Objet{
 
     private ArrayList<EffetProtection> protection;
     private ArrayList<EffetAttaque> attaque;
@@ -35,16 +35,20 @@ public class Materiel {
         return this;
     }
 
-    public Materiel(String nomMateriel, EffetAttaque e){
-        this.nomMateriel = nomMateriel;
+    public Materiel(String nomObjet, int prixObjet, int quantiteObjet, int poidsObjet, boolean recompenseObjet, boolean queteObjet, int xPosition, int yPosition){
+        super(nomObjet, prixObjet, quantiteObjet, poidsObjet, recompenseObjet, queteObjet, xPosition, yPosition);
+    }
+
+    public Materiel(String nomObjet, int prixObjet, int quantiteObjet, int poidsObjet, boolean recompenseObjet, boolean queteObjet, int xPosition, int yPosition, EffetAttaque e){
+        super(nomObjet, prixObjet, quantiteObjet, poidsObjet, recompenseObjet, queteObjet, xPosition, yPosition);
         this.attaque = new ArrayList<>();
         this.addAttaque(e);
     }
 
-    public Materiel(String nomMateriel, EffetProtection ef){
-        this.nomMateriel = nomMateriel;
-        this.protection = new ArrayList<>();
-        this.addProtection(ef);
+    public Materiel(String nomObjet, int prixObjet, int quantiteObjet, int poidsObjet, boolean recompenseObjet, boolean queteObjet, int xPosition, int yPosition, EffetProtection e){
+        super(nomObjet, prixObjet, quantiteObjet, poidsObjet, recompenseObjet, queteObjet, xPosition, yPosition);
+        this.attaque = new ArrayList<>();
+        this.addProtection(e);
     }
 
     public Materiel addAttaque(EffetAttaque e){
@@ -55,6 +59,10 @@ public class Materiel {
     public Materiel addProtection(EffetProtection ef){
         this.protection.add(ef);
         return this;
+    }
+
+    public Object accept(Visitor v){
+        return v.visit(this);
     }
 
 
