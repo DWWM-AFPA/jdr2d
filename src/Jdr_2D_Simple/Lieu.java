@@ -1,5 +1,6 @@
 package Jdr_2D_Simple;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Lieu {
@@ -8,9 +9,13 @@ public class Lieu {
     private String descriptionLieu;
     private  int w;
     private  int h;
-    private int xPosition;
-    private int yPosition;
+    protected int xPosition;
+    protected int yPosition;
     private char[][] lieu;
+
+    private Monde monde;
+
+    private ArrayList<Personnage> personnages;
 
     public String getNomLieu(){
         return nomLieu;
@@ -25,17 +30,20 @@ public class Lieu {
         return xPosition;
     }
 
-    public void setxPositionn(int xPosition){
+    public Lieu setxPosition(int xPosition){
         this.xPosition = xPosition;
+        return this;
     }
 
     public int getyPosition(){
         return yPosition;
     }
 
-    public void setyPosition(int yPosition){
+    public Lieu setyPosition(int yPosition){
         this.yPosition = yPosition;
+        return this;
     }
+
     public char[][] getLieu(){
         return lieu;
     }
@@ -43,13 +51,25 @@ public class Lieu {
     public void setLieu(char[][] lieu){
         this.lieu = lieu;
     }
-    public Lieu(String nomLieu, int xPosition, int yPosition, int w, int h){
+
+    public Monde getMonde(){
+        return monde;
+    }
+
+    public Lieu setMonde(Monde monde){
+        this.monde = monde;
+        return this;
+    }
+
+    public Lieu(String nomLieu, int w, int h, Monde monde){
         this.w = w;
         this.h = h;
-        this.xPosition = xPosition;
-        this.yPosition = yPosition;
         this.nomLieu = nomLieu;
         this.lieu = generationLieu(w, h);
+    }
+
+    public Lieu(String nomLieu, int xPosition, int yPosition, int w, int h, Personnage personnages){
+
     }
 
     public char[][] generationLieu(int w, int h){
@@ -79,15 +99,18 @@ public class Lieu {
         int j;
         String retour = new String();
 
-
         for(i = 0; i < h; i++){
             for(j = 0; j < w; j++){
                 retour += lieu[i][j];
             }
             retour += "\n";
         }
+
         return retour;
     }
 
+    public Object accept(Visitor v){
+        return v.visit(this);
+    }
 
 }
