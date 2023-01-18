@@ -1,13 +1,33 @@
 import org.postgresql.util.PSQLException;
 
+import javax.swing.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.Properties;
 
 public class Database {
+
     private static final String con = "jdbc:postgresql://10.113.28.39:5432/jdr2d_matthieu";
     private static final String user = "mballand";
     private static final String pswd = "Azerty123";
+
+    public static void connect(String fileName) throws FileNotFoundException, IOException,SQLException {
+        Properties prop = new Properties();
+        try {
+            prop.load(new FileInputStream(fileName));
+        } catch (FileNotFoundException e) {
+            File config = new File(fileName);
+            System.out.println();
+        }
+
+        String url = "jdbc:postgresql://176.171.72.188/test";
+        Connection conn = DriverManager.getConnection(url,prop);
+    }
 
     public static ArrayList<String> viewTable(String query,int columnIndex) {
         ArrayList<String> retour= new ArrayList<>();

@@ -9,7 +9,7 @@ public class Main{
 
     public static void main(String[] args) throws InterruptedException {
 
-        Editor editeur = new Editor();
+       /* Editor editeur = new Editor();
         Run.editeur =editeur;
         Affichage.editeur =editeur;
 
@@ -43,6 +43,11 @@ public class Main{
         editeur.events.subscribe("input", new newInput());
 
         System.out.println("\n Commandes de déplacement : Z Q S D \n Commande ramassage : A \n Commande combat :E \n Commande pour quitter : L ");
-        //   Affichage.afficher(carteUne.getListePersonnage().get(0));
+        //   Affichage.afficher(carteUne.getListePersonnage().get(0));*/
+        try {
+        Database.connect("DB_Config");}
+        catch (Exception e){
+            System.err.println(e);
+        }
     }
 }
