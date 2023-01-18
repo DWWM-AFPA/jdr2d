@@ -1,14 +1,12 @@
 import org.postgresql.util.PSQLException;
 
 import javax.swing.*;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Properties;
+import java.util.Scanner;
 
 public class Database {
 
@@ -16,17 +14,31 @@ public class Database {
     private static final String user = "mballand";
     private static final String pswd = "Azerty123";
 
+
+
+
     public static void connect(String fileName) throws FileNotFoundException, IOException,SQLException {
         Properties prop = new Properties();
         try {
             prop.load(new FileInputStream(fileName));
         } catch (FileNotFoundException e) {
             File config = new File(fileName);
-            System.out.println();
+            PrintStream file= new PrintStream(config);
+            Scanner scan = new Scanner(System.in);
+            System.out.println("Entrez l'adresse IP du serveur :");
+            file.print("connection=jdbc:postgresql://"+scan.nextLine()+":5432/");
+            System.out.println("Entrez le nom de la base de donnée :");
+            file.println(scan.nextLine());
+            System.out.println("Entrez le nom d'utilisateur :");
+            file.println("user="+scan.nextLine());
+            System.out.println("Entrez le mot de passe :");
+            file.println("password="+scan.nextLine());
         }
 
-        String url = "jdbc:postgresql://176.171.72.188/test";
-        Connection conn = DriverManager.getConnection(url,prop);
+        String url = "jdbc:postgresql://176.171.72.188:5432/test";
+        Connection conn = DriverManager.getConnection(prop.getProperty("connection"),prop);
+        Statement st;
+        conn.close();
     }
 
     public static ArrayList<String> viewTable(String query,int columnIndex) {

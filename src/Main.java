@@ -1,3 +1,5 @@
+import jdk.jfr.StackTrace;
+
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
@@ -47,7 +49,8 @@ public class Main{
         try {
         Database.connect("DB_Config");}
         catch (Exception e){
-            System.err.println(e);
+            e.printStackTrace();
+
         }
     }
 }
