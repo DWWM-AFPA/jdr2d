@@ -15,6 +15,7 @@ public class CarteRegistre {
     }
 
     public Carte addCarte(Carte carte) {
+        System.out.printf("Carte %s ajoutée %s",carte.getNom(),System.lineSeparator());
         return listeCarte.put(carte.getNom(),carte);
     }
 

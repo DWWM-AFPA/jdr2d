@@ -18,7 +18,7 @@ public class CarteRepository extends DAOObject {
 
     public Carte find(int id) throws Exception{
         try {
-            ResultSet rs= this.query("SELECT * FROM lieu WHERE \"id_lieu\" = ?;",new ArrayList<Object>(Arrays.asList(2)));
+            ResultSet rs= this.query("SELECT * FROM lieu WHERE \"id_lieu\" = ?;",new ArrayList<Object>(Arrays.asList(id)));
             rs.next();
             Carte carte = new Carte(
                     rs.getString("nom_lieu"),

@@ -70,8 +70,8 @@ public class Carte {
         this.setDescription(description);
         this.taille = new int[]{tailleX,tailleY};
         this.dessinCarte=new String[tailleX][tailleY];
-        CarteRegistre.getInstance().getCarte("defaut");
-        CarteRegistre.getInstance().addCarte(this);
+       // CarteRegistre.getInstance().getCarte("defaut");
+         CarteRegistre.getInstance().addCarte(this);
     }
 
     public void dessinerCarte(){

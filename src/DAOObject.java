@@ -80,8 +80,8 @@ public class DAOObject {
     protected  void bindValues(PreparedStatement pst,ArrayList<Object> args) throws SQLException{
         for (int i = 0; i < args.size(); i++) {
             String type= args.get(i).getClass().getSimpleName();
-            System.out.println(type);
-            System.out.println(i);
+           // System.out.println(type);
+           // System.out.println(i);
             switch (type) {
                 case ("Integer"):
                     pst.setInt(i + 1, (int) args.get(i));

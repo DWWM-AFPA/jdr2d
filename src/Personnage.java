@@ -74,8 +74,8 @@ public class Personnage {
         int commaPos = position.indexOf(',');
         int lastParenthesis = position.indexOf(')');
 
-        this.setX(Integer.parseInt(position.substring(2,commaPos)));
-        this.setY(Integer.parseInt(position.substring(commaPos,lastParenthesis)));
+        this.setX(Integer.parseInt(position.substring(1,commaPos)));
+        this.setY(Integer.parseInt(position.substring(commaPos+1,lastParenthesis)));
     }
 
     public Carte getCarte() {

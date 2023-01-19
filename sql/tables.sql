@@ -27,6 +27,12 @@ CREATE TABLE classe()
 
 CREATE TABLE etat_personnage
 (id_etat_personnage COUNTER PRIMARY KEY,
-
-
 );
+
+CREATE TABLE position 
+(id_personnage integer,
+position point,
+id_lieu integer,
+FOREIGN KEY(id_lieu) REFERENCES lieu(id_lieu), FOREIGN KEY(id_personnage) REFERENCES personnage(id_personnage));
+
+INSERT into position VALUES (2,(point(20,15)),1);
