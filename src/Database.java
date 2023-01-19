@@ -33,9 +33,8 @@ public class Database {
             file.println("user="+scan.nextLine());
             System.out.println("Entrez le mot de passe :");
             file.println("password="+scan.nextLine());
+            prop.load(new FileInputStream(fileName));
         }
-
-        String url = "jdbc:postgresql://176.171.72.188:5432/test";
         Connection conn = DriverManager.getConnection(prop.getProperty("connection"),prop);
         Statement st;
         conn.close();
@@ -81,5 +80,34 @@ public class Database {
             System.err.println("Erreur " + e);
         }
 
+    }
+
+    protected static void title(String title){
+        String lineSeparator = " ".repeat(80);
+        System.out.println(lineSeparator);
+        System.out.print("  ");
+        System.out.println(title);
+        System.out.println(lineSeparator);
+    }
+
+    protected static ArrayList<Object> listOfAll(String title, String sql, Statement st) throws SQLException{
+        ResultSet rs = st.executeQuery(sql);
+        ResultSetMetaData rsmd = rs.getMetaData();
+        int columnCount = rsmd.getColumnCount();
+        // rsmd.getColumnClassName();
+        title(title);
+        ArrayList<Object> retour = new ArrayList<>();
+
+
+        while (rs.next()) {
+            String[] result = new String[columnCount];
+            for (int i = 1; i < columnCount; i++) {
+                result[i]=rs.getString(i);
+            }
+            retour.add(result);
+        }
+
+        rs.close();
+        return retour;
     }
 }

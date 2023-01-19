@@ -1,5 +1,6 @@
 import jdk.jfr.StackTrace;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
@@ -9,7 +10,7 @@ public class Main{
     static Thread affichage;
     static Personnage player;
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws Exception {
 
        /* Editor editeur = new Editor();
         Run.editeur =editeur;
@@ -46,11 +47,13 @@ public class Main{
 
         System.out.println("\n Commandes de déplacement : Z Q S D \n Commande ramassage : A \n Commande combat :E \n Commande pour quitter : L ");
         //   Affichage.afficher(carteUne.getListePersonnage().get(0));*/
-        try {
-        Database.connect("DB_Config");}
-        catch (Exception e){
-            e.printStackTrace();
 
-        }
+        Player p1 = new PlayerRepository().find(2);
+        System.out.println(p1.toString());
+
+        Carte carte1= new CarteRepository().find(2);
+        System.out.println(carte1.getNom());
+
+
     }
 }
