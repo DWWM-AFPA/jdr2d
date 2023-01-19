@@ -23,13 +23,19 @@ import java.util.Arrays;
             try {
                 ResultSet rs= this.query("SELECT * FROM personnage\n" +
                         "    JOIN lieu ON personnage.id_lieu=lieu.id_lieu\n" +
-                        "    JOIN positionne_test ON positionne_test.id_personnage= personnage.id_personnage ; WHERE \"Id\" = ?;",new ArrayList<Object>(Arrays.asList(2)));
+                        "    JOIN positionne_test ON positionne_test.id_personnage= personnage.id_personnage WHERE personnage.id_personnage = ?;",new ArrayList<Object>(Arrays.asList(2)));
                 rs.next();
-               /* Personnage joueur = new Personnage(
-                        rs.getInt("id_lieu"),
+                System.out.println(rs.getString("nom_personnage"));
+                Personnage joueur = new Personnage(
+                        //recupere la carte
+                        CarteRegistre.getInstance().getCarte(rs.getString("nom_lieu")),
+                        //recupere la position
                         rs.getString("position"),
+                        //recupere le nom
                         rs.getString("nom_personnage"),
-                        null);*/
+
+                        100,//pv
+                        100);//dps)
 
                 this.closeConnection();
                 return null;

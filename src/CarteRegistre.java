@@ -21,5 +21,8 @@ public class CarteRegistre {
     public Carte getCarte(String nom){
         return listeCarte.get(nom);
     }
+    public boolean containsCarte(String nom){
+        return listeCarte.get(nom) != null;
+    }
 
 }

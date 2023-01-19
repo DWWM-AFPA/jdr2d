@@ -69,6 +69,14 @@ public class Personnage {
     public Objet getSac() {
         return sac;
     }
+    public void decodePosition(String position){
+        position = "(20,50)";
+        int commaPos = position.indexOf(',');
+        int lastParenthesis = position.indexOf(')');
+
+        this.setX(Integer.parseInt(position.substring(2,commaPos)));
+        this.setY(Integer.parseInt(position.substring(commaPos,lastParenthesis)));
+    }
 
     public Carte getCarte() {
         return carte;
@@ -159,19 +167,17 @@ public class Personnage {
         this.deplacement = deplacement;
     }*/
 
-    public Personnage(Carte carte,int x, int y, int pv, int dps){
+    public Personnage(Carte carte,String pos, int pv, int dps){
         this.setCarte(carte);
         this.carte.addPersonnage(this);
-        this.setX(x);
-        this.setY(y);
+        decodePosition(pos);
         this.setNom("animal");
         this.setPv(pv);
         this.setDps(dps);
     }
-    public Personnage(Carte carte, int x, int y, String nom, int pv, int dps){
+    public Personnage(Carte carte, String pos, String nom, int pv, int dps){
         this.setCarte(carte);
-        this.setX(x);
-        this.setY(y);
+        decodePosition(pos);
         this.setNom(nom);
         this.setPv(pv);
         this.setDps(dps);
@@ -183,10 +189,9 @@ public class Personnage {
         this.setArme();
         this.setPortee(1);
     }
-    public Personnage(Carte carte, int x, int y, String nom, int pv, int dps,Objet casque,Objet torse, Objet gants, Objet pantalon, Objet bottes){
+    public Personnage(Carte carte, String pos, String nom, int pv, int dps,Objet casque,Objet torse, Objet gants, Objet pantalon, Objet bottes){
         this.setCarte(carte);
-        this.setX(x);
-        this.setY(y);
+        decodePosition(pos);
         this.setNom(nom);
         this.setPv(pv);
         this.setDps(dps);

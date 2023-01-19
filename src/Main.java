@@ -48,11 +48,22 @@ public class Main{
         System.out.println("\n Commandes de déplacement : Z Q S D \n Commande ramassage : A \n Commande combat :E \n Commande pour quitter : L ");
         //   Affichage.afficher(carteUne.getListePersonnage().get(0));*/
 
-        Player p1 = new PlayerRepository().find(2);
-        System.out.println(p1.toString());
+
+        Player player1 = new PlayerRepository().find(2);
+        System.out.println(player1.toString());
 
         Carte carte1= new CarteRepository().find(2);
         System.out.println(carte1.getNom());
+
+        Carte carte2= new CarteRepository().find(12);
+        System.out.println(carte2.getNom());
+
+        Carte carte3= new CarteRepository().find(13);
+        System.out.println(carte3.getNom());
+
+        Personnage p1= new PersonnageRepository().find(2);
+        System.out.println(p1.getNom());
+
 
 
     }

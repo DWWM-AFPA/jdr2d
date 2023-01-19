@@ -61,6 +61,7 @@ public class Carte {
         this.setDescription("description par défaut");
         this.taille = new int[]{2,2};
         this.dessinCarte=new String[2][2];
+        CarteRegistre.getInstance().getCarte("defaut");
         CarteRegistre.getInstance().addCarte(this);
     }
 
@@ -69,6 +70,8 @@ public class Carte {
         this.setDescription(description);
         this.taille = new int[]{tailleX,tailleY};
         this.dessinCarte=new String[tailleX][tailleY];
+        CarteRegistre.getInstance().getCarte("defaut");
+        CarteRegistre.getInstance().addCarte(this);
     }
 
     public void dessinerCarte(){
