@@ -29,6 +29,10 @@ CREATE TABLE etat_personnage
 (id_etat_personnage COUNTER PRIMARY KEY,
 );
 
+DROP TABLE _position;
+DROP TABLE positionne_test;
+DROP TABLE positionne;
+
 CREATE TABLE position 
 (id_personnage integer,
 position point,
