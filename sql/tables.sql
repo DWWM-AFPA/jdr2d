@@ -34,16 +34,19 @@ DROP TABLE position;
 
 ALTER TABLE personnage ADD COLUMN position point;
 --remplir postion puis
-ALTER TABLE personnage ADD CONSTRAINT position NOT NULL
+ALTER TABLE personnage ADD CONSTRAINT position NOT NULL;
 
 ALTER TABLE objet ADD COLUMN position point;
 --remplir postion puis
-ALTER TABLE objet ADD CONSTRAINT position NOT NULL
+ALTER TABLE objet ADD CONSTRAINT position NOT NULL;
 ALTER TABLE objet ADD COLUMN id_lieu integer;
 ALTER TABLE objet ADD CONSTRAINT objet_id_lieu_fkey FOREIGN KEY (id_lieu) REFERENCES lieu(id_lieu);
 
-
+ALTER TABLE objet ADD COLUMN position point;
+ALTER TABLE objet ADD COLUMN id_personnage integer;
 ALTER TABLE objet ADD CONSTRAINT objet_id_personnage_fkey FOREIGN KEY (id_personnage) REFERENCES personnage(id_personnage);
+
+UPDATE objet SET id_personnage='1' WHERE id_personnage IS NULL;
 
 ALTER TABLE objet ADD CONSTRAINT valid_location
     CHECK (
