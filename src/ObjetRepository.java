@@ -5,14 +5,16 @@ import java.util.Arrays;
 
 public class ObjetRepository extends DAOObject {
     public Objet insert(String nom, String Stats,boolean equipe,boolean ouvert,String description,int prix,int type,int poids) throws SQLException {
-        try {
+   /*     try {
             ResultSet rs= this.query("INSERT INTO objet(nom_objet,statistique_objet,equipe,ouvert,description_objet, prix,id_type_objet,poids) VALUES (?,?,?,?,?,?,?,?);",new ArrayList<Object>(Arrays.asList(nom,description,carte)));
             this.closeConnection();
             return new Objet(nom,description,50,50);
 
         }catch (Exception e){
             throw e;
-        }
+        }*/
+        //TODO
+return null   ;
     }
     public void update(){
         //TODO
@@ -25,20 +27,43 @@ public class ObjetRepository extends DAOObject {
 
     public Objet find(int id) throws Exception{
         try {
-            ResultSet rs= this.query("SELECT * FROM objet WHERE \"id_objet\" = ?;",new ArrayList<Object>(Arrays.asList(id)));
+            ResultSet rs= this.query("SELECT * FROM objet " +
+                    "JOIN type_objet ON objet.id_type_objet=type_objet=id"+
+                    "WHERE \"id_objet\" = ?;",new ArrayList<Object>(Arrays.asList(id)));
             rs.next();
-            Objet objet = new Objet(
-                    rs.getString("nom_objet"),
-                    rs.getString("statistique_objet"),
-                    rs.getBoolean("equipe"),
-                    rs.getBoolean("ouvert"),
-                    rs.getString("description_objet"),
-                    rs.getInt("prix"),
-                    rs.getInt("id_type_objet"),
-                    rs.getInt("poids"));
+            boolean estPose=rs.getInt("id_personnage")==0;
+            if (estPose) {
+                Objet objet = new Objet(
+                        CarteRegistre.getInstance().getCarte(rs.getString("nom_lieu")),//type Carte
+                        rs.getString("position"),   //type String -pos
+                        rs.getString("nom"),        //type String -nom
+                        rs.getInt("id_type_objet"), //type TypeObjet    -type
+                        rs.getInt("poids"),    //type int - poids
+                        0,
+                        Objet.TypeEffet.ATTAQUE
+                        /* rs.getBoolean("equipe")*/);   //type boolean
+                //rs.getBoolean("ouvert"),
+                //rs.getString("description_objet"),
+                //rs.getInt("prix")
+                this.closeConnection();
+                return objet;
+                }
+            else {
+                Objet objet = new Objet(
+                //CarteRegistre.getInstance().getCarte(rs.getString("nom_lieu")),//type Carte
+                rs.getString("nom"),        //type String -nom
+                rs.getInt("id_type_objet"), //type TypeObjet    -type
+                rs.getInt("poids"),    //type int - poids
+                0,
+                Objet.TypeEffet.ATTAQUE,
+                PersonnageRegistre.getInstance().getPersonnage(rs.getString("nom_personnage")));
 
-            this.closeConnection();
-            return objet;
+                /* rs.getBoolean("equipe")*/
+                this.closeConnection();
+                return objet;
+            }
+
+
 
         }catch (Exception e){
             throw e;

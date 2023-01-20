@@ -69,7 +69,10 @@ public class Objet implements Position{
         this.y = y;
     }
 
-    public void setTypeObjet(TypeObjet typeObjet) {
+    public void setTypeObjet(int typeObjet) {
+        switch (typeObjet)
+            class (1):
+
         this.typeObjet = typeObjet;
     }
 
@@ -101,22 +104,27 @@ public class Objet implements Position{
 
 
     //----------------------------------------------------------------------------------------------//
+    public void setPosition(int[] pos) {
+        this.setX(pos[0]);
+        this.setY(pos[1]);
+    }
 
-    public Objet(Carte carte, String nom, int x, int y, TypeObjet type, int poids, int effet, TypeEffet typeEffet){
+    /** Objets posés dans une map*/
 
-        this.setX(carte.getX());
-        this.setY(carte.getY());
+    //TODO TypeObjet à modifier pour le int !!!!!!!!!
+    public Objet(Carte carte, String pos, String nom, int type, int poids, int effet, TypeEffet typeEffet){
+
         carte.addObjet(this);
+        setPosition(decodePosition(pos));
         this.setNom(nom);
-        this.setX(x);
-        this.setY(y);
         this.setTypeObjet(type);
         this.setPoids(poids);
         this.setEffet(effet);
         this.setTypeEffet(typeEffet);
         this.estEquipe(false);
     };
-    public Objet(String nom,TypeObjet type,int poids, int effet, TypeEffet typeEffet,Personnage personnage){
+    /** Objets porté par un personnage*/
+    public Objet(String nom,int type,int poids, int effet, TypeEffet typeEffet,Personnage personnage){
 
         this.setNom(nom);
         this.setTypeObjet(type);
@@ -126,6 +134,8 @@ public class Objet implements Position{
         this.estEquipe(true);
         this.setPersonnage(personnage);
     };
+
+   /** Objets par defaut dans le personnage sans equipement*/
     public Objet(String nom,TypeObjet type,Personnage personnage){
         this.setNom(nom);
         this.setTypeObjet(type);

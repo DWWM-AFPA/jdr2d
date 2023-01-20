@@ -1,5 +1,6 @@
 public class Personnage implements Position{
     protected String nom;
+    protected int[] pos;
     protected int x;
     protected int y;
     protected int pv;
@@ -156,21 +157,22 @@ public class Personnage implements Position{
         this.carte = carte;
         this.carte.addPersonnage(this);
     }
- /*   public void setDeplacement(String deplacement) {
-        this.deplacement = deplacement;
-    }*/
+    public void setPosition(int[] pos) {
+        this.setX(pos[0]);
+        this.setY(pos[1]);
+    }
 
-    public Personnage(Carte carte,String pos, int pv, int dps){
+    public Personnage(Carte carte, String pos, int pv, int dps){
         this.setCarte(carte);
         this.carte.addPersonnage(this);
-        decodePosition(pos);
+        setPosition(decodePosition(pos));
         this.setNom("animal");
         this.setPv(pv);
         this.setDps(dps);
     }
     public Personnage(Carte carte, String pos, String nom, int pv, int dps){
         this.setCarte(carte);
-        decodePosition(pos);
+        setPosition(decodePosition(pos));
         this.setNom(nom);
         this.setPv(pv);
         this.setDps(dps);
@@ -184,7 +186,7 @@ public class Personnage implements Position{
     }
     public Personnage(Carte carte, String pos, String nom, int pv, int dps,Objet casque,Objet torse, Objet gants, Objet pantalon, Objet bottes){
         this.setCarte(carte);
-        decodePosition(pos);
+        setPosition(decodePosition(pos));
         this.setNom(nom);
         this.setPv(pv);
         this.setDps(dps);

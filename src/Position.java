@@ -1,10 +1,12 @@
-public abstract class Position {
-    public void decodePosition(String position){
-        position = "(20,50)";
+public interface Position {
+    default int[] decodePosition(String position){;
         int commaPos = position.indexOf(',');
         int lastParenthesis = position.indexOf(')');
 
-        this.setX(Integer.parseInt(position.substring(1,commaPos)));
-        this.setY(Integer.parseInt(position.substring(commaPos+1,lastParenthesis)));
+        return new int[]{
+                Integer.parseInt(position.substring(1,commaPos)),
+                Integer.parseInt(position.substring(commaPos+1,lastParenthesis))
+                };
     }
+    void setPosition(int[] position);
 }
