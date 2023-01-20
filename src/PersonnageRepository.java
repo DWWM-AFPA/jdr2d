@@ -21,18 +21,23 @@ import java.util.Arrays;
 
         public Personnage find(int id) throws Exception{
             try {
-                ResultSet rs= this.query("SELECT * FROM personnage\n" +
-                        "    JOIN lieu ON personnage.id_lieu=lieu.id_lieu\n" +
-                        "    JOIN position ON position.id_personnage= personnage.id_personnage " +
-                        "WHERE personnage.id_personnage = ?;",new ArrayList<Object>(Arrays.asList(2)));
+                ResultSet rs= this.query(
+                        "SELECT * FROM personnage\n" +
+                                "JOIN lieu ON personnage.id_lieu=lieu.id_lieu\n" +
+                            "WHERE personnage.id_personnage = ?;",new ArrayList<Object>(Arrays.asList(2)));
                 rs.next();
                 System.out.println("Instance carte : "+CarteRegistre.getInstance().getCarte(rs.getString("nom_lieu")));
                 System.out.println("nom du lieu trouvé dans la DB :"+rs.getString("nom_lieu"));
                 System.out.println("nom du perso trouvé dans la DB :"+rs.getString("nom_personnage") + rs.getInt("id_lieu"));
+                Carte carte=CarteRegistre.getInstance().getCarte(rs.getString("nom_lieu"));
+                if (carte==null){
+                    carte = new CarteRepository().find(rs.getInt("id_lieu"));
+                }
+
 
                 Personnage joueur = new Personnage(
                         //recupere la carte
-                        CarteRegistre.getInstance().getCarte(rs.getString("nom_lieu")),
+                        carte,
                         //recupere la position
                         rs.getString("position"),
                         //recupere le nom

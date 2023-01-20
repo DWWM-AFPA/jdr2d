@@ -6,8 +6,8 @@ public class Carte {
     private final int[] taille;
     private String[][] dessinCarte;
 
-    private ArrayList<Personnage> listePersonnage = new ArrayList<Personnage>();
-    private ArrayList<Objet> listeObjet = new ArrayList<Objet>();
+    private ArrayList<Personnage> listePersonnage = new ArrayList<>();
+    private ArrayList<Objet> listeObjet = new ArrayList<>();
     //getters//
     public String getNom() {
         return nom;
@@ -92,26 +92,26 @@ public class Carte {
 
     public String afficherCarte(Personnage player){
         //    listerPersonnage();
-        String retour = "";
+        StringBuilder retour = new StringBuilder();
         for (Personnage perso : this.listePersonnage) {
             if (perso.getPv()>0)
-            dessinCarte[perso.getY()-1][perso.getX()-1] = perso.getNom().substring(0,1).toUpperCase();
+                dessinCarte[perso.getY()-1][perso.getX()-1] = perso.getNom().substring(0,1).toUpperCase();
         }
         for (Objet objet : this.listeObjet) {
             if (!objet.isEquipe())
-            dessinCarte[objet.getY()-1][objet.getX()-1] = objet.getNom().substring(0,1);
+                dessinCarte[objet.getY()-1][objet.getX()-1] = objet.getNom().substring(0,1);
         }
         //   dessinCarte[player.getY()-1][player.getX()-1] = "P";
         for (String[] t: this.getDessinCarte()) {
             for (String u:t) {
-                retour+=u;
+                retour.append(u);
               //  System.out.print(u);
 
             }
-            retour+="\n";//System.lineSeparator();
+            retour.append("\n");//System.lineSeparator();
            // System.out.println();
         }
-        return retour;
+        return retour.toString();
     }
     public void listerPersonnage() {
         for (Personnage perso : this.listePersonnage) {

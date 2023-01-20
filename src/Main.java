@@ -49,12 +49,14 @@ public class Main{
         //   Affichage.afficher(carteUne.getListePersonnage().get(0));*/
 
         Player player1 = new PlayerRepository().find(2);
+        Personnage p1= new PersonnageRepository().find(2);
         Carte carte1 = new CarteRepository().find(1);
         Carte carte2 = new CarteRepository().find(2);
+
+
         //System.out.println(player1.toString());
 
 
-        Personnage p1= new PersonnageRepository().find(2);
         System.out.println(p1.getNom());
 
 

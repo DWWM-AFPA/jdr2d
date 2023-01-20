@@ -1,11 +1,18 @@
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class CarteRepository extends DAOObject {
-    public void insert(){
-        //TODO
-        // return
+    public Carte insert(String nom, String description,String carte) throws SQLException {
+        try {
+            ResultSet rs= this.query("INSERT INTO lieu(nom_lieu,description_lieu,carte_lieu) VALUES (?,?,?);",new ArrayList<Object>(Arrays.asList(nom,description,carte)));
+            this.closeConnection();
+            return new Carte(nom,description,50,50);
+
+        }catch (Exception e){
+            throw e;
+        }
     }
     public void update(){
         //TODO
