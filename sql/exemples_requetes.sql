@@ -58,4 +58,7 @@ VALUES
 (1,'(25,32)'),
 (2,'(33,48)');
 
+--Execute une suite d'instruction construites avec le SELECT via le \gexec
+-- SELECT CONCAT('DROP TABLE ',tablename,';') FROM pg_tables WHERE tablename LIKE 'a_test%'\gexec
+
 

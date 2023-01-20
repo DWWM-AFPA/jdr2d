@@ -29,14 +29,25 @@ CREATE TABLE etat_personnage
 (id_etat_personnage COUNTER PRIMARY KEY,
 );
 
-DROP TABLE _position;
-DROP TABLE positionne_test;
-DROP TABLE positionne;
+DROP TABLE position;
 
-CREATE TABLE position 
-(id_personnage integer,
-position point,
-id_lieu integer,
-FOREIGN KEY(id_lieu) REFERENCES lieu(id_lieu), FOREIGN KEY(id_personnage) REFERENCES personnage(id_personnage));
 
-INSERT into position VALUES (2,(point(20,15)),1);
+ALTER TABLE personnage ADD COLUMN position point;
+--remplir postion puis
+ALTER TABLE personnage ADD CONSTRAINT position NOT NULL
+
+ALTER TABLE objet ADD COLUMN position point;
+--remplir postion puis
+ALTER TABLE objet ADD CONSTRAINT position NOT NULL
+ALTER TABLE objet ADD COLUMN id_lieu integer;
+ALTER TABLE objet ADD CONSTRAINT objet_id_lieu_fkey FOREIGN KEY (id_lieu) REFERENCES lieu(id_lieu);
+
+
+ALTER TABLE objet ADD CONSTRAINT objet_id_personnage_fkey FOREIGN KEY (id_personnage) REFERENCES personnage(id_personnage);
+
+ALTER TABLE objet ADD CONSTRAINT valid_location
+    CHECK (
+        (id_lieu IS NULL AND position IS NULL AND id_personnage IS NOT NULL)
+        OR
+        (id_lieu IS NOT NULL AND position IS NOT NULL AND id_personnage IS NULL)
+    );
