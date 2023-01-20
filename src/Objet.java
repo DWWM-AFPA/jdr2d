@@ -1,4 +1,4 @@
-public class Objet {
+public class Objet implements Position{
     private String nom;
     private int x;
     private int y;

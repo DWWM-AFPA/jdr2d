@@ -1,4 +1,4 @@
-public class Personnage {
+public class Personnage implements Position{
     protected String nom;
     protected int x;
     protected int y;
@@ -69,14 +69,7 @@ public class Personnage {
     public Objet getSac() {
         return sac;
     }
-    public void decodePosition(String position){
-        position = "(20,50)";
-        int commaPos = position.indexOf(',');
-        int lastParenthesis = position.indexOf(')');
 
-        this.setX(Integer.parseInt(position.substring(1,commaPos)));
-        this.setY(Integer.parseInt(position.substring(commaPos+1,lastParenthesis)));
-    }
 
     public Carte getCarte() {
         return carte;

@@ -35,7 +35,7 @@ public class ObjetRepository extends DAOObject {
                     rs.getString("description_objet"),
                     rs.getInt("prix"),
                     rs.getInt("id_type_objet"),
-                    rs.getInt("poids");
+                    rs.getInt("poids"));
 
             this.closeConnection();
             return objet;
