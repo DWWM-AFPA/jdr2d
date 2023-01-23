@@ -1,0 +1,11 @@
+// AVANT
+ArrayList<Lieu> lieux;
+ArrayList<Personnage> personnages;
+ArrayList<Objet> objets;
+
+
+// APRES
+ArrayList<Lieu>[][] lieux;
+ArrayList<Personnage>[][] personnages;
+ArrayList<Objet>[][] objets;
+
