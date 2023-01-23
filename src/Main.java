@@ -5,16 +5,15 @@ import java.beans.DesignMode;
 public class Main {
     public static void main(String[] args) {
 
-        Dessiner dessiner = new Dessiner();
-        Monde monde = new Monde(6, 3);
-
-        Lieu lieu = new Lieu("Adamantia", 6, 6, monde);
-
-
+        Lieu lieu = new Lieu("Adamantia", 2, 3, 5, 7);
+        Monde monde = new Monde(100, 15, 100, 10, lieu);
+        Dessiner dessiner = new Dessiner(monde, lieu);
+        //Dessiner dessiner1 = new Dessiner(lieu);
         System.out.println(monde.accept(dessiner));
 
-        System.out.println(lieu.getNomLieu());
-        System.out.println(lieu);
+        System.out.println(lieu.accept(dessiner));
+
+
         Arme arme = new Arme(new Arme("Epee Excalibure", 5, 1, 2, false, false, 0, 0), new EffetAttaque("Base", 0, 1, 0, false, false, 1, -1, 0, 0));
         EffetAttaque attaqueFeu = new EffetAttaque("Attaque Feu", 0, 1, 0, false, false, 2, -1, 0, 0);
         EffetAttaque attaqueGlace = new EffetAttaque("Attaque Glace", 0, 1, 0, false, false, 4, -1, 0, 0);
