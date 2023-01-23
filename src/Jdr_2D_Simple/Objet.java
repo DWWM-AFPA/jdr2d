@@ -96,7 +96,6 @@ public abstract class Objet extends Monde implements Visitable{
     }
 
     public Objet(String nomObjet, int prixObjet, int quantiteObjet, int poidsObjet, boolean recompenseObjet, boolean queteObjet, int xPosition, int yPosition) {
-        super(xPosition, yPosition);
         this.nomObjet = nomObjet;
         this.prixObjet = prixObjet;
         this.poidsObjet = poidsObjet;

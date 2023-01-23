@@ -79,8 +79,8 @@ public class Personnage extends Monde {
         return this;
     }
 
-    public Personnage(String nomPesonnage, int xpPersonnage, int pvPersonnage, int monnaiePersonnage, boolean vivantPersonnage, ArrayList<Objet> inventairePersonnage, ArrayList<Objet> etatPersonnage, int xPosition, int yPosition) {
-        super(xPosition, yPosition);
+    public Personnage(String nomPesonnage, int xpPersonnage, int pvPersonnage, int monnaiePersonnage, boolean vivantPersonnage, ArrayList<Objet> inventairePersonnage, ArrayList<Objet> etatPersonnage, int xPosition, int yPosition, int xTaille, int ytaille) {
+        super(xPosition, yPosition, xTaille, ytaille);
         this.nomPesonnage = nomPesonnage;
         this.xpPersonnage = xpPersonnage;
         this.pvPersonnage = pvPersonnage;
