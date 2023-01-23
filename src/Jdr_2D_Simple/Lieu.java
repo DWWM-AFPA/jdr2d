@@ -1,19 +1,21 @@
 package Jdr_2D_Simple;
 
+import javax.swing.text.Position;
+import java.awt.*;
 import java.util.ArrayList;
-import java.util.Random;
 
 public class Lieu {
 
     private String nomLieu;
     private String descriptionLieu;
-    private  int w;
-    private  int h;
+    private  int xTaille;
+    private  int yTaille;
+
     protected int xPosition;
     protected int yPosition;
-    private char[][] lieu;
-
     private Monde monde;
+
+    //private Dessiner dessiner;
 
     private ArrayList<Personnage> personnages;
 
@@ -23,6 +25,24 @@ public class Lieu {
 
     public Lieu setNomLieu(String nomLieu){
         this.nomLieu = nomLieu;
+        return this;
+    }
+
+    public int getxTaille(){
+        return xTaille;
+    }
+
+    public Lieu setxTaille(int xTaille){
+        this.xTaille = xTaille;
+        return this;
+    }
+
+    public int getyTaille(){
+        return yTaille;
+    }
+
+    public Lieu setyTaille(int yTaille){
+        this.yTaille = yTaille;
         return this;
     }
 
@@ -44,14 +64,6 @@ public class Lieu {
         return this;
     }
 
-    public char[][] getLieu(){
-        return lieu;
-    }
-
-    public void setLieu(char[][] lieu){
-        this.lieu = lieu;
-    }
-
     public Monde getMonde(){
         return monde;
     }
@@ -61,53 +73,71 @@ public class Lieu {
         return this;
     }
 
-    public Lieu(String nomLieu, int w, int h, Monde monde){
-        this.w = w;
-        this.h = h;
+    public Lieu(){
+        this.setxPosition(1);
+        this.setyPosition(1);
+    }
+
+    public Lieu(String nomLieu, int xTaille, int yTaille, int xPosition, int yPosition){
+        this.setxPosition(getxPosition());
+        this.setyPosition(getyPosition());
+        this.xTaille = xTaille;
+        this.yTaille = yTaille;
         this.nomLieu = nomLieu;
-        this.lieu = generationLieu(w, h);
     }
 
-    public Lieu(String nomLieu, int xPosition, int yPosition, int w, int h, Personnage personnages){
+    public Lieu(String nomLieu, int xTaille, int yTaille, int xPosition, int yPosition, Monde monde){
+        this.setxPosition(getxPosition());
+        this.setyPosition(getyPosition());
+        this.xTaille = xTaille;
+        this.yTaille = yTaille;
+        this.nomLieu = nomLieu;
+        this.monde = monde;
+    }
+
+    public Lieu(String nomLieu, int xPosition, int yPosition, int Taille, int yTaille, Personnage personnages){
 
     }
 
-    public char[][] generationLieu(int w, int h){
+    /*public char[][] generationLieu(int wTaille, int hTaille){
 
         Random choix = new Random();
 
+        int w = dessiner.getLieuDessiner().wTaille;
+        int h = dessiner.getLieuDessiner().hTaille;
+
         int i, j;
-        char[][] retour = new char[h][w];
+        char[][] retour = new char[wTaille][hTaille];
 
         for (i = 0; i < h; i++){
             for (j = 0; j < w; j++){
                 if (choix.nextInt(100) + 1 < 95){
-                    retour[i][j] += '.';
+                    retour[j][i] += '.';
 
                 }else{
-                    retour[i][j] = '#';
+                    retour[j][i] = '#';
                 }
             }
         }
         return retour;
-    }
+    }*/
 
-    @Override
+   /*@Override
     public String toString(){
 
         int i;
         int j;
         String retour = new String();
 
-        for(i = 0; i < h; i++){
-            for(j = 0; j < w; j++){
+        for(i = 0; i < hTaille; i++){
+            for(j = 0; j < wTaille; j++){
                 retour += lieu[i][j];
             }
             retour += "\n";
         }
 
         return retour;
-    }
+    }*/
 
     public Object accept(Visitor v){
         return v.visit(this);

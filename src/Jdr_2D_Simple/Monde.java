@@ -6,10 +6,11 @@ public class Monde implements Visitable{
     //Menmbres
     protected int xPosition;
     protected int yPosition;
-    protected  int xTaille;
+    protected int xTaille;
     protected int yTaille;
     protected char[][] monde;
-    protected ArrayList<Lieu> lieu;
+    protected Dessiner dessinerMonde;
+    protected ArrayList<Lieu> lieux;
 
 
     //Getter et Setter
@@ -49,28 +50,57 @@ public class Monde implements Visitable{
         return this;
     }
 
+    public char[][] getMonde(){
+        return monde;
+    }
+
+    public Monde setMonde(char[][] monde){
+        this.monde = monde;
+        return this;
+    }
+
+    public Dessiner getDessinerMonde(){
+        return dessinerMonde;
+    }
+
+    public Monde setDessinerMonde(Dessiner dessinerMonde){
+        this.dessinerMonde = dessinerMonde;
+        return this;
+    }
+
+    public ArrayList<Lieu> getLieux(){
+        return lieux;
+    }
+
+    public Monde setLieux(ArrayList<Lieu> lieux){
+        this.lieux = lieux;
+        return this;
+    }
+
     public Monde(){
         this.setxPosition(1);
         this.setyPosition(1);
     }
-    public Monde(int xTaille, int yTaille){
-        this.setxPosition(xPosition);
-        this.setyPosition(yPosition);
+
+    public Monde(int xTaille, int yTaille, int xPosition, int yPosition){
+        this.xPosition = xPosition;
+        this.yPosition = yPosition;
         this.xTaille = xTaille;
         this.yTaille = yTaille;
-        this.monde = generationCarte(xTaille, yTaille);
     }
 
-    public char[][] generationCarte(int xTaille, int yTaille){
-        int i, j;
-        char[][] retour = new char[xTaille][yTaille];
+    public Monde(int xTaille, int yTaille, int xPosition, int yPosition, Lieu l){
+        this.xPosition = xPosition;
+        this.yPosition = yPosition;
+        this.xTaille = xTaille;
+        this.yTaille = yTaille;
+        this.lieux = new ArrayList<>();
+        this.add(l);
+    }
 
-        for(i = 0; i < getyTaille(); i++){
-            for(j = 0; j < getxTaille(); j++){
-                retour[j][i] += ' ';
-            }
-        }
-        return retour;
+    public Monde add(Lieu l){
+        this.lieux.add(l);
+        return this;
     }
 
     public Object accept(Visitor v){
