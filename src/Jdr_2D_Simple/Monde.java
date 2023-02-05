@@ -2,108 +2,82 @@ package Jdr_2D_Simple;
 
 import java.util.ArrayList;
 
-public class Monde implements Visitable{
+public class Monde extends Point implements Visitable {
     //Menmbres
-    protected int xPosition;
-    protected int yPosition;
     protected int xTaille;
     protected int yTaille;
-    protected char[][] monde;
-    protected Dessiner dessinerMonde;
-    protected ArrayList<Lieu> lieux;
-
+    protected ArrayList<Lieu> arrayLieux;
 
     //Getter et Setter
-    public int getxPosition(){
+    @Override
+    public int getxPosition() {
         return xPosition;
     }
 
-    public Monde setxPosition(int xPosition){
+    @Override
+    public Monde setxPosition(int xPosition) {
         this.xPosition = xPosition;
         return this;
     }
 
-    public int getyPosition(){
+    @Override
+    public int getyPosition() {
         return yPosition;
     }
 
-    public Monde setyPosition(int yPosition){
+    @Override
+    public Monde setyPosition(int yPosition) {
         this.yPosition = yPosition;
         return this;
     }
 
-    public int getxTaille(){
+    public int getxTaille() {
         return xTaille;
     }
 
-    public Monde setxTaille(int xTaille){
+    public Monde setxTaille(int xTaille) {
         this.xTaille = xTaille;
         return this;
     }
 
-    public int getyTaille(){
+    public int getyTaille() {
         return yTaille;
     }
 
-    public Monde setyTaille(int yTaille){
+    public Monde setyTaille(int yTaille) {
         this.yTaille = yTaille;
         return this;
     }
 
-    public char[][] getMonde(){
-        return monde;
+    public ArrayList<Lieu> getArrayLieux() {
+        return arrayLieux;
     }
 
-    public Monde setMonde(char[][] monde){
-        this.monde = monde;
+    public Monde setArrayLieux(ArrayList<Lieu> arrayLieux) {
+        this.arrayLieux = arrayLieux;
         return this;
     }
 
-    public Dessiner getDessinerMonde(){
-        return dessinerMonde;
+    public Monde(int xTaille, int yTaille, int xPosition, int yPosition) {
+        super(xPosition, yPosition);
+        this.setxTaille(xTaille + 2);
+        this.setyTaille(yTaille + 2);
     }
 
-    public Monde setDessinerMonde(Dessiner dessinerMonde){
-        this.dessinerMonde = dessinerMonde;
-        return this;
-    }
-
-    public ArrayList<Lieu> getLieux(){
-        return lieux;
-    }
-
-    public Monde setLieux(ArrayList<Lieu> lieux){
-        this.lieux = lieux;
-        return this;
-    }
-
-    public Monde(){
-        this.setxPosition(1);
-        this.setyPosition(1);
-    }
-
-    public Monde(int xTaille, int yTaille, int xPosition, int yPosition){
-        this.xPosition = xPosition;
-        this.yPosition = yPosition;
-        this.xTaille = xTaille;
-        this.yTaille = yTaille;
-    }
-
-    public Monde(int xTaille, int yTaille, int xPosition, int yPosition, Lieu l){
-        this.xPosition = xPosition;
-        this.yPosition = yPosition;
-        this.xTaille = xTaille;
-        this.yTaille = yTaille;
-        this.lieux = new ArrayList<>();
+    public Monde(int xTaille, int yTaille, int xPosition, int yPosition, Lieu l) {
+        super(xPosition, yPosition);
+        this.setxTaille(xTaille + 2);
+        this.setyTaille(yTaille + 2);
+        this.arrayLieux = new ArrayList<>();
         this.add(l);
     }
 
-    public Monde add(Lieu l){
-        this.lieux.add(l);
+    public Monde add(Lieu l) {
+        this.arrayLieux.add(l);
         return this;
     }
 
-    public Object accept(Visitor v){
+    public Object accept(Visitor v) {
         return v.visit(this);
     }
 }
