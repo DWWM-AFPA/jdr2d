@@ -5,13 +5,20 @@ import java.beans.DesignMode;
 public class Main {
     public static void main(String[] args) {
 
-        Lieu lieu = new Lieu("Adamantia", 2, 3, 5, 7);
-        Monde monde = new Monde(100, 15, 100, 10, lieu);
-        Dessiner dessiner = new Dessiner(monde, lieu);
-        //Dessiner dessiner1 = new Dessiner(lieu);
-        System.out.println(monde.accept(dessiner));
+        Lieu lieu = new Lieu("Adamantia", 10, 5, 15, 2);
+        Lieu lieu1 = new Lieu("Tergirus", 3, 6, 1, 1);
+        Monde monde = new Monde(50, 9, 0, 0, lieu);
+        //monde.add(lieu1);
 
-        System.out.println(lieu.accept(dessiner));
+
+        for (Lieu l : monde.getArrayLieux()){
+            System.out.println(l);
+        }
+        Dessiner dessiner = new Dessiner(monde, lieu);
+        //dessiner.add(lieu1);
+
+        System.out.println(monde.accept(dessiner));
+        //System.out.println(lieu.accept(dessiner));
 
 
         Arme arme = new Arme(new Arme("Epee Excalibure", 5, 1, 2, false, false, 0, 0), new EffetAttaque("Base", 0, 1, 0, false, false, 1, -1, 0, 0));
@@ -50,6 +57,7 @@ public class Main {
             System.out.println(myEffet.getNomObjet());
             epeeExcalibure += " et " +  myEffet.getDegat() + " de dégât de " + myEffet.getNomObjet();
         }
+
         System.out.println(" 'quantité' "
                 + arme.getQuantiteObjet()
                 + " " + arme.getNomObjet()
@@ -67,6 +75,7 @@ public class Main {
             System.out.println(myEffet.getNomObjet());
             armureMithril += " et " +  myEffet.getDegat() + " de défense de " + myEffet.getNomObjet();
         }
+
         System.out.println(" 'quantité' "
                 + armure.getQuantiteObjet()
                 + " " + armure.getNomObjet()
