@@ -1,4 +1,6 @@
-public class newInput implements EventListener{
+import Controller.EventListener;
+
+public class newInput implements EventListener {
 
     private String input;
 
@@ -8,7 +10,7 @@ public class newInput implements EventListener{
 
     @Override
     public void update(String eventType, String input) {
-      //  Run.input=Affichage.input;
+      //  View.Run.input=View.Affichage.input;
       //  System.out.println(input);
    /*     try {Main.jeu.run();}
         catch (IllegalMonitorStateException e){

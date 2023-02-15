@@ -1,3 +1,5 @@
+package Entity;
+
 public interface Position {
     default int[] decodePosition(String position){;
         int commaPos = position.indexOf(',');
