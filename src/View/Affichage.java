@@ -1,6 +1,7 @@
 package View;
 
-import Entity.Personnage;
+import Controller.*;
+import Entity.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -42,8 +43,8 @@ public class Affichage extends Thread implements EventListener {
 
     @Override
     public void run() {
-Personnage perso = Main.player;
-afficher(perso);
+//TODO Personnage perso = Main.player;
+//afficher(perso);
         getInput();
     }
 

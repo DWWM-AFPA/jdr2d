@@ -1,5 +1,7 @@
 package DAO;
 
+import Entity.Player;
+
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -1,9 +1,7 @@
 package View;
 
-import Entity.Carte;
-import Entity.Interaction;
-import Entity.Objet;
-import Entity.Personnage;
+import Controller.*;
+import Entity.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,7 +19,8 @@ public class Run extends Thread implements EventListener {
     @Override
     public void run() {
         System.out.println();
-        Carte carte = Main.carte;
+       //TODO  Carte carte = Main.carte;
+        Carte carte = new Carte();
         Personnage player = carte.getListePersonnage().get(0);
 
         //View.Run.input=View.Run.input==null? "l":View.Run.input;
@@ -36,7 +35,8 @@ public class Run extends Thread implements EventListener {
             for (Objet objet : carte.getListeObjet()) {
                 if (!objet.isEquipe() && objet.calculPortee(0, player)) {
                     player.equiperPersonnage(objet);
-                    System.out.println(String.format("le joueur ramasse le %s \"%s\", non implémenté complétement dans run", objet.getTypeObjet().toString().toLowerCase(), objet.getNom()));
+                    //TODO TypeObjet a vérifier ancien objet.getTypeObjet().toString().toLowerCase()
+                    System.out.println(String.format("le joueur ramasse le %s \"%s\", non implémenté complétement dans run", "gants", objet.getNom()));
                 }
             }
             // player.equiperPersonnage(objet);

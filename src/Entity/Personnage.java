@@ -135,22 +135,22 @@ public class Personnage implements Position{
     }
 
     public void setCasque() {
-        this.casque = new Objet("casquette", Objet.TypeObjet.CASQUE,this);
+        this.casque = new Objet("casquette", 1,this);
     }
     public void setTorse() {
-        this.torse = new Objet("tee-shirt", Objet.TypeObjet.TORSE,this);
+        this.torse = new Objet("tee-shirt", 2,this);
     }
     public void setGants() {
-        this.gants = new Objet("jean", Objet.TypeObjet.PANTALON,this);
+        this.gants = new Objet("jean",3,this);
     }
     public void setPantalon() {
-        this.pantalon = new Objet("sandalles", Objet.TypeObjet.BOTTES,this);
+        this.pantalon = new Objet("sandalles", 4,this);
     }
     public void setBottes() {
-        this.bottes = new Objet("mains-nues", Objet.TypeObjet.GANTS,this);
+        this.bottes = new Objet("mains-nues", 5,this);
     }
     public void setArme() {
-        this.arme = new Objet("mains-nues", Objet.TypeObjet.ARME,this);
+        this.arme = new Objet("mains-nues", 6,this);
     }
     public void setSac() {
         this.sac = sac;
@@ -212,39 +212,39 @@ public class Personnage implements Position{
         objet.setPersonnage(null);
     }
     public Personnage equiperPersonnage(Objet objet){
-        Objet.TypeObjet typeObjet=objet.getTypeObjet();
+        int typeObjet=objet.getTypeObjet();
         switch (typeObjet){
-            case CASQUE :
+            case 1 :
                 modfierObjetEquipe(objet);
                 this.setCasque(objet);
                 this.setPv(this.getPv()+objet.getEffet());
                 break;
-            case GANTS :
+            case 2 :
                 modfierObjetEquipe(objet);
                 this.setGants(objet);
                 this.setPv(this.getPv()+objet.getEffet());
                 break;
-            case TORSE:
+            case 3:
                 modfierObjetdesequipe(objet);
                 this.setTorse(objet);
                 this.setPv(this.getPv()+objet.getEffet());
                 break;
-            case PANTALON :
+            case 4 :
                 modfierObjetEquipe(objet);
                 this.setPantalon(objet);
                 this.setPv(this.getPv()+objet.getEffet());
                 break;
-            case BOTTES:
+            case 5:
                 modfierObjetEquipe(objet);
                 this.setBottes(objet);
                 this.setPv(this.getPv()+objet.getEffet());
                 break;
-            case ARME :
+            case 6 :
                 modfierObjetEquipe(objet);
                 this.setArme(objet);
                 this.setDps(this.getDps()+objet.getEffet());
                 break;
-            case SAC :
+            case 7 :
                 modfierObjetEquipe(objet);
                 this.setSac(objet);
                 System.err.println("l'équipement du sac n'a pas d'effet implémenté");
@@ -256,39 +256,39 @@ public class Personnage implements Position{
     }
 
     public Personnage desequiperPersonnage(Objet objet){
-        Objet.TypeObjet typeObjet=objet.getTypeObjet();
+        int typeObjet=objet.getTypeObjet();
         switch (typeObjet){
-            case CASQUE:
+            case 1:
                 modfierObjetdesequipe(objet);
                 this.setCasque();
                 this.setPv(this.getPv()-objet.getEffet());
                 break;
-            case GANTS :
+            case 2 :
                 modfierObjetdesequipe(objet);
                 this.setGants();
                 this.setPv(this.getPv()-objet.getEffet());
                 break;
-            case TORSE:
+            case 3:
                 modfierObjetdesequipe(objet);
                 this.setTorse();
                 this.setPv(this.getPv()-objet.getEffet());
                 break;
-            case PANTALON:
+            case 4:
                 modfierObjetdesequipe(objet);
                 this.setPantalon();
                 this.setPv(this.getPv()-objet.getEffet());
                 break;
-            case BOTTES:
+            case 5:
                 modfierObjetdesequipe(objet);
                 this.setBottes();
                 this.setPv(this.getPv()-objet.getEffet());
                 break;
-            case ARME :
+            case 6 :
                 modfierObjetdesequipe(objet);
                 this.setArme();
                 this.setDps(this.getDps()-objet.getEffet());
                 break;
-            case SAC :
+            case 7 :
                 modfierObjetEquipe(objet);
                 this.setSac();
                 System.err.println("le déséquipement du sac n'a pas d'effet implémenté");

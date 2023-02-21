@@ -1,7 +1,6 @@
 package DAO;
-
 import DAO.DAOObject;
-
+import Entity.Carte;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;

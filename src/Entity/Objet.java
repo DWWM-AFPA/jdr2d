@@ -5,7 +5,7 @@ public class Objet implements Position{
     private int x;
     private int y;
     public enum TypeObjet {CASQUE,TORSE,GANTS,PANTALON,BOTTES,ARME,SAC}
-    private TypeObjet typeObjet;
+    private int typeObjet;
     private int poids;
     private int effet;
     public enum TypeEffet {ATTAQUE,PROTECTION,SOIN}
@@ -29,7 +29,7 @@ public class Objet implements Position{
         return y;
     }
 
-    public TypeObjet getTypeObjet() {
+    public int getTypeObjet() {
         return typeObjet;
     }
 
@@ -72,9 +72,8 @@ public class Objet implements Position{
     }
 
     public void setTypeObjet(int typeObjet) {
-        switch (typeObjet)
-            class (1):
-
+      //  switch (typeObjet){
+       //     case (1):
         this.typeObjet = typeObjet;
     }
 
@@ -138,7 +137,7 @@ public class Objet implements Position{
     };
 
    /** Objets par defaut dans le personnage sans equipement*/
-    public Objet(String nom,TypeObjet type,Personnage personnage){
+    public Objet(String nom,int type,Personnage personnage){
         this.setNom(nom);
         this.setTypeObjet(type);
         this.setPoids(0);
@@ -148,7 +147,7 @@ public class Objet implements Position{
         this.setPersonnage(personnage);
     };
 
-    protected boolean calculPortee(int portee,Personnage donneur){
+    public boolean calculPortee(int portee, Personnage donneur){
         estAPortee=false;
         int dx=donneur.getX();
         int dy=donneur.getY();

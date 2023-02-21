@@ -1,5 +1,8 @@
 package DAO;
 
+
+import Entity.*;
+
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Arrays;

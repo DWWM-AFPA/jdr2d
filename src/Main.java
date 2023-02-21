@@ -4,6 +4,7 @@ import DAO.PlayerRepository;
 import Entity.Carte;
 import Entity.Personnage;
 import Entity.Player;
+import javafx.scene.paint.Color;
 
 public class Main{
     static Carte carte;
@@ -13,7 +14,7 @@ public class Main{
 
     public static void main(String[] args) throws Exception {
 
-       /* Controller.Editor editeur = new Controller.Editor();
+  /*      Controller.Editor editeur = new Controller.Editor();
         View.Run.editeur =editeur;
         View.Affichage.editeur =editeur;
 
@@ -33,12 +34,12 @@ public class Main{
        // System.out.println(player.getNom() + " se déplace en " + player.getX() + " " + player.getY());
 
       //  carteUne.listerPersonnage();
-        player.desequiperPersonnage(couteau);
+        player.desequiperPersonnage(couteau);*/
       //  player.afficherEquipement();
        // carteUne.listerPersonnage();
 
         //String input = player.getDeplacement(); //
-       // Main.jeu= new View.Run();
+              /*  Main.jeu= new View.Run();
         //   run.start();
 
         View.Affichage affichage = new View.Affichage();
@@ -46,19 +47,22 @@ public class Main{
         Main.affichage=affichage;
         editeur.events.subscribe("input", new newInput());
 
-        System.out.println("\n Commandes de déplacement : Z Q S D \n Commande ramassage : A \n Commande combat :E \n Commande pour quitter : L ");
+        System.out.println("\n Commandes de déplacement : Z Q S D \n Commande ramassage : A \n Commande combat :E \n Commande pour quitter : L ");*/
         //   View.Affichage.afficher(carteUne.getListePersonnage().get(0));*/
 
-        Player player1 = new PlayerRepository().find(2);
-        Personnage p1= new PersonnageRepository().find(2);
-        Carte carte1 = new CarteRepository().find(1);
-        Carte carte2 = new CarteRepository().find(2);
+    //    Player player1 = new PlayerRepository().find(2);
+     //   Personnage p1= new PersonnageRepository().find(2);
+     //   Carte carte1 = new CarteRepository().find(1);
+     //   Carte carte2 = new CarteRepository().find(2);
 
 
         //System.out.println(player1.toString());
 
 
-        System.out.println(p1.getNom());
+      //  System.out.println(p1.getNom());
+        Color c = Color.RED;
+        System.out.println(c.getRed());
+
 
 
 

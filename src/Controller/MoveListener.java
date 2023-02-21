@@ -1,7 +1,9 @@
 package Controller;
 
+import Controller.*;
 import View.Affichage;
 import View.Run;
+import com.sun.tools.javac.Main;
 
 class MoveListener implements EventListener {
             private String deplacement;
@@ -15,7 +17,8 @@ class MoveListener implements EventListener {
                 Run.input= Affichage.input;
                 System.out.println("Thread nb"+Thread.currentThread());
                   try {
-                      Main.jeu.run();}
+                   ///TODO   Main.main(Main.compile());
+                  }
                   catch (IllegalMonitorStateException e){
 
                   }
